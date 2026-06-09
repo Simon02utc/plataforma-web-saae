@@ -1,0 +1,988 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    width: 100%;
+    
+    font-family: var(--body-font) !important;
+    background-color: var(--color-body-background-color);
+
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    
+    /*background-color: var(--color-body-background-color) !important;*/
+    transition: background-color 0.3s ease;
+
+    /*-webkit-user-select: none !important; /* Para Safari */
+    /*-moz-user-select: none !important; /* Para Firefox */
+    /*-ms-user-select: none !important; /* Para IE10+ y Edge */
+    /*user-select: none !important; /* Soporte para navegadores modernos */
+}
+
+
+
+/*=============PARA RESALTADO DE TEXTO Y LECTURA DE TEXTO============*/
+::selection {
+    background: #ffeb3b; /* Amarillo */
+    color: #000;
+}
+
+
+.btn-leer-contenido {
+    position: absolute;
+    cursor: pointer;
+    padding: 4px;
+    font-size: 14px;
+    color: #fff;
+    border: solid 2px rgba(27, 57, 106, 0.6);
+    color: rgba(27, 57, 106, 0.6);
+    background-color: transparent;
+    border-radius: 50px;
+    right: 0px;
+    top: 0px;
+    transition: background-color 0.3s ease, border-color 0.3s ease,transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.btn-leer-contenido.leyendo-contenido {
+    background-color: var(--color-principal);
+    color: #fff;
+}
+
+.btn-leer-contenido:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+.btn-leer-contenido:hover {
+    background-color: var(--color-principal);
+    color: #fff;
+}
+
+@media (max-width: 1118px) {
+    
+    .btn-leer-contenido {
+        font-size: 12px;
+    }
+}
+/*===========================================================*/
+
+
+/*============================MAIN============================*/
+main {
+    margin-left: 260px;
+    padding-inline: 15px;
+    transition: margin-left 0.6s ease;
+}
+
+main.min-main{
+    margin-left: 70px;
+}
+/*===========================================================*/
+
+
+/*========================BARRA LATERAL======================*/
+/*----------------- Boton para abrir menu (barra lateral ) en celulares*/
+.menu {
+    display: none;
+    position: fixed;
+    width: 48px;
+    height: 48px;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    cursor: pointer;
+    border: solid 2px var(--color-borde-menu);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    background-color: var(--color-menu);
+    color: var(--color-icono-menu);
+    right: 15px;
+    top: 15px;
+    z-index: 100;
+
+    transition: width 0.6s ease,  height 0.6s ease, background-color 0.3s ease, color 0.3s ease, top 0.5s ease, right 0.5s ease;
+}
+
+
+.barra-lateral {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 260px; /*250*/
+    height: 100%;
+    overflow: hidden;
+    padding: 20px 10px;
+    background-color: var(--color-barra-lateral);
+    z-index: 50;
+    border-radius: 0px 0px 0px 0px;
+    /*border-block: solid 2px var(--color-borde-linea-barra-lateral);*/
+    border-right: solid 2px var(--color-borde-linea-barra-lateral);
+
+    transition: width 0.6s ease, background-color 0.3s ease, border-color 0.3s ease, left 0.5s ease;
+}
+
+
+/*------------> Barra chicha donde tambien se ocultar elementos*/
+.mini-barra-lateral {
+    width: 70px;
+}
+
+.barra-lateral span {
+    width: 100px; /*IMPORTANTE para que al abrir la barra, sea parejo cuando se aparescan*/
+    white-space: nowrap;
+    text-align: left;
+    opacity: 1;
+    transition: opacity 0.5s ease, width 0.5s ease;
+}
+
+.barra-lateral span.oculto {
+    opacity: 0;
+    width: 0;
+}
+
+.barra-lateral .btn-acciones-barra-lateral {
+    max-width: 220px;
+    opacity: 1;
+    overflow: hidden;
+    transition: opacity 0.5s ease, width 0.5s ease;
+}
+
+.barra-lateral .btn-acciones-barra-lateral.oculto {
+    opacity: 0;
+    width: 0;
+    transition: opacity 0.5s ease, width 0.5s ease;
+}
+
+
+
+/*------------> Nombre de la pagina */
+.barra-lateral .parte-superior-barra {
+    margin-bottom: 0px;
+}
+
+.barra-lateral .parte-superior-barra .informacion-inicial-barra {
+    width: 100%;
+    height: 45px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.barra-lateral .parte-superior-barra .informacion-inicial-barra .logo-barra {
+    width: 60px;
+    height: auto;
+    min-width: 48.5px;
+    padding: 2px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: var(--color-fondo-logo-barra);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.barra-lateral .parte-superior-barra .informacion-inicial-barra .contenedor-titulo-barra {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.barra-lateral .parte-superior-barra .informacion-inicial-barra .contenedor-titulo-barra .titulo-barra {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
+.barra-lateral .parte-superior-barra .informacion-inicial-barra .contenedor-titulo-barra .titulo-barra a {
+    text-decoration: none;
+    font-size: var(--font-size-texto-titulo-barra-lateral-navegacion);
+    color: var(--color-titulo-barra);
+    font-family: var(--subtitle-font);
+}
+
+
+
+/*------------> Boton*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .btn-modulo {
+    margin-bottom: 4px;
+}
+
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .boton {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    /*justify-content: center;*/
+    border: none;
+    border-radius: 10px;
+    background-color: var(--color-boton-barra);
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    color: var(--color-texto-boton-barra);
+    font-weight: var(--font-weight-600);
+    cursor: pointer;
+    text-decoration: none;
+
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .regresar {
+    background-color: transparent;
+    border: solid 2px var(--color-borde-boton-regresar);
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    color: var(--color-texto-boton-regresar);
+    font-weight: var(--font-weight-600);
+    transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .boton i {
+    width: 48px;
+    font-size: 22px;
+}
+
+
+/*------------> Boton con Sub menu*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .sub-a {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    font-weight: var(--font-weight-600);
+    color: var(--color-texto-menu);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+
+/*--------------> Activacion de .sub-a (del submenu)*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .has-submenu .submenu .sub-li .sub-a.active,
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .has-submenu .submenu .sub-li .sub-a:active {
+    color: var(--color-texto-menu-active);
+    background-color: transparent;
+}
+
+
+/*--------------> Sub menus del Boton*/
+/*El li que tiene submenu debe apilarse en columna (no en fila)*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral li.has-submenu {
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/*Contenedor del submenu*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral ul.submenu {
+    list-style: none;
+    margin: 0px 0 0 0;
+    padding: 0 0 0 8px;
+    overflow: hidden;
+    max-height: 0;
+    border-left: solid 1px transparent;
+    border-bottom: solid 1px transparent;
+    border-radius: 0px 0px 0px 10px;
+    transition: max-height 0.5s ease, border-color 0.35s ease;
+}
+
+/*Mostrar submenu cuando este abierto*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral li.has-submenu.open > ul.submenu {
+    max-height: 400px;
+    border-color: var(--color-bordes-submenu-botones-principales);
+}
+
+/*Ajustes para que los li internos no se "peleen" con el display: flex global*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral ul.submenu > .sub-li{
+    display: block;
+    margin-bottom: 0px;
+    width: auto;
+    
+}
+
+/* Si la barra esta en mini, no mostrar submenu (evita cosas raras) */
+.barra-lateral.mini-barra-lateral .parte-superior-barra .botones-principales-barra-lateral li.has-submenu > ul.submenu{
+    max-height: 0 !important;
+}
+
+/*-----Estilos del Icono del submenu-----*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral li.has-submenu > a{
+    position: relative;
+}
+
+/*pisa el width:46px de la regla global de i*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral li.has-submenu > a .chevron{
+    position: absolute;
+    right: 10px;
+    width: auto !important;
+    margin-left: 0;
+    font-size: 14px;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/*Rotacion al abrir*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral li.has-submenu.open > a .chevron{
+    transform: rotate(180deg);
+    border-radius: 50%;
+}
+
+/* Cuando esta mini se oculta ) */
+.barra-lateral.mini-barra-lateral .parte-superior-barra .botones-principales-barra-lateral li.has-submenu > a .chevron{
+    opacity: 0;
+    transform: translateX(-6px);
+    pointer-events: none;
+}
+
+
+
+/*--------------> Menu Navegacion*/
+.barra-lateral .navegacion {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-right: 2px;
+}
+
+.barra-lateral .navegacion::-webkit-scrollbar {
+    width: 4px;
+}
+
+.barra-lateral .navegacion::-webkit-scrollbar-thumb {
+    background-color: var(--color-scroll);
+    border-radius: 10px;
+}
+
+.barra-lateral .navegacion::-webkit-scrollbar-thumb:hover {
+    background-color: var(--color-scroll-hover);
+}
+
+.barra-lateral .navegacion li {  
+    list-style: none;
+    display: flex;
+    margin-bottom: 0px; /*4px*/
+}
+
+.barra-lateral .navegacion a {
+    width: 100%;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    border-radius: 10px;
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    font-weight: var(--font-weight-600);
+    color: var(--color-texto-menu);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.barra-lateral .navegacion a:hover {
+    color: var(--color-texto-menu-hover);
+}
+
+.barra-lateral .navegacion i {
+    font-size: 22px;
+    width: 42.5px;
+    text-align: center;
+}
+
+/*--------------> Activacion de <a> y .sub-a (del submenu)*/
+.barra-lateral .navegacion a.active,
+.barra-lateral .navegacion a:active {
+    background-color: var(--color-menu-active);
+    color: var(--color-texto-menu-active);
+}
+
+.barra-lateral .navegacion .has-submenu .submenu .sub-li .sub-a.active,
+.barra-lateral .navegacion .has-submenu .submenu .sub-li .sub-a:active {
+    color: var(--color-texto-menu-active);
+    background-color: transparent;
+}
+
+/*--------------> Sub menus*/
+/*El li que tiene submenu debe apilarse en columna (no en fila)*/
+.barra-lateral .navegacion li.has-submenu {
+    flex-direction: column;
+    cursor: pointer;
+}
+
+/*Contenedor del submenu*/
+.barra-lateral .navegacion ul.submenu {
+    list-style: none;
+    margin: 0px 0 0 0;
+    padding: 0 0 0 8px;
+    overflow: hidden;
+    max-height: 0;
+    border-left: solid 1px transparent;
+    border-bottom: solid 1px transparent;
+    border-radius: 0px 0px 0px 10px;
+    transition: max-height 0.5s ease, border-color 0.35s ease;
+}
+
+/*Mostrar submenu cuando este abierto*/
+.barra-lateral .navegacion li.has-submenu.open > ul.submenu {
+    max-height: 400px;
+    border-color: var(--color-bordes-submenu);
+}
+
+
+/*Ajustes para que los li internos no se "peleen" con el display:flex global*/
+.barra-lateral .navegacion ul.submenu > .sub-li{
+    display: block;
+    margin-bottom: 0px;
+    width: auto;
+    
+}
+
+/* Si la barra esta en mini, no mostrar submenu (evita cosas raras) */
+.barra-lateral.mini-barra-lateral li.has-submenu > ul.submenu{
+    max-height: 0 !important;
+}
+
+
+/*-----Estilos del Icono del submenu-----*/
+.barra-lateral .navegacion li.has-submenu > a{
+    position: relative;
+}
+
+/*pisa el width:46px de la regla global de i*/
+.barra-lateral .navegacion li.has-submenu > a .chevron{
+    position: absolute;
+    right: 10px;
+    width: auto !important;
+    margin-left: 0;
+    font-size: 14px;
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+/*Rotacion al abrir*/
+.barra-lateral .navegacion li.has-submenu.open > a .chevron{
+    transform: rotate(180deg);
+    border-radius: 50%;
+}
+
+/* Cuando esta mini se oculta ) */
+.barra-lateral.mini-barra-lateral .navegacion li.has-submenu > a .chevron{
+    opacity: 0;
+    transform: translateX(-6px);
+    pointer-events: none;
+}
+
+
+
+/*--------------> Movimiento para <li> EXTRAS si hay mucho texto*/
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .sub-li .sub-a:hover,
+.barra-lateral .navegacion .sub-li .sub-a:hover {/*X*/
+    transform: translateX(-20px); /*empujar a la ezquierda*/
+    background-color: transparent;
+    transition: transform 0.6s ease; /*transicion del empuje*/
+}
+
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .sub-li .sub-a:hover i,
+.barra-lateral .navegacion .sub-li .sub-a:hover i {/*X*/
+    color: transparent;
+    transition: color 0.6s ease; /*transicion de regreso*/
+}
+
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .sub-li .sub-a,
+.barra-lateral .navegacion .sub-li .sub-a {/*X*/
+    transition: transform 0.6s ease; /*Transicion de regreso*/
+}
+
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .sub-li .sub-a i,
+.barra-lateral .navegacion .sub-li .sub-a i {/*X*/
+    transition: tranparent 0.6s ease; /*transicion de regreso*/
+    width: 30px;
+    font-size: 18px;
+}
+
+.barra-lateral .parte-superior-barra .botones-principales-barra-lateral .sub-li .sub-a span,
+.barra-lateral .navegacion .sub-li .sub-a span {
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    font-weight: var(--font-weight-400);
+}
+
+
+
+/*-------------> Parte inferior barra lateral*/
+.parte-inferior-barra {
+}
+
+/*Linea*/
+.barra-lateral .parte-inferior-barra .linea {
+    width: 100%;
+    height: 1px;
+    margin-top: 15px;
+    background-color: var(--color-linea);
+    transition: background-color 0.3s ease;
+}
+
+
+/*---> Modo Oscuro*/
+.barra-lateral .parte-inferior-barra .modo-oscuro {
+    width: 100%;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra-lateral .parte-inferior-barra .modo-oscuro .info {
+    width: 150px;
+    height: 100%; /*45px*/
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.barra-lateral .parte-inferior-barra .modo-oscuro .info span {
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    color: var(--color-texto-menu);
+}
+
+
+.barra-lateral .parte-inferior-barra .modo-oscuro i {
+    width: 40px;
+    color: var(--color-texto-menu);
+    font-size: 20px;
+}
+
+/*--->switch modo oscuro*/
+.barra-lateral .parte-inferior-barra .modo-oscuro .switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 45px;
+    cursor: pointer;
+}
+
+.barra-lateral .parte-inferior-barra .modo-oscuro .base {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 25px;
+    background-color: var(--color-switch-base);
+    border: solid 1px var(--color-borde-base);
+    border-radius: 50px;
+    transition: box-shadow 0.3s ease;
+}
+
+.barra-lateral .parte-inferior-barra .modo-oscuro .base:hover {
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.10);
+}
+
+
+.barra-lateral .parte-inferior-barra .modo-oscuro .circulo {
+    position: absolute;
+    width: 21px;
+    height: 90%;
+    background-color: var(--color-switch-circulo);
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.3s ease;
+}
+.barra-lateral .parte-inferior-barra .modo-oscuro .circulo.prendido {
+    left: 15px;
+}
+
+
+/*---> Modo Escritorio*/
+.barra-lateral .parte-inferior-barra .modo-escritorio {/*Ocultar este opcion para PC y Escritorio*/
+    display: none;
+    width: 100%;
+    border-radius: 10px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.barra-lateral .parte-inferior-barra .modo-escritorio .info {
+    width: 150px;
+    height: 100%; /*45px*/
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content:start;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.barra-lateral .parte-inferior-barra .modo-escritorio .info span {
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    color: var(--color-texto-menu);
+}
+
+.barra-lateral .parte-inferior-barra .modo-escritorio i {
+    width: 40px;
+    color: var(--color-texto-menu);
+    font-size: 20px;
+}
+
+
+/*--->switch modo oscuro*/
+.barra-lateral .parte-inferior-barra .modo-escritorio .switch {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 50px;
+    height: 45px;
+    cursor: pointer;
+}
+.barra-lateral .parte-inferior-barra .modo-escritorio .base {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 25px;
+    background-color: var(--color-switch-base-modo-escritorio);
+    border: solid 1px var(--color-borde-base-modo-escritorio);
+    border-radius: 50px;
+}
+
+.barra-lateral .parte-inferior-barra .modo-escritorio .circulo {
+    position: absolute;
+    width: 21px;
+    height: 90%;
+    background-color: var(--color-switch-circulo-modo-escritorio);
+    border-radius: 50%;
+    left: 2px;
+    transition: left 0.5s ease;
+}
+
+
+.barra-lateral .parte-inferior-barra .modo-escritorio .base.prendido {
+    border-color: var(--color-borde-base-modo-escritorio-prendido);
+}
+
+.barra-lateral .parte-inferior-barra .modo-escritorio .circulo.prendido {
+    left: 15px;
+    background-color: var(--color-switch-circulo-modo-escritorio-prendido);
+}
+
+
+/*---> Usuario*/
+.barra-lateral .parte-inferior-barra .usuario {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.barra-lateral .parte-inferior-barra .usuario img {
+    width: 50px;
+    min-width: 50px;
+    border-radius: 100px;
+}
+
+
+.barra-lateral .parte-inferior-barra .usuario .info-usuario {
+    display: flex;
+    flex-direction: column; /* Colocar los elementos en columna */
+    align-items: center; /* Centrar los elementos horizontalmente */
+    overflow: hidden; /* Ocultar el texto que se desborda */
+    width: 60px;
+    min-width: 46px;
+    height: 60px !important;
+    position: relative;
+    border: solid 1px var(--color-borde-info-usuario);
+    border-radius: 10px;
+    padding: 4px;
+    transition: width 0.5s ease;
+}
+
+.barra-lateral .parte-inferior-barra .usuario .info-usuario i {
+    color: var(--color-texto-menu);
+    font-size: 33px !important;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.barra-lateral .parte-inferior-barra .usuario .info-usuario .username {
+    white-space: nowrap; /* No permitir que el texto se divida en varias líneas */
+    position: absolute;
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-400);
+    bottom: 0;
+    color: var(--color-texto-menu);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Animación para el desplazamiento del texto */
+@keyframes scrollText {
+    0% {
+        transform: translateX(100%); /* Empieza fuera del contenedor a la derecha */
+    }
+    100% {
+        transform: translateX(-100%); /* Termina fuera del contenedor a la izquierda */
+    }
+}
+
+.scrollText {
+    animation: scrollText 8.5s linear infinite;
+}
+
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion {
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: var(--color-texto-general);
+    overflow: hidden;
+}
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion .form-cerrar {
+    display: flex;
+    align-items: center;
+    /* overflow: hidden;
+    /*width: 100%; --no utilizado
+    transition: margin-left 0.5s ease; */
+} 
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion .btn-cerrar {
+    align-items: center;
+    background-color: #B42318;
+    border: none;
+    padding: 8px 8px; 
+    border-radius: 10px; 
+    cursor: pointer;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion .btn-cerrar:hover {
+    
+}
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion .btn-cerrar:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra mas sutil al hacer clic */
+}
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion .btn-cerrar span {
+    font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    color: var(--color-texto-btn-cerrar);
+}
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion .btn-cerrar span i {
+    transform: scaleX(-1); /*Para que el icono apunte a la izquierda, como si se reflejara en un espejo*/
+}
+
+/* No utilizado 
+.parte-inferior-barra .usuario .nombre-email{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-left: 5px;
+}
+.parte-inferior-barra .usuario .nombre{
+    font-size: 15px;
+    font-weight: 600;
+}
+.parte-inferior-barra .usuario .email{
+    font-size: 13px;
+}
+.parte-inferior-barra .usuario i{
+    font-size: 20px;
+} */
+
+.barra-lateral .parte-inferior-barra .usuario .content-sesion .icon-mas-opciones-user {
+    color: var(--color-texto-menu);
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+
+/*------------------> MODO ESCRITORIO PARA CELULARES*/
+@media (max-width: 1119px) { /*1119*/
+    .barra-lateral .parte-inferior-barra .modo-escritorio {/*Mostrar la opcion de Escritorio para los celulares*/
+        display: flex;
+    }
+
+
+    /*-----------------Menu*/
+    .desktop-mode .menu {
+        width: 80px;
+        height: 80px;
+        font-size: 40px;
+        right: 20px;
+        top: 20px;
+    }
+
+
+    /*----------------Barra Lateral*/
+    .desktop-mode .barra-lateral {
+        position: fixed;
+        left: -400px;
+        width: 400px;
+    }
+
+    .desktop-mode .mini-barra-lateral{
+        width: 70px;
+    }
+
+    .desktop-mode .max-barra-lateral {
+        left: 0;
+    }
+
+    .desktop-mode .menu {
+        display: flex;
+    }
+
+    .desktop-mode .menu i:nth-child(2) {
+        display: none;
+    }
+
+    .desktop-mode main {
+        margin-left: 0;
+        padding-inline: 10px;
+    }
+
+    .desktop-mode main.min-main{
+        margin-left: 0;
+    }
+}
+
+
+/*------------------> ESTILOS RESPONSIVOS*/
+@media (max-width: 1118px){
+    .barra-lateral {
+        position: fixed;
+        left: -260px;
+    }
+
+    .barra-lateral .parte-superior-barra .botones-principales-barra-lateral .informacion-inicial-barra {
+        margin-bottom: 20px;
+    }
+
+    .max-barra-lateral {
+        left: 0;
+    }
+
+    .menu {
+        display: flex;
+    }
+
+    .menu i:nth-child(2) {
+        display: none;
+
+    }
+
+    main {
+        margin-left: 0;
+        padding-inline: 10px;
+    }
+    main.min-main {
+        margin-left: 0;
+    }
+
+
+    .barra-lateral .parte-superior-barra .informacion-inicial-barra .contenedor-titulo-barra .titulo-barra a {
+        font-size: var(--font-size-cel-texto-titulo-barra-lateral-navegacion);
+    }
+
+    /*------------> Boton*/
+    .barra-lateral .parte-superior-barra .botones-principales-barra-lateral .boton {
+        font-size: var(--font-size-cel-texto-paginas-barra-lateral-navegacion);
+    }
+
+    .barra-lateral .parte-superior-barra .botones-principales-barra-lateral .regresar {
+        font-size: var(--font-size-cel-texto-paginas-barra-lateral-navegacion);
+    }
+
+    .barra-lateral .navegacion a {
+        font-size: var(--font-size-cel-texto-paginas-barra-lateral-navegacion);
+    }
+
+    .barra-lateral .parte-superior-barra .botones-principales-barra-lateral .sub-li .sub-a span,
+    .barra-lateral .navegacion .sub-li .sub-a span {
+        font-size: var(--font-size-cel-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion);
+    }
+
+
+    .barra-lateral .parte-inferior-barra .modo-oscuro .info span {
+        font-size: var(--font-size-cel-texto-paginas-barra-navegacion);
+    }
+
+    .barra-lateral .parte-inferior-barra .modo-escritorio .info span {
+        font-size: var(--font-size-cel-texto-paginas-barra-lateral-navegacion);
+        color: var(--color-texto-menu);
+    }
+
+
+    .barra-lateral .parte-inferior-barra .usuario .info-usuario .username {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .barra-lateral .parte-inferior-barra .usuario .content-sesion .btn-cerrar span{
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+}
+/*===========================================================*/
+
+
+/*-=======================BOTON PARA SUBIR=====================*/
+.contenedor-boton-flotante {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 10;
+    display: none;
+}
+
+.boton-flotante {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+    position: relative;
+    background-color: var(--color-principal);
+    border-radius: 10px;
+    padding: 8px 10px;
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.boton-flotante:hover {
+    background-color: var(--color-sub-principal);
+}
+
+.icono-flotante {
+    color: #fff;
+    font-size: var(--icono-boton-scroll-pagina);
+}
+
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.1);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.boton-flotante {
+    animation: pulse 4s infinite;
+}
+
+@media (max-width: 1118px) {
+    .contenedor-boton-flotante {
+        right: 15px;
+        bottom: 15px;
+    }
+}
+/*===========================================================*/

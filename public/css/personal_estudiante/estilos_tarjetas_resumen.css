@@ -1,0 +1,120 @@
+.contenedor-tarjetas-resumen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.tarjeta-resumen-asistencia {
+    background-color: transparent;
+    border: 1px solid var(--color-borde-tarjeta-resumen-asistencia);
+    border-radius: 6px 6px 12px 12px;
+    padding: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tarjeta-resumen-asistencia:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+}
+
+/* Respetar preferencias de movimiento reducido */
+@media (prefers-reduced-motion: reduce) {
+    .tarjeta-resumen-asistencia {
+        transition: none;
+    }
+}
+
+
+.titulo-tarjeta-resumen {
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin: 0 0 0.5rem 0;
+}
+
+.valor-tarjeta-resumen {
+    font-size: var(--font-size-titulos);
+    font-weight: var(--font-weight-800);
+    color: #000;
+    margin: 0;
+    line-height: 1.1;
+}
+
+
+.tarjeta-resumen-asistencia.azul { 
+    border-top: 4px solid #1B396A; 
+}
+
+.tarjeta-resumen-asistencia.azul .valor-tarjeta-resumen {
+    color: #1B396A;
+}
+
+
+.tarjeta-resumen-asistencia.verde {
+    border-top: 4px solid #1F7A4D;  
+}
+
+.tarjeta-resumen-asistencia.verde .valor-tarjeta-resumen {
+    color: #1F7A4D;
+}
+
+
+.tarjeta-resumen-asistencia.rojo { 
+    border-top: 4px solid #B42318;  
+}
+
+.tarjeta-resumen-asistencia.rojo .valor-tarjeta-resumen {
+    color: #B42318;
+}
+
+.tarjeta-resumen-asistencia.naranja { 
+    border-top: 4px solid #D97706;  
+}
+
+.tarjeta-resumen-asistencia.naranja .valor-tarjeta-resumen {
+    color: #D97706;
+}
+
+.tarjeta-resumen-asistencia.morado { 
+    border-top: 4px solid #4c1d95;  
+}
+
+.tarjeta-resumen-asistencia.morado .valor-tarjeta-resumen {
+    color: #4c1d95;
+}
+
+
+.tarjeta-resumen-asistencia.gris {
+    border-top: 4px solid #374151; 
+}
+
+.tarjeta-resumen-asistencia.gris .valor-tarjeta-resumen {
+    color: #374151;
+}
+
+
+
+@media (max-width: 1118px) {
+    .contenedor-tarjetas-resumen {
+        grid-template-columns: repeat(2, 1fr); /* Cambia a 2 columnas */
+        gap: 10px;
+    }
+
+    .tarjeta-resumen-asistencia {
+        padding: 10px;
+    }
+    
+    .titulo-tarjeta-resumen {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .valor-tarjeta-resumen {
+        font-size: var(--font-size-cel-titulos);
+    }
+}

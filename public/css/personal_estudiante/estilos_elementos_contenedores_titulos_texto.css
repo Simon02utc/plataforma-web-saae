@@ -1,0 +1,375 @@
+/*===CONTENEDOR PRINCIPAL, CONTENEDOR, TITULOS, TEXTO, CONTENEDORES DE INFORMACION===*/
+.contenedor-principal-seccion {
+    flex-direction: column;
+    align-content: center;
+    justify-items: center;
+}
+
+.contenedor-principal-seccion .contenedor-titulos-secciones {
+    background-color: var(--color-contenedor-titulos-secciones);
+    border-bottom: solid 2px var(--color-borde-contenedor-titulos-secciones);
+    border-radius: 0 0 10px 10px;
+    width: 100%;
+    padding: 4px;
+    margin-bottom: 10px;
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.contenedor-principal-seccion .contenedor-titulos-secciones h1 {
+    text-align: center;
+    color: var(--color-titulos-principal-secciones);
+    font-size: var(--font-size-titulos);
+    font-family: var(--title-font);
+    letter-spacing: 0px;
+    transition: color 0.3s ease;
+}
+
+.contenedor {
+    position: relative;
+    background-color: var(--color-contenedor);
+    backdrop-filter: blur(2px);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 20px ;
+    padding: 20px;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor .titulo-contenedor {
+    font-size: var(--font-size-subtitulos);
+    font-family: var(--subtitle-font);
+    color: var(--color-titulo-contenedor);
+    margin-top: 10px;
+    margin-bottom: 20px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.titulo-contenedor.siguiente-titulo-contenedor {
+    margin-top: 40px;
+}
+
+.contenedor .titulo-contenedor span {
+    border-left: solid 6px var(--color-principal) ;
+    background-color: rgba(27, 57, 106, 0.2);
+    border-radius:0px 8px 8px 0px;
+    padding: 8px;
+}
+
+.contenedor .texto-contenedor {
+    color: var(--color-texto-contenedor);
+    font-size: var(--font-size-texto-normal);
+    margin-bottom: 10px;
+    text-align: justify;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+/*--  .contenedor:hover {
+transform: scale(1.02); 
+box-shadow: 0px 0px 0px 5px rgba(67, 0, 27, 0.8);
+} ---*/
+
+
+/* Subcontenedores */
+.contenedores-informacion {
+    height: auto;
+    width: auto;
+    position: relative;
+    overflow-wrap: anywhere;   /* corta palabras largas si hace falta */
+    word-break: break-word;    /* soporte extra */
+
+    background-color: var(--color-contenedores-informacion);
+    border: solid 1px var(--color-borde-contenedores-informacion);
+    border-radius: 16px;
+    margin-block: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 0px rgba(27, 57, 106, 0.14);
+    outline-offset: 5px;
+    transition: height 10.3s ease, background-color 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedores-informacion:hover {
+    transform: translateY(-5px); /* Levantar ligeramente al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedores-informacion .contenedor-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.contenedores-informacion .contenedor-img img{
+    width: 180px;
+}
+
+.contenedores-informacion .titulo-contenedores-informacion {
+    color: var(--color-titulos-contenedores-informacion);
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-800);
+    color: var(--color-titulos-contenedores-informacion);
+    text-align: left;
+    margin-bottom: 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.contenedores-informacion .titulo-contenedores-informacion.titulos-siguientes {
+    margin-top: 20px;
+}
+
+.contenedores-informacion .titulo-texto {
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-contenedores-informacion);
+    margin-bottom: 10px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.contenedores-informacion .titulo-texto.siguiente {
+    margin-top: 20px;
+}
+
+.contenedores-informacion .titulos-siguientes-texto {
+    margin-top: 20px;
+}
+
+.contenedores-informacion .informacion-importante {
+    padding: 20px;
+    background-color: rgba(27, 57, 106, 0.08);
+    border-radius: 12px;
+    position: relative; /*para el boton de lectura*/
+}
+
+.contenedores-informacion .texto {
+    color: var(--color-texto-contenedores-informacion);
+    font-size: var(--font-size-texto-normal);
+    margin-bottom: 8px;
+    text-align: justify;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.contenedores-informacion .palabra-resaltada {
+    font-weight: var(--font-weight-500);
+}
+
+.contenedores-informacion ul {
+    margin-left: 10px;
+    list-style-position: inside; /*significa que las viñetas estarán dentro el elemento de la lista*/
+}
+
+.contenedores-informacion  li {
+    text-align: justify;
+    line-height: 1.5;
+    word-wrap: break-word; /*La lista no se desborda*/
+    overflow-wrap: break-word; /*con la de arriba, si una frase es muy larga, se parte correctamente y no empuja el contenedor.*/
+}
+
+.contenedores-informacion a {
+    color: var(--color-principal);
+    font-weight: var(--font-weight-500);
+    text-decoration: none;
+    transition: text-decoration 0.3s ease;
+}
+
+.contenedores-informacion a:hover {
+    color: var(--color-principal);
+    text-decoration: underline;
+    transition: text-decoration 0.3s ease;
+}
+
+.contenedores-informacion .caja-botones-archivos-plantilla {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.contenedores-informacion .btn-ver-plantilla, .btn-descargar-plantilla {
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    text-decoration: none !important;
+
+    white-space: nowrap;     /* Mantiene el texto en una sola línea */
+    overflow: visible;       /* Asegura que no se recorte */
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 40px;
+    min-height: 40px;
+    padding: 6px;
+
+    background-color: transparent;
+    border: solid 2px transparent;
+    cursor: pointer;
+
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contenedores-informacion .btn-ver-plantilla:active, .btn-descargar-plantilla:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra más sutil al hacer clic */
+}
+
+.contenedores-informacion .btn-ver-plantilla {
+    border-radius: 10px 0px 0px 10px;
+    border-color: #1D4ED8;
+    background-color: #1D4ED8;
+    color: #fff;
+}
+
+.contenedores-informacion .btn-ver-plantilla i {
+    margin-right: 4px;
+}
+
+.contenedores-informacion .btn-descargar-plantilla {
+    border-radius: 0px 10px 10px 0px;
+    border-color: #0F766E;
+    background-color: #0F766E;
+    color: #fff;
+}
+.contenedores-informacion .btn-descargar-plantilla i {
+    margin-left: 4px;
+}
+
+
+
+.contenedores-informacion .btn-ver-plantilla:hover {
+    background-color: #1D4ED8;
+    color: #fff;
+}
+
+.contenedores-informacion .btn-descargar-plantilla:hover {
+    background-color: #0F766E;
+    color: #fff;
+}
+
+
+
+
+/*----------Estilos del acordeon de informacion---------*/
+.contenedor-acordeon-informacion {
+    overflow: hidden; /*para que no se salga el contenido */
+    margin-top: 20px;
+    position: relative; /*para el boton de lectura*/
+}
+
+.titulo-acordeon {
+    cursor: pointer;
+    text-align: left !important;
+    color: var(--color-titulos-contenedores-informacion);
+}
+
+.flecha-acordeon {
+    transition: transform 0.3s ease;
+    font-size: 16px;
+}
+
+.contenedor-acordeon-informacion.activo .flecha-acordeon {
+    transform: rotate(180deg);
+}
+
+.contenido-acordeon {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease;
+}
+
+/*mostrar el contenido */
+.contenedor-acordeon-informacion.activo .contenido-acordeon {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.contenido-acordeon::-webkit-scrollbar {
+    width: 6px; /* Ancho de la scrollbar */
+}
+
+.contenido-acordeon::-webkit-scrollbar-track {
+    background-color: var(--color-fondo-scroll-acordeon-informacion); /* Color de fondo de la pista */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.contenido-acordeon::-webkit-scrollbar-thumb {
+    background-color: var(--color-pulgar-scroll-acordeon-informacion); /* Color del pulgar */
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.contenedor-texto-acordeon {
+    padding-inline: 10px;
+    border-left: solid 4px var(--color-principal);
+}
+
+
+@media (max-width: 1118px) {
+    .contenedor-principal-seccion .contenedor-titulos-secciones {
+        padding: 6px;
+    }
+
+    .contenedor-principal-seccion .contenedor-titulos-secciones h1 {
+        font-size: var(--font-size-cel-titulos);
+    }
+
+    .contenedor .titulo-contenedor {
+        font-size: var(--font-size-cel-subtitulos);
+    }
+
+    .contenedor {
+        max-width: 100%;
+        padding: 10px;
+    }
+
+    .contenedor .titulo-contenedor {
+        font-size: var(--font-size-cel-subtitulos);
+    }
+
+
+    .contenedor .titulo-contenedor span {
+        padding: 6px;
+    }
+
+    .contenedor .texto-contenedor {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenedores-informacion {
+        padding: 10px;
+    }
+        
+    .contenedores-informacion .contenedor-img img{
+        width: 120px;
+    }
+
+    .contenedores-informacion .titulo-contenedores-informacion {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenedores-informacion .titulo-texto {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+
+    .contenedores-informacion .informacion-importante {
+        padding: 10px;
+    }
+
+    .contenedores-informacion .texto {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenedores-informacion .btn-ver-plantilla, .btn-descargar-plantilla {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .titulo-acordeon {
+        font-size: var(--font-size-cel-subtitulos);
+    }
+}
+/*========================================================*/

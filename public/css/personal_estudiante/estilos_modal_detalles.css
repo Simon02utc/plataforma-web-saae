@@ -1,0 +1,292 @@
+/*==Modal con Formulario para el item en Tabla "Comentarios"==*/
+.modal-detalles {
+    display: none; 
+    position: fixed; 
+    z-index: 500;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background: var(--fondo-general-modal-detalles);
+    backdrop-filter: blur(1px);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-modal-detalles {
+    padding: 20px;
+    max-width: 700px;
+    height: auto;
+    position: relative;
+    background: var(--color-modal-detalles);
+    border: solid 2px var(--color-borde-modal-detalles);
+    border-radius: 20px;
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2); 
+    transition: transform 0.3s ease;
+    animation: modalDetallesFadeIn 0.3s ease; /*ANIMACION DE APARICION LENTA*/
+}
+
+/* Animación suave de entrada */
+@keyframes modalDetallesFadeIn {
+    from { 
+        transform: translateY(-30px); 
+        opacity: 0; 
+    }
+    
+    to   { 
+        transform: translateY(0);
+        opacity: 1; 
+    }
+}
+
+.btn-cerrar-modal-detalles {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 0;
+    transition: background-color 0.3s;
+}
+
+.contenedor-modal-detalles .titulo-modal-detalles {
+    font-size: var(--font-size-titulos);
+    font-family: var(--title-font);
+    color: var(--color-titulo-modal-detalles);
+    text-align: center;
+}
+
+
+.scroll-contenido-modal-detalles {
+    max-height: 500px;
+    overflow-y: auto;
+    padding: 4px;
+}
+
+.scroll-contenido-modal-detalles::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Estilo para la pista de la scrollbar */
+.scroll-contenido-modal-detalles::-webkit-scrollbar-track {
+    background-color: var(--color-fondo-scroll-contenido-modal-detalles); /* Color de fondo de la pista */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+/*estilo para el pulgar de la scrollbar */
+.scroll-contenido-modal-detalles::-webkit-scrollbar-thumb {
+    background-color: var(--color-pulgar-scroll-contenido-modal-detalles); /* Color del pulgar */
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* ----------> CONTENEDOR DE DETAALLES (CAJAS)*/
+.contenedor-modal-detalles .contenedor-detalles {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+.titulo-contenedor-detalles {
+    font-size: var(--font-size-subtitulos);
+    color: var(--color-titulo-modal-detalles);
+    font-family: var(--subtitle-font);
+}
+
+.contenedor-modal-detalles .caja-detalle {
+    min-width: 0; /* importante en grid */
+    border-radius: 10px;
+    padding: 10px;
+    background-color: var(--color-caja-detalle-modal-detalles);
+    border: solid 1px var(--color-borde-caja-detalle-modal-detalles);
+    transition: border-color 0.3s ease;
+}
+
+/*Si la utlmia caja queda sola, ocupa las 2 columnas*/
+.contenedor-modal-detalles .caja-detalle:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+}
+
+.contenedor-modal-detalles .nombre-detalle {
+    color: var(--color-texto-caja-detalle);
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-600);
+    margin-bottom: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.contenedor-modal-detalles .info-detalle {
+    color: var(--color-texto-caja-detalle);
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-400);
+
+    /*evitar que el texto agrande .caja-detalle*/
+    white-space: normal;
+    overflow-wrap: anywhere; /* mejor que break-word en muchos casos */
+    word-break: break-word;
+}
+
+.contenedor-modal-detalles .info-detalle .estado-resultado-ok {
+    border: solid 1px #009688;
+    background: rgba(0, 150, 136, 0.1);
+    border-radius: 100px;
+    padding: 4px;
+}
+
+.contenedor-modal-detalles .info-detalle .estado-resultado-error {
+    border: solid 1px #B42318;
+    background-color: rgba(180, 35, 24, 0.1);
+    border-radius: 100px;
+    padding: 4px;
+}
+
+
+/* ----------> CONTENEDOR LISTADOS DE RESULTADOS */
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles {
+    max-height: 200px;
+    overflow-y: auto;
+    padding: 0px;
+}
+
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles::-webkit-scrollbar {
+    width: 4px;
+}
+
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles::-webkit-scrollbar-track {
+    background-color: var(--color-fondo-scroll-contenido-modal-detalles); /* Color de fondo de la pista */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles::-webkit-scrollbar-thumb {
+    background-color: var(--color-pulgar-scroll-contenido-modal-detalles); /* Color del pulgar */
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles ul {
+    list-style-type: square; /*Estilo del marcador*/
+    list-style-position: inside; /*significa que las viñetas estarán dentro el elemento de la lista*/
+}
+
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles ul li {
+    color: var(--color-texto-caja-detalle-modal-detalles);
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-400);
+    padding: 6px;
+    border-radius: 10px;
+    text-align: justify;
+    word-wrap: break-word; /*La lista no se desborda*/
+    overflow-wrap: break-word; /*con la de arriba, si una frase es muy larga, se parte correctamente y no empuja el contenedor.*/
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles ul li .informacion-extra-li-modal-detalles {
+    color: var(--color-informacion-extra-li-modal-detalles);
+}
+
+.contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles ul li:hover {
+    background-color: var(--color-hover-li-contenedor-listado-informacion-modal-detalles);
+}
+
+
+/* ----------> CONTENEDOR RESULTADO JSON */
+.contenedor-modal-detalles .caja-detalle-resultados {
+    margin-top: 20px;
+}
+
+.resultados-json-pre {
+    background-color: #0b1220;
+    color:#fff;
+    border-radius: 10px;
+    padding: 10px;
+    overflow: auto;
+    font-size: var(--font-size-subtexto);
+    overflow-x: auto;
+}
+
+.resultados-json-pre::-webkit-scrollbar {
+    height: 6px;
+}
+
+.resultados-json-pre::-webkit-scrollbar-track {
+    background-color: var(--color-fondo-scroll-contenido-modal-detalles); /* Color de fondo de la pista */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.resultados-json-pre::-webkit-scrollbar-thumb {
+    background-color: var(--color-pulgar-scroll-contenido-modal-detalles); /* Color del pulgar */
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+/* ----------> PARA TABLAS INTERNAS*/
+.contenedor-modal-detalles .contenedor-tabla  {
+    min-width: 600px;
+}
+
+
+@media (max-width: 1118px) {
+    .contenedor-modal-detalles {
+        min-width: 350px;
+        max-width: 90%;
+        padding: 15px;
+    }
+
+    .contenedor-modal-detalles .contenedor-detalles { 
+        grid-template-columns: 1fr; 
+    }
+
+    .contenedor-modal-detalles .titulo-modal-detalles {
+        font-size: var(--font-size-cel-subtitulos);
+    }
+
+
+    .scroll-contenido-modal-detalles {
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+
+    .contenedor-modal-detalles .nombre-detalle {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenedor-modal-detalles .info-detalle {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenedor-modal-detalles .contenedor-listado-informacion-modal-detalles ul li {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+
+    .resultados-json-pre {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+}
+/*========================================================*/

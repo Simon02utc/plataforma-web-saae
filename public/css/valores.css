@@ -1,0 +1,52 @@
+/*COLORES UTILIZADOS*/
+
+.color_principal {
+    color: #1B396A;
+    color: rgba(27, 57, 106, 1.0);
+}
+
+.color_sub_principal {
+    color: #142E54;
+}
+
+.color_mas_obscuro_principal {
+    color: #0a1d3b;
+}
+
+
+
+
+/*CONTENEDORES*/
+.contenedor {
+    background-color: #fff;
+    boder: solid 1px #D0D3D4
+}
+
+
+
+:root{
+  /* Principal */
+  --btn-primary: #1B396A;
+
+  /* SUCCESS (Guardar / Confirmar) */
+  --btn-success: #1F7A4D;
+
+  /* DANGER (Eliminar) */
+  --btn-danger: #B42318;
+
+  /* WARNING (Advertencia / Reintentar / Atención) */
+  --btn-warning: #D97706;
+
+  /* INFO / EDIT (Editar / Ver / Detalles) */
+  --btn-info: #1D4ED8;
+
+  /* PURPLE (Imprimir / Reporte) */
+  --btn-purple: #6D28D9;
+
+  /* TEAL (Descargar / Exportar) */
+  --btn-teal: #0F766E;
+
+  /* NEUTRAL (Cancelar / Cerrar / Secundario) */
+  --btn-neutral: #374151;
+
+}

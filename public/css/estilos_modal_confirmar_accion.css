@@ -1,0 +1,200 @@
+.modal-confirmacion {
+    display: none;
+    position: fixed;
+    z-index: 600;
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    background-color: var(--color-fondo-modal-confirmar-accion);
+    backdrop-filter: blur(1px);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-confirmacion.active {
+    display: flex;
+}
+
+.contenedor-modal-confirmacion {
+    background-color: var(--color-modal-content-confirmar-accion);
+    border: solid 2px var(--color-borde-contenedor-modal-confirmar-accion);
+    padding: 20px;
+    width: 35%;
+    border-radius: 20px; 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: var(--body-font);
+
+    position: relative;
+    animation: modalShowConfirmacionAccion 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+
+@keyframes modalShowConfirmacionAccion {
+    from{
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.btn-cerrar-modal-confirmacion {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    z-index: 10;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 0;
+    transition: background-color 0.3s;
+}
+
+.contenedor-modal-confirmacion h2 {
+    font-size: var(--font-size-titulos);
+    font-family: var(--subtitle-font);
+    color: var(--color-titulo-modal-confirmar-accion);
+    padding: 10px;
+    border-bottom: solid 2px #BDBDBD;
+    margin-bottom: 13px;
+    margin-top: -20px;
+    transition: color 0.3s ease;
+}
+
+.contenedor-modal-confirmacion .mensaje {
+}
+
+.contenedor-modal-confirmacion .mensaje p {
+    font-weight: var(--font-weight-800);
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-modal-confirmar-accion);
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.contenedor-modal-confirmacion .mensaje ul {
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.contenedor-modal-confirmacion li {
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-400);
+    text-align: justify;
+    color: var(--color-texto-modal-confirmar-accion);
+    line-height: 1.4;
+}
+
+
+.botones-modal-confirmacion {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+/* reutiliza los estilos base de tus botones de modal */
+.botones-modal-confirmacion button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 140px;
+    min-height: 40px;
+    padding: 0px 10px;
+    gap: 4px;
+
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    white-space: nowrap;     /* Mantiene el texto en una sola línea */
+    overflow: visible;       /* Asegura que no se recorte */
+
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botones-modal-confirmacion button:active {
+    transform: scale(0.98);
+}
+
+.btn-confirmar-accion-aceptar-enviar  { 
+    background-color: #1F7A4D; 
+    color: #fff; 
+}
+
+.btn-confirmar-accion-eliminar-desactivar  { 
+    background-color: #B42318; 
+    color: #fff; 
+}
+
+.btn-confirmar-accion-warning { 
+    background-color: #D97706; 
+    color: #fff; 
+}
+
+.btn-confirmar-accion-info { 
+    background-color: #2563EB; 
+    color: #fff;
+}
+
+.btn-cancelar-confirmacion {
+    background-color: #374151;
+    color: #fff;
+}
+
+@media (max-width: 1118px) {
+    .contenedor-modal-confirmacion { 
+        width: 80%; 
+    }
+
+
+    .contenedor-modal-confirmacion h2 {
+        font-size: var(--font-size-cel-titulos);
+    }
+
+    .contenedor-modal-confirmacion .mensaje {
+    }
+
+    .contenedor-modal-confirmacion .mensaje p {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenedor-modal-confirmacion li {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .botones-modal-confirmacion {
+        gap: 20px;
+    }
+
+    /* reutiliza los estilos base de tus botones de modal */
+    .botones-modal-confirmacion button {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+}

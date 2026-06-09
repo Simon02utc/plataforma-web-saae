@@ -1,0 +1,210 @@
+/*----------------------MODAL DE RECUPERAR CONTRASEÑA---------------------*/
+.modal-recuperar-contrasena {
+    display: none;
+    position: fixed;
+    z-index: 100;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-fondo-modal-mensaje);
+    backdrop-filter: blur(1px);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-modal-recuperar-contrasena {
+    padding: 20px;
+    width: 30%;
+    border-radius: 20px; 
+    box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.2); 
+
+    background-color: var(--color-contenedor-modal-recuperar-contrasena);
+    border: solid 2px var(--color-borde-contenedor-modal-recuperar-contrasena);
+
+    position: relative;
+    animation: modalContraFadeIn 1.0s; /*ANIMACION DE APARICION*/
+    transition: background-color 0.3s ease;
+}
+
+
+/* Animación suave de entrada */
+@keyframes modalContraFadeIn {
+    from { 
+        transform: translateY(-30px); 
+        opacity: 0; 
+    }
+    
+    to   { 
+        transform: translateY(0);
+        opacity: 1; 
+    }
+}
+
+
+.btn-cerrar-modal-recuperar-contrasena {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 0;
+    transition: background-color 0.3s;
+}
+
+
+.titulo-modal-recuperar-contrasena {
+    text-align: center;
+    color: var(--color-titulo-modal-recuperar-contrasena);
+    font-family: var(--title-font);
+    font-weight: var(--font-weight-900);
+    font-size: var(--font-size-titulos);
+    margin-bottom: 20px;
+}
+
+
+/*=========Estilos del input y boton son similares al fomulario de login*==========*/
+.contenedor-modal-recuperar-contrasena .input-submit {
+    margin: 20px 0;
+}
+
+
+
+.contenedor-modal-recuperar-contrasena .texto-modal-recuperar-contrasena {
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-400);
+    text-align: justify;
+}
+
+
+
+/*----Carga al precionar el boton----*/
+.spinner {
+    display: none;
+    border: 6px solid rgba(0, 0, 0, 0.6);
+    border-top: 6px solid #ffffff; /* Cambia este color según tu diseño */
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.texto-spinner {
+    display: none;
+    margin-left: 2px;
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    color: var(--color-texto-spinner);
+}
+/*--------------------------------*/
+
+
+
+/*--- Boton de pasos para la ayuda ---*/
+.pasos-container {
+    text-align: left;
+}
+
+.btn-pasos {
+    border: solid 2px #C85B3A;
+    color: #C85B3A;
+    padding: 5px 10px;
+    border-radius: 8px;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s ease-out, transform 0.2s;
+    font-family: "Fredoka", sans-serif;
+    text-align: center;
+}
+
+.btn-pasos:hover {
+    background-color: #C85B3A ;
+    color: #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-pasos:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); 
+}
+
+/*--Lista de pasos--*/
+.lista-pasos {
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border-left: 6px solid #C85B3A;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    font-family: "Fredoka", sans-serif;
+    font-size: 14px;
+    animation: aparecer 1.2s ease-out;
+}
+
+.lista-pasos.mostrar {
+    display: flex;
+}
+
+/* Animación de aparecer */
+@keyframes aparecer {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.lista-pasos li span {
+    font-weight: 600;
+}
+
+.lista-pasos li {
+    list-style: none; /* Quita las viñetas o enumeracion que salen en los <li> */
+    margin-bottom: 5px;
+    text-align: justify; /* Texto justificado*/
+}
+
+
+@media (max-width: 1118px) {
+    .contenedor-modal-recuperar-contrasena {
+        width: 90%;
+    }
+
+
+    .titulo-modal-recuperar-contrasena {
+        font-size: var(--font-size-cel-titulos);
+    }
+
+    .contenedor-modal-recuperar-contrasena .texto-modal-recuperar-contrasena {
+        font-size: var(--font-size-cel-subtexto);
+        font-weight: var(--font-weight-400);
+        text-align: justify;
+    }
+
+}
+/*--------------------------------------------------*/

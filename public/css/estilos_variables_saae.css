@@ -1,0 +1,820 @@
+@font-face {
+    font-family: 'Barlow Condensed Bold';
+    src: url('/fonts/Barlow_Condensed/BarlowCondensed-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Barlow Condensed Extra Bold';
+    src: url('/fonts/Barlow_Condensed/BarlowCondensed-ExtraBold.ttf') format('truetype');
+}
+
+
+html {
+    scroll-behavior: smooth; /*Movimiento suave al scroll*/
+}
+
+:root {
+    /*==========Colores=========*/
+    /*Color mode HSL(hue, saturation, lightness)*/
+    --color-principal: #1B396A;
+    --color-sub-principal: #18345E;
+    --color-oscuro-principal: #102852;
+    --color-mas-oscuro-principal: #0A1D3B;
+
+
+    /*==========Tipo de letra==========*/
+    --body-font: "Roboto", sans-serif;
+
+    --title-font: "Barlow Condensed Extra Bold", sans-serif;
+
+    --subtitle-font: "Barlow Condensed Bold", sans-serif;
+
+    /*==========Color de letra o texto en general==========*/
+    --color-texto-general: #333;
+
+
+    /*========== Font weights ==========*/
+    --font-weight-100: 100;
+    --font-weight-200: 200;
+    --font-weight-300: 300;
+    --font-weight-400: 400;
+    --font-weight-500: 500;
+    --font-weight-600: 600;
+    --font-weight-700: 700;
+    --font-weight-800: 800;
+    --font-weight-900: 900;
+
+
+    /*===========Tamaños de letra============*/
+
+    /*--------COMPUTADORAS--------*/
+        /*Barra de navegacion publica*/
+        --font-size-texto-paginas-barra-navegacion: 16px;
+        --font-size-texto-paginas-menu-submenu-desplegable: 16px;
+        /*---------------------------*/
+
+
+        /*Barra de navegacion lateral privada*/
+        --font-size-texto-titulo-barra-lateral-navegacion: 20px;
+
+        --font-size-texto-paginas-barra-lateral-navegacion: 14px;
+        --font-size-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 14px;
+        /*-----------------------------------*/
+
+
+        --font-size-titulo-presentacion-plataforma: 50px;
+        --font-size-titulo-pagina: 28px;
+        --font-size-titulos: 24px;
+        --font-size-subtitulos: 20px;
+        --font-size-mini-titulos: 18px;
+        --font-size-mini-subtitulos: 16px;
+
+        --font-size-texto-normal: 16px;
+        --font-size-subtexto: 14px; 
+        --font-size-mini-texto: 12px;
+        
+        --font-size-titulos-pie-pagina: 13px;
+        --font-size-texto-enlaces-pie-pagina: 13px;
+        --font-size-texto-pie-pagina: 13px;
+        --font-size-texto-pie-pagina-2: 14px;
+
+
+        --icono-boton-scroll-pagina: 26px;
+
+
+    /*--------CELULARES--------*/
+        /*Barra de navegacion publica*/
+        --font-size-cel-texto-paginas-barra-navegacion: 15px;
+        --font-size-cel-texto-paginas-menu-submenu-desplegable: 15px;
+        /*---------------------------*/
+
+        /*Barra de navegacion lateral privada*/
+        --font-size-cel-texto-titulo-barra-lateral-navegacion: 17px;
+
+        --font-size-cel-texto-paginas-barra-lateral-navegacion: 14px;
+        --font-size-cel-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 14px;
+        /*-----------------------------------*/
+
+        --font-size-cel-titulo-presentacion-plataforma: 35px;
+        --font-size-cel-titulo-pagina: 26px;
+        --font-size-cel-titulos: 20px;
+        --font-size-cel-subtitulos: 18px;
+        --font-size-cel-mini-titulos: 16px;
+        --font-size-cel-mini-subtitulos: 12px;
+
+        --font-size-cel-texto-normal: 14px;
+        --font-size-cel-subtexto: 12px; 
+        --font-size-cel-mini-texto: 10px;
+
+        --font-size-cel-titulos-pie-pagina: 14px;
+        --font-size-cel-texto-enlaces-pie-pagina: 13px;
+        --font-size-cel-texto-pie-pagina: 13px;
+        --font-size-cel-texto-pie-pagina-2: 12px;
+    /*==========================================================*/
+
+
+    /*================Modal de cierre de sesion================*/
+    --color-fondo-modal-cierre-sesion: rgba(0,0,0,0.2);
+    --color-borde-contenedor-modal-cerrar: var(--color-principal);
+    --color-modal-content-cierre-sesion: rgba(255, 255, 255, 1.0);
+    --color-titulo-modal-cierre-sesion: var(--color-principal);
+    --color-texto-modal-cierre-sesion: rgba(51, 51, 51, 1.0);
+    /*==========================================================*/
+
+
+    /*==============Modal de recuperar contraseña==============*/
+    --color-fondo-modal-recuperar-contrasena: rgba(0,0,0,0.2);
+    --color-contenedor-modal-recuperar-contrasena: rgba(255, 255, 255, 1.0);
+    --color-borde-contenedor-modal-recuperar-contrasena: var(--color-principal);
+    --color-titulo-modal-recuperar-contrasena: var(--color-principal);
+    /*==========================================================*/
+
+
+    /*=====================Mensajes modales=====================*/
+    --color-fondo-modal-mensaje: rgba(0,0,0,0.2);
+    --color-modal-content-mensaje: rgba(255, 255, 255, 1.0);
+    --color-titulo-modal: var(--color-principal);
+    --color-listado-error-422: rgba(51, 51, 51, 1.0);
+    /*==========================================================*/
+
+
+    /*=====================Mensajes toast=====================*/
+    --color-tema-toast: rgba(255, 255, 255, 1.0);
+    --color-btn-cerrar-mensaje-toast: rgba(208, 211, 212, 0.4);
+    /*==========================================================*/
+
+
+    /*================Modal de confirmar accion================*/
+    --color-fondo-modal-confirmar-accion: rgba(0,0,0,0.4);
+    --color-borde-contenedor-modal-confirmar-accion: var(--color-principal);
+    --color-modal-content-confirmar-accion: rgba(255, 255, 255, 1.0);
+    --color-titulo-modal-confirmar-accion: var(--color-principal);
+    --color-texto-modal-confirmar-accion: rgba(51, 51, 51, 1.0);
+    /*==========================================================*/
+
+
+    /*=====================Modal de detalles=====================*/
+    --fondo-general-modal-detalles: rgba(0,0,0,0.2);
+
+    --color-modal-detalles: rgba(255, 255, 255, 1.0);
+    --color-borde-modal-detalles: var(--color-principal);
+
+    --color-titulo-modal-detalles: var(--color-principal);
+
+    --color-fondo-scroll-contenido-modal-detalles: rgba(210, 210, 210, 1.0);
+    --color-pulgar-scroll-contenido-modal-detalles: var(--color-principal);
+
+    --color-borde-caja-detalle-modal-detalles: rgb(208, 211, 212);
+    --color-texto-caja-detalle-modal-detalles: rgba(51, 51, 51, 1.0);
+
+    --color-informacion-extra-li-modal-detalles: rgba(51, 51, 51, 0.6);
+    --color-hover-li-contenedor-listado-informacion-modal-detalles: rgba(208, 211, 212, 0.6);
+    /*==========================================================*/
+
+
+    /*==============Contenedor presentacion pagina==============*/
+    --color-borde-contenedores: rgb(208, 211, 212);
+    /*==========================================================*/
+
+
+    /*=========== DENTRO DE LA PLATAFORMA PARA PERSONAL Y ESTUDIANTES ============*/
+        --color-body-background-color: rgb(244, 246, 247);
+
+        /*Para el color de fondo con img NO SE UTILIZA POR EL MOMENTO*/
+        --body-overlay-gradient: linear-gradient(rgba(255, 255, 255, 0.0), rgba(255, 255, 255, 0.0));
+
+        /*=====================Pantalla de carga=====================*/
+        /*--color-fondo-pantalla-carga: rgba(255, 255, 255, 1.0);
+        --color-titulo-pantalla-carga: var(--color-principal);
+        --color-puntos-loader-pantalla-carga: var(--color-principal);*/
+
+        --color-fondo-pantalla-carga: rgb(19, 16, 34);
+        --color-titulo-pantalla-carga: rgba(214, 219, 223, 0.9);
+        --color-puntos-loader-pantalla-carga: rgba(255, 255, 255, 0.2);
+        /*==========================================================*/
+
+
+        /*================Barra lateral de navegacion================*/
+        /*Boton del menu en celulares*/
+        --color-borde-menu: var(--color-principal);
+        --color-menu: rgb(255, 255, 255);
+        --color-icono-menu:  var(--color-principal);
+
+        /*Barra lateral de navegacion*/
+        --color-barra-lateral: var(--color-principal);
+        --color-borde-linea-barra-lateral: var(--color-sub-principal);
+
+        --color-fondo-logo-barra: rgba(255, 255, 255, 1.0);
+        --color-titulo-barra: rgba(255, 255, 255, 1.0);
+
+        --color-borde-boton-regresar: rgb(0,0,0);
+        --color-texto-boton-regresar: rgb(0,0,0);
+
+        --color-boton-barra:rgb(255,255,255);
+        --color-texto-boton-barra: var(--color-principal);
+
+        --color-scroll:rgb(192,192,192);
+        --color-scroll-hover:rgb(134,134,134);
+
+        --color-texto-menu: rgba(176, 184, 199, 1.0);
+        --color-texto-menu-hover: rgba(255, 255, 255, 1.0);
+
+        /*Cuando esta activo (seleccionado)*/
+        --color-menu-active: rgba(255, 255, 255, 0.2);
+        --color-texto-menu-active: rgba(255, 255, 255, 1.0);
+        --color-bordes-submenu: rgba(255, 255, 255, 0.2);
+        --color-bordes-submenu-botones-principales: rgba(255, 255, 255, 1.0);
+
+        --color-linea: rgba(176, 184, 199, 1.0);
+
+
+        /*Modo oscuro*/
+        --color-switch-base: rgba(176, 184, 199, 0.08);
+        --color-borde-base: rgba(176, 184, 199, 1.0);
+        --color-switch-circulo: rgba(176, 184, 199, 1.0);
+
+        
+        /*Modo escritorio*/
+        --color-switch-base-modo-escritorio: rgba(176, 184, 199, 0.08);
+        --color-borde-base-modo-escritorio: rgba(176, 184, 199, 1.0);
+        --color-switch-circulo-modo-escritorio: rgba(176, 184, 199, 1.0);
+        --color-borde-base-modo-escritorio-prendido: rgba(255, 255, 255, 1.0);
+        --color-switch-circulo-modo-escritorio-prendido: rgba(255, 255, 255, 1.0);
+
+
+        --color-borde-info-usuario: rgb(171, 178, 185);
+
+        --color-secciones:rgba(255, 255, 255, 0.3);
+
+        --color-texto-btn-cerrar: rgb(255, 255, 255);
+        /*==========================================================*/
+
+
+        /*=========Panel del personal y estudiante (dahsboard)=========*/
+        /*barra principal*/
+        --color-dashboard-bienvenida: var(--color-principal);
+        --color-borde-dashboard-bienvenida: rgba(27, 57, 106, 0.14);
+        --color-titulo-dashboard-bienvenida: rgba(255, 255, 255, 1.0);
+        --color-texto-dashboard-bienvenida: rgba(255, 255, 255, 0.65);
+
+        /*filtros*/
+        --color-dashboard-filtros: rgba(255, 255, 255, 1.0);
+        --color-borde-dashboard-filtros: rgba(27, 57, 106, 0.2);
+
+        --color-label-dashboard-filtro-grupo: var(--color-principal);
+        --color-select-filtro-dashboard: rgba(27, 57, 106, 0.03);
+
+        --color-texto-select-filtro-dashboard: rgba(51, 51, 51, 1.0);
+        --color-borde-select-filtro-dashboard: rgba(27, 57, 106, 0.2);
+
+        --color-contenedor-resultado-filtro-dashboard: rgba(255, 255, 255, 1.0);
+        --color-item-resultado-busqueda-filtro-dashboard-hover:rgba(27, 57, 106, 0.2);
+
+        --color-fondo-scroll-contenedor-resultado-filtro-dashboard: rgba(210, 210, 210, 1.0); /*231, 231, 231*/
+        --color-pulgar-scroll-contenedor-resultado-filtro-dashboard: var(--color-principal);
+
+        /*tarjetas*/
+        --color-tarjeta-dashboard: rgba(255, 255, 255, 1.0);
+        --color-borde-tarjeta-dashboard: rgba(27, 57, 106, 0.2);
+        --color-label-tarjeta-dashboard: rgba(51, 51, 51, 1.0);
+
+        /*titulos para el contenedores de graficas  y de informacion */
+        --color-titulo-contenedor-grafica-info-dashboard: rgba(51, 51, 51, 1.0);
+        --color-borde-titulo-contenedor-grafica-info-dashboard: rgba(27, 57, 106, 0.2);
+
+        /*graficas*/
+        --color-contenedor-grafica-dashboard: rgba(255, 255, 255, 1.0);
+        --color-borde-contenedor-grafica-dashboard:  rgba(27, 57, 106, 0.2);
+
+        /*monitoreo en general*/
+        --color-titulo-monitoreo-general: var(--color-principal);
+        --color-contenedor-info-dashboard: rgba(255, 255, 255, 1.0);
+        --color-borde-contenedor-info-dashboard:  rgba(27, 57, 106, 0.2);
+
+        --color-caja-mini-resumen:  rgba(27, 57, 106, 0.08);
+        --color-titulo-caja-mini-resumen:  rgba(51, 51, 51, 1.0);
+        --color-info-caja-mini-resumen: var(--color-principal);
+
+        --color-item-lista-dashboard:  rgba(27, 57, 106, 0.06);
+        --color-borde-item-lista-dashboard:  rgba(27, 57, 106, 0.2);
+        --color-titulo-item-lista-dashboard: rgba(51, 51, 51, 1.0);
+        --color-info-item-lista-dashboard: rgba(51, 51, 51, 0.8);
+        /*==========================================================*/
+
+
+        /*==Mensaje de importacion (Asistencia o Datos escolares)==*/
+        --color-borde-caja-detalle: rgba(27, 57, 106, 0.2);
+    
+        --color-titulo-detalle-mensaje: rgba(41, 41, 41, 1.0);
+        --color-texto-caja-detalle: rgba(51, 51, 51, 1.0);
+        /*==========================================================*/
+
+
+        /*=========Elementos (titulos, contenedores, texto)=========*/
+        /*Para titulos de secciones*/
+        --color-contenedor-titulos-secciones: rgba(255, 255, 255, 1.0);
+        --color-borde-contenedor-titulos-secciones: rgba(27, 57, 106, 0.14);
+        --color-titulos-principal-secciones: var(--color-principal);
+
+        /*Para contenido con informacion*/
+        --color-contenedor:rgb(255, 255, 255);
+        --color-titulo-contenedor: var(--color-principal);
+        --color-texto-contenedor: rgba(51, 51, 51, 1.0);
+
+        --color-contenedores-informacion: rgba(255, 255, 255, 1.0);
+        --color-borde-contenedores-informacion: rgba(27, 57, 106, 0.14);
+
+        /*Para el acordeon de informacion*/
+        --color-fondo-scroll-acordeon-informacion: rgba(210, 210, 210, 1.0); /*231, 231, 231*/
+        --color-pulgar-scroll-acordeon-informacion: var(--color-principal);
+
+        --color-titulos-contenedores-informacion: rgba(41, 41, 41, 1.0);
+        --color-texto-contenedores-informacion: rgba(51, 51, 51, 1.0);
+        /*==========================================================*/
+
+
+        /*============Formularios (input, texto, botones)============*/
+        --fondo-general-modal-formulario: rgba(0,0,0,0.2);
+
+        --color-borde-formulario-container: var(--color-principal);
+        --color-formulario-container: rgba(255, 255, 255, 1.0);
+
+        --color-titulo-formulario: var(--color-principal);
+
+        --color-btn: rgba(255, 255, 255, 1.0);
+        --color-texto-btn: var(--color-principal);
+        --color-btn-activo: var(--color-principal);
+        --color-texto-btn-activo: rgba(255, 255, 255, 1.0);
+
+        --color-fondo-scroll-formulario: rgba(210, 210, 210, 1.0); /*231, 231, 231*/
+        --color-pulgar-scroll-formulario: var(--color-principal);
+
+        --color-input-field: rgba(27, 57, 106, 0.03);
+        --color-texto-input-field: rgba(51, 51, 51, 1.0);
+        --color-borde-input-field:  rgba(27, 57, 106, 0.2);
+        --color-borde-input-field-focus: var(--color-principal);
+
+        --color-option-input-field-select: var(--color-principal);
+        --color-texto-option-input-field-select: rgba(176, 184, 199, 1.0);
+
+        --color-input-field-type-file: var(--color-principal);
+        
+        --color-icono-input-field: var(--color-principal);
+        --color-borde-icono-input-field: var(--color-principal);
+        --color-icono-activado-input-field: rgba(255, 255, 255, 1.0);
+        --color-fondo-icono-activado-input-field: var(--color-principal);
+
+        --color-fondo-slider-switch-estado: rgba(203, 213, 225, 1.0);
+        --color-circulo-slider-switch-estado: rgba(255, 255, 255, 1.0);
+        --color-cirluclo-activado-slider-switch-estado: var(--color-principal);
+
+        --color-borde-contenedor-elementos-extra-form: rgba(27, 57, 106, 0.2);
+        --color-box-shadow-contenedor-elementos-extra-form: rgba(27, 57, 106, 0.14);
+        --color-subtitulo-elementos-extra-form: var(--color-principal);
+
+        --color-elementos-checkbox: rgba(208, 211, 212, 0.2);
+        --color-hover-elementos-checkbox: rgba(27, 57, 106, 0.2);
+        --color-borde-circulo-checkbox: var(--color-principal);
+        --color-activo-circulo-checkbox: var(--color-principal);
+        --color-texto-elementos-chebox:  rgba(51, 51, 51, 1.0);
+
+        --color-forgot-pass: rgba(51, 51, 51, 1.0);
+        --color-forgot-pass-hover: var(--color-principal);
+
+        --color-texto-informaciom-extra-formulario: rgba(51, 51, 51, 1.0);
+        /*==========================================================*/
+
+
+        /*=============Tabla tarjeta-resumen-asistencia=============*/
+        --color-borde-tarjeta-resumen-asistencia: rgba(27, 57, 106, 0.14); 
+        /*==========================================================*/
+
+
+        /*==========Tabla (titulo, contenedor, elementos)==========*/
+        --color-btn-accion-tabla:  var(--color-principal);
+        --color-texto-btn-accion-tabla: rgba(255, 255, 255, 1.0);
+
+        --color-borde-input-buscar-tablas: rgba(27, 57, 106, 0.14);
+        --color-texto-input-buscar-tablas:  rgba(51, 51, 51, 1.0);
+        --color-hover-borde-input-buscar-tablas: var(--color-principal);
+
+        --color-btn-buscar-tablas: var(--color-principal);
+        --color-texto-btn-buscar-tablas: rgba(255, 255, 255, 1.0);
+
+
+        /*contenedor de filtros*/
+        --color-borde-contenedor-filtros-tabla: rgba(27, 57, 106, 0.14);
+
+        --color-borde-select-buscar-tabla: rgba(27, 57, 106, 0.14);
+        --color-fondo-select-buscar-tabla: rgba(255, 255, 255, 1.0);
+        --color-fondo-select-principal: rgba(27, 57, 106, 0.2);
+        --color-texto-select-buscar-tabla: rgba(51, 51, 51, 1.0);
+        --color-borde-select-buscar-tabla-hover: rgba(27, 57, 106, 0.4);
+        --color-borde-select-buscar-tabla-focus: var(--color-principal);
+        --color-flecha-select-buscador-tabla: var(--color-principal);
+        --color-option-select-buscar-tabla: var(--color-principal);
+        --color-texto-option-select-buscar-tabla: rgba(176, 184, 199, 1.0);
+        
+        --color-contenedor-resultado-busqueda: rgba(255, 255, 255, 1.0);
+        --color-item-resultado-busqueda-hover: rgba(27, 57, 106, 0.2);
+
+
+        /*tabla y contenido*/
+        --color-contenedor-tabla: rgba(255, 255, 255, 1.0);
+
+        --color-fondo-scroll-tabla: rgba(210, 210, 210, 1.0);
+        --color-pulgar-scroll-tabla: var(--color-principal);
+
+        --color-texto-th-tabla: rgba(255, 255, 255, 1.0);
+        --color-fondo-th-tabla: var(--color-principal);
+
+        --color-texto-td-tabla: rgba(51, 51, 51, 1.0);
+
+        --color-lineas-td-tabla: rgb(208, 211, 212);
+        
+        --color-hover-td-tabla: rgba(27, 57, 106, 0.08);
+
+        --color-informacion-extra-li: rgba(51, 51, 51, 0.6);
+        --color-hover-li-td-listado-informacion: rgba(208, 211, 212, 1.0);
+
+        
+        --color-lineas-td-mini-tabla: rgb(208, 211, 212);
+        --color-td-nombre-mini-tabla: var(--color-principal);
+
+
+        /*contenedor de paginacio + resumen*/
+        --color-borde-contenedor-paginacion-resumen-tabla:  rgba(27, 57, 106, 0.14);
+
+        --color-texto-btn-pagina-tabla: rgba(51, 51, 51, 1.0);
+        --color-borde-btn-pagina-tabla:  rgba(27, 57, 106, 0.4);
+        --color-borde-btn-pagina-tabla-hover: var(--color-principal);
+        --color-btn-pagina-tabla-activo: var(--color-principal);
+        --color-texto-btn-pagina-tabla-activo: rgba(255, 255, 255, 1.0);
+
+        --color-texto-contenedor-resumen-tabla: var(--color-principal);
+        /*==========================================================*/
+
+        /*=====================Spinner de carga=====================*/
+        --color-texto-spinner: rgba(255, 255, 255, 1.0);
+        /*==========================================================*/
+
+    /*============================================================================*/
+}
+
+
+.dark-mode {
+    /*================Modal de cierre de sesion================*/
+    --color-fondo-modal-cierre-sesion: rgba(0,0,0,0.4);
+    --color-borde-contenedor-modal-cerrar: rgba(255, 255, 255, 0.08);
+    --color-modal-content-cierre-sesion: rgb(24, 20, 44);
+    --color-titulo-modal-cierre-sesion: rgba(214, 219, 223, 1.0);
+    --color-texto-modal-cierre-sesion: rgba(176, 184, 199, 1.0);
+    /*==========================================================*/
+
+
+    /*=====================Mensajes modales=====================*/
+    --color-fondo-modal-mensaje: rgba(0, 0, 0, 0.4); 
+    --color-modal-content-mensaje: rgb(24, 20, 44);
+    --color-titulo-modal: rgba(214, 219, 223, 1.0);
+    --color-listado-error-422:  rgba(176, 184, 199, 1.0);
+    /*==========================================================*/
+
+
+    /*=====================Mensajes toast=====================*/
+    --color-tema-toast: rgb(24, 20, 44);
+    --color-btn-cerrar-mensaje-toast: rgba(208, 211, 212, 0.02);
+    /*==========================================================*/
+
+    /*================Modal de confirmar accion================*/
+    --color-fondo-modal-confirmar-accion: rgba(0,0,0,0.4);
+    --color-borde-contenedor-modal-confirmar-accion: rgba(255, 255, 255, 0.08);
+    --color-modal-content-confirmar-accion: rgb(24, 20, 44);
+    --color-titulo-modal-confirmar-accion: rgba(214, 219, 223, 1.0);
+    --color-texto-modal-confirmar-accion: rgba(176, 184, 199, 1.0);
+    /*==========================================================*/
+
+
+    /*=====================Modal de detalles=====================*/
+    --fondo-general-modal-detalles: rgba(0, 0, 0, 0.4);
+
+    --color-modal-detalles: rgb(24, 20, 44);
+    --color-borde-modal-detalles: rgba(255, 255, 255, 0.08);
+
+    --color-titulo-modal-detalles: rgba(214, 219, 223, 0.9);
+
+    --color-fondo-scroll-contenido-modal-detalles: rgba(255, 255, 255, 0.04);
+    --color-pulgar-scroll-contenido-modal-detalles: rgba(255, 255, 255, 0.1);
+
+    --color-borde-caja-detalle-modal-detalles: rgba(255, 255, 255, 0.14);
+    --color-texto-caja-detalle-modal-detalles: rgba(176, 184, 199, 1.0);
+
+    --color-informacion-extra-li-modal-detalles: rgba(176, 184, 199, 0.4);
+    --color-hover-li-contenedor-listado-informacion-modal-detalles: rgba(208, 211, 212, 0.08);
+        /*==========================================================*/
+
+
+    /*=========== DENTRO DE LA PLATAFORMA PARA PERSONAL Y ESTUDIANTES ============*/
+        --color-body-background-color: rgb(19, 16, 34); 
+
+        /*Para el color de fondo con img NO SE UTILIZA POR EL MOMENTO*/
+        --body-overlay-gradient: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65));
+
+        /*=====================Pantalla de carga=====================*/
+        /*--color-fondo-pantalla-carga: rgb(19, 16, 34);
+        --color-titulo-pantalla-carga: rgba(214, 219, 223, 0.9);
+        --color-puntos-loader-pantalla-carga: rgba(255, 255, 255, 0.2);*/
+        /*==========================================================*/
+
+
+        /*================Barra lateral de navegacion================*/
+        /*Boton del menu en celulares*/
+        --color-menu: var(--color-oscuro-principal);
+        --color-borde-menu: var(--color-oscuro-principal);
+        --color-icono-menu: rgb(255, 255, 255);
+
+        --color-barra-lateral: rgb(19, 16, 34);
+        --color-borde-linea-barra-lateral:rgba(255, 255, 255, 0.14);
+
+        --color-fondo-logo-barra: rgba(255, 255, 255, 0.04);
+        --color-titulo-barra: rgba(245, 246, 250, 0.9);/*Color para titulo, texto de botones principales*/
+
+        --color-borde-boton-regresar: rgba(255, 255, 255, 0.28); /*Borde de botones principales*/
+        --color-texto-boton-regresar: rgba(245, 246, 250, 0.9); /*Color para titulo, texto de botones principales*/
+
+        --color-boton-barra: var(--color-oscuro-principal);
+        --color-texto-boton-barra: rgba(245, 246, 250, 0.9);/*Color para titulo, texto de botones principales*/
+
+        --color-scroll:rgb(55, 57, 70);
+        --color-scroll-hover: rgb(78, 82, 96);
+
+        --color-texto-menu: rgba(176, 184, 199, 1.0);
+        --color-texto-menu-hover:rgb(255, 255, 255, 1.0);
+
+        /*Cuando esta activo (seleccionado)*/
+        --color-menu-active: rgba(255, 255, 255, 0.1);
+        --color-texto-menu-active: rgba(255, 255, 255, 1.0);
+        --color-bordes-submenu: rgba(255, 255, 255, 0.1);
+        --color-bordes-submenu-botones-principales: var(--color-oscuro-principal);
+
+
+        --color-linea: rgba(255, 255, 255, 0.10); /*Borde de solo lineas dibisoras*/
+
+
+        /*Modo oscuro*/
+        --color-switch-base: rgba(176, 184, 199, 0.08);
+        --color-borde-base: rgba(255, 255, 255, 1.0);
+        --color-switch-circulo: rgba(255, 255, 255, 1.0);
+
+
+        /*Modo escritorio*/
+
+
+        --color-borde-info-usuario: rgba(255, 255, 255, 0.16);
+
+        --color-secciones: rgba(255, 255, 255, 0.85);
+
+        --color-texto-btn-cerrar:rgba(245, 246, 250, 0.9); /*Color para titulo, texto de botones principales*/
+        /*==========================================================*/
+
+
+        /*=========Panel del personal y estudiante (dahsboard)=========*/
+        /*barra principal*/
+        --color-dashboard-bienvenida: var(--color-oscuro-principal);
+        --color-borde-dashboard-bienvenida: rgba(255, 255, 255, 0.08);
+        --color-titulo-dashboard-bienvenida:  rgba(245, 246, 250, 0.9);
+        --color-texto-dashboard-bienvenida: rgba(176, 184, 199, 1.0);
+
+        /*filtros*/
+        --color-dashboard-filtros: rgb(24, 20, 44);
+        --color-borde-dashboard-filtros: rgba(255, 255, 255, 0.1);
+
+        --color-label-dashboard-filtro-grupo: rgba(214, 219, 223, 0.9);
+        --color-select-filtro-dashboard: rgba(245, 249, 255, 0.04);
+
+        --color-texto-select-filtro-dashboard: rgba(176, 184, 199, 1.0);
+        --color-borde-select-filtro-dashboard: rgba(208, 211, 212, 0.08);
+
+        --color-contenedor-resultado-filtro-dashboard: rgb(24, 20, 44);
+        --color-item-resultado-busqueda-filtro-dashboard-hover:rgba(245, 249, 255, 0.06);
+
+        --color-fondo-scroll-contenedor-resultado-filtro-dashboard: rgba(255, 255, 255, 0.04);
+        --color-pulgar-scroll-contenedor-resultado-filtro-dashboard: rgba(255, 255, 255, 0.1);
+
+        /*tarjetas*/
+        --color-tarjeta-dashboard: rgb(24, 20, 44);
+        --color-borde-tarjeta-dashboard: rgba(255, 255, 255, 0.1);
+        --color-label-tarjeta-dashboard: rgba(214, 219, 223, 0.9);
+
+        /*titulos para el contenedores de graficas  y de informacion */
+        --color-titulo-contenedor-grafica-info-dashboard: rgba(214, 219, 223, 0.9);
+        --color-borde-titulo-contenedor-grafica-info-dashboard: rgba(255, 255, 255, 0.1);
+
+        /*graficas*/
+        --color-contenedor-grafica-dashboard: rgb(24, 20, 44);
+        --color-borde-contenedor-grafica-dashboard: rgba(255, 255, 255, 0.1);
+
+        /*monitoreo en general*/
+        --color-titulo-monitoreo-general: rgba(245, 246, 250, 0.9);
+        --color-contenedor-info-dashboard: rgb(24, 20, 44);
+        --color-borde-contenedor-info-dashboard: rgba(255, 255, 255, 0.1);
+
+        --color-caja-mini-resumen: rgba(255, 255, 255, 0.04);
+        --color-titulo-caja-mini-resumen: rgba(176, 184, 199, 1.0);
+        --color-info-caja-mini-resumen: rgba(214, 219, 223, 0.9);
+
+
+        --color-item-lista-dashboard: rgba(255, 255, 255, 0.02);
+        --color-borde-item-lista-dashboard: rgba(255, 255, 255, 0.1);
+        --color-titulo-item-lista-dashboard: rgba(214, 219, 223, 0.9);
+        --color-info-item-lista-dashboard: rgba(176, 184, 199, 0.6);
+        /*==========================================================*/
+
+
+        /*==Mensaje de importacion (Asistencia o Datos escolares)==*/
+        --color-borde-caja-detalle: rgba(255, 255, 255, 0.14);
+    
+        --color-titulo-detalle-mensaje: rgba(214, 219, 223, 0.9);
+        --color-texto-caja-detalle: rgba(176, 184, 199, 1.0);
+        /*==========================================================*/
+
+
+        /*=========Elementos (titulos, contenedores, texto)=========*/
+        /*Para titulos de secciones*/
+        --color-contenedor-titulos-secciones: rgba(255, 255, 255, 0.02);
+        --color-borde-contenedor-titulos-secciones: rgba(255, 255, 255, 0.14);
+        --color-titulos-principal-secciones: rgba(245, 246, 250, 0.9);
+
+        /*Para contenido con informacion*/
+        --color-contenedor:rgba(255, 255, 255, 0.02);
+        --color-titulo-contenedor: rgba(214, 219, 223, 0.9);
+        --color-texto-contenedor: rgba(176, 184, 199, 1.0);
+
+        --color-contenedores-informacion: rgb(24, 20, 44);
+        --color-borde-contenedores-informacion: rgba(255, 255, 255, 0.08);
+
+        /*Para el acordeon de informacion*/
+        --color-fondo-scroll-acordeon-informacion: rgba(255, 255, 255, 0.04);
+        --color-pulgar-scroll-acordeon-informacion:  rgba(255, 255, 255, 0.1);
+
+
+        --color-titulos-contenedores-informacion: rgba(214, 219, 223, 0.9);
+        --color-texto-contenedores-informacion: rgba(176, 184, 199, 1.0);
+        /*==========================================================*/
+
+
+        /*============Formularios (input, texto, botones)============*/
+        --fondo-general-modal-formulario: rgba(0, 0, 0, 0.4);
+
+        --color-borde-formulario-container: rgba(255, 255, 255, 0.08);
+        --color-formulario-container: rgb(24, 20, 44);
+
+        --color-titulo-formulario: rgba(214, 219, 223, 0.9);
+
+        --color-btn: rgb(24, 20, 44);
+        --color-texto-btn: rgba(176, 184, 199, 1.0);
+        --color-btn-activo: var(--color-principal); ;
+        --color-texto-btn-activo: rgba(255, 255, 255, 1.0);
+
+        --color-fondo-scroll-formulario: rgba(255, 255, 255, 0.04);
+        --color-pulgar-scroll-formulario: rgba(255, 255, 255, 0.1);
+
+        --color-input-field: rgba(245, 249, 255, 0.04);
+        --color-texto-input-field: rgba(176, 184, 199, 1.0);
+        --color-borde-input-field: rgba(208, 211, 212, 0.08);
+        --color-borde-input-field-focus: rgba(208, 211, 212, 0.8);
+
+        --color-option-input-field-select: rgb(24, 20, 44);
+        --color-texto-option-input-field-select: rgba(176, 184, 199, 1.0);
+
+        --color-input-field-type-file: rgba(208, 211, 212, 0.08);
+
+        --color-icono-input-field: rgba(208, 211, 212, 0.8);
+        --color-borde-icono-input-field: rgba(208, 211, 212, 0.8);
+        --color-fondo-icono-activado-input-field: rgba(208, 211, 212, 1.0);
+        --color-icono-activado-input-field: rgb(24, 20, 44);
+
+        --color-fondo-slider-switch-estado: rgba(203, 213, 225, 0.1);
+        --color-circulo-slider-switch-estado: rgba(255, 255, 255, 0.6);
+        --color-cirluclo-activado-slider-switch-estado: var(--color-principal);
+
+        --color-borde-contenedor-elementos-extra-form: rgba(255, 255, 255, 0.1);
+        --color-box-shadow-contenedor-elementos-extra-form: rgba(255, 255, 255, 0.1);
+        --color-subtitulo-elementos-extra-form: rgba(214, 219, 223, 0.9);
+
+        --color-elementos-checkbox: rgba(208, 211, 212, 0.06);
+        --color-hover-elementos-checkbox: rgba(208, 211, 212, 0.2);
+        --color-borde-circulo-checkbox: rgba(208, 211, 212, 0.8);
+        --color-activo-circulo-checkbox: rgba(208, 211, 212, 0.8);
+        --color-texto-elementos-chebox: rgba(176, 184, 199, 1.0);
+
+        --color-forgot-pass: rgba(176, 184, 199, 1.0);
+        --color-forgot-pass-hover: rgba(255, 255, 255, 1.0);
+
+        --color-texto-informaciom-extra-formulario: rgba(176, 184, 199, 1.0); 
+        /*==========================================================*/
+
+
+        /*=============Tabla tarjeta-resumen-asistencia=============*/
+        --color-borde-tarjeta-resumen-asistencia: rgba(255, 255, 255, 0.14);
+        /*==========================================================*/
+
+
+        /*==========Tabla (titulo, contenedor, elementos)==========*/
+        --color-btn-accion-tabla: var(--color-oscuro-principal);
+        --color-texto-btn-accion-tabla: rgba(245, 246, 250, 0.9);
+
+        --color-borde-input-buscar-tablas: rgba(208, 211, 212, 0.2);
+        --color-texto-input-buscar-tablas: rgba(176, 184, 199, 1.0);
+        --color-hover-borde-input-buscar-tablas: rgba(208, 211, 212, 0.8);
+
+        --color-btn-buscar-tablas: var(--color-oscuro-principal);
+        --color-texto-btn-buscar-tablas: rgba(245, 246, 250, 0.9);
+
+        /*contenedor de filtros*/
+        --color-borde-contenedor-filtros-tabla: rgba(255, 255, 255, 0.08);
+
+        --color-borde-select-buscar-tabla: rgba(208, 211, 212, 0.08);
+        --color-fondo-select-buscar-tabla: rgba(245, 249, 255, 0.04);
+        --color-texto-select-buscar-tabla: rgba(176, 184, 199, 1.0);
+        --color-borde-select-buscar-tabla-hover: rgba(208, 211, 212, 0.4);
+        --color-borde-select-buscar-tabla-focus: rgba(208, 211, 212, 0.8);
+        --color-flecha-select-buscador-tabla: rgba(208, 211, 212, 0.8);
+        --color-option-select-buscar-tabla:  rgb(24, 20, 44);
+        --color-texto-option-select-buscar-tabla: rgba(176, 184, 199, 1.0);
+
+        --color-contenedor-resultado-busqueda: rgb(24, 20, 44);
+        --color-item-resultado-busqueda-hover:rgba(245, 249, 255, 0.06);
+
+
+        /*tabla y contenido*/
+        --color-contenedor-tabla: rgba(255, 255, 255, 0.02);
+
+        --color-fondo-scroll-tabla: rgba(255, 255, 255, 0.04);
+        --color-pulgar-scroll-tabla: rgba(255, 255, 255, 0.1);
+
+        --color-texto-th-tabla: rgba(214, 219, 223, 0.9);
+        --color-fondo-th-tabla: var(--color-oscuro-principal);
+
+        --color-texto-td-tabla: rgba(176, 184, 199, 1.0);
+
+        --color-lineas-td-tabla: rgba(255, 255, 255, 0.14); 
+        
+        --color-hover-td-tabla: rgba(27, 57, 106, 0.2);
+
+        --color-informacion-extra-li: rgba(176, 184, 199, 0.4);
+        --color-hover-li-td-listado-informacion: rgba(208, 211, 212, 0.08);
+        
+        --color-lineas-td-mini-tabla: rgba(255, 255, 255, 0.14);
+        --color-td-nombre-mini-tabla: var(--color-oscuro-principal);
+
+
+        /*contenedor de paginacio + resumen*/
+        --color-borde-contenedor-paginacion-resumen-tabla: rgba(255, 255, 255, 0.08); 
+        
+        --color-texto-btn-pagina-tabla: rgba(176, 184, 199, 1.0);
+        --color-borde-btn-pagina-tabla: rgba(208, 211, 212, 0.6);
+        --color-borde-btn-pagina-tabla-hover: rgba(208, 211, 212, 0.8);
+        --color-btn-pagina-tabla-activo: rgba(176, 184, 199, 1.0);
+        --color-texto-btn-pagina-tabla-activo: rgb(24, 20, 44);
+
+        --color-texto-contenedor-resumen-tabla: rgba(176, 184, 199, 1.0);
+        /*==========================================================*/
+
+
+        /*=====================Spinner de carga=====================*/
+        --color-texto-spinner: rgba(176, 184, 199, 1.0);
+        /*==========================================================*/
+
+    /*============================================================================*/
+
+}
+
+
+
+/*Para el tamaño de letra al activar el modo de Escritorio en los Celulares*/
+.desktop-mode {
+    /*===========Tamaños de letra============*/
+
+    /*======COMO COMPUTADORAS======*/
+    /*Barra de navegacion lateral privada*/
+    --font-size-texto-titulo-barra-lateral-navegacion: 22px;
+
+    --font-size-texto-paginas-barra-lateral-navegacion: 18px;
+    --font-size-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 18px;
+    /*-----------------------------------*/
+
+
+    --font-size-titulo-presentacion-plataforma: 32px;
+    --font-size-titulo-pagina: 30px;
+    --font-size-titulos: 28px;
+    --font-size-subtitulos: 24px;
+    --font-size-mini-titulos: 20px;
+    --font-size-mini-subtitulos: 18px;
+
+    --font-size-texto-normal: 20px;
+    --font-size-subtexto: 18px; 
+    --font-size-mini-texto: 16px;
+
+
+    --icono-boton-scroll-pagina: 40px;
+}

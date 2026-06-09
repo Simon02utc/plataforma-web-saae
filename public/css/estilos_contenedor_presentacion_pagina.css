@@ -1,0 +1,145 @@
+/*==============INTRODUCCION A LA PAGINA==============*/
+.content-presentacion-pagina {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-presentacion-pagina .img-presentacion-pagina {
+    max-width: 440px;
+    max-height: 640px;
+    height: auto;
+    border: solid 1px var(--color-borde-contenedores);
+    border-radius: 40px;
+    margin: 20px;
+}
+
+.content-introduccion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.intro-div {
+    width: 90%;
+    border-right: solid 10px var(--color-principal);
+    border-block: solid 1px var(--color-borde-contenedores);
+    border-left: solid 1px var(--color-borde-contenedores);
+    border-radius: 10px;
+    margin: 20px;
+    background-color: #fff;
+    box-shadow: 0px 4px 0px rgba(27, 57, 106, 0.14);
+
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.intro-div:hover {
+    transform: translateY(-10px);
+    box-shadow: 2px 2px 14px rgba(0, 0, 0, 0.2);
+}
+
+.intro-div h3 {
+    font-size: var(--font-size-subtitulos);
+    font-family: var(--subtitle-font);
+    font-weight: var(--font-weight-700);
+    text-align: right;
+    color: #fff;
+    margin-block: 8px;
+    margin-right: -1px;
+}
+
+.intro-div h3 span {
+    background-color: #1B396A;
+    padding: 8px;
+    border-radius: 0px 0px 0px 10px;
+}
+
+.contenido-intro-div {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.contenido-intro-div p {
+    line-height: 1.5;
+    text-align: justify;
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-400);
+    color: var(--color-texto-general);
+    width: 100%;
+}
+
+.contenido-intro-div p span {
+    font-size: var(--font-size-texto-normal);
+    font-style: italic;
+    font-weight: var(--font-weight-200);
+}
+
+.contenido-intro-div img {
+    width: 140px;
+    height: auto;
+    margin-left: 20px;
+
+    object-fit: contain; /* con "cover" la imagen se llena completamente el contenedor (puede recortarse ligeramente).
+                            con "contain" contain para ver la imagen completa sin recortar */
+    display: block; /* Elimina espacio inferior */
+}
+
+
+
+@media (max-width: 1118px) {
+    .titulo-presentacion-pagina {
+        font-size: var(--font-size-cel-titulo-presentacion-pagina);
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
+    .content-presentacion-pagina {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .content-presentacion-pagina .img-presentacion-pagina {
+        max-width: 200px;
+        max-height: auto;
+    }
+
+    .intro-div {
+        width: 100%;
+    }
+
+    .intro-div h3 {
+        font-size: var(--font-size-cel-subtitulos);
+        margin-bottom: 10px;
+    }
+
+    .contenido-intro-div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .contenido-intro-div p {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenido-intro-div p span {
+    font-size: var(--font-size-cel-texto-normal);
+}
+
+    .contenido-intro-div img {
+        width: 120px;
+        height: auto;
+        margin-left: 0px;
+    }
+}
+/*========================================================*/

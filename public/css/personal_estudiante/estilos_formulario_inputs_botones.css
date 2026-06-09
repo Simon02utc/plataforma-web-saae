@@ -1,0 +1,1364 @@
+/*los CSS de los botones de registro para abrir el formulario, se agregan con los CSS del contenido a realizar registros*/
+
+/*================FORMULARIO Y SUS ELEMENTOS================*/
+.modal-formulario, .modal-formulario-editar {
+    display: none; 
+    position: fixed; 
+    z-index: 500;
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    overflow: auto; 
+    background: var(--fondo-general-modal-formulario);
+    backdrop-filter: blur(1px);
+
+    align-items: center;
+    justify-content: center;
+
+}
+
+
+/*-----------------Forma-------------------------*/
+.formulario-container {
+    display: flex;
+    position: relative;
+    min-width: 600px; /*width: 600px*/
+    max-width: 90vw;
+    height: auto;
+    max-height: calc(100vh - 40px);
+    border-radius: 20px;
+    background-color: var(--color-formulario-container);
+    border: solid 2px var(--color-borde-formulario-container);
+    box-shadow: 0 12px 35px rgba(27, 57, 106, 0.12);
+    animation: modalFormularioFadeIn 0.3s ease;
+}
+
+
+/* Animación suave de entrada */
+@keyframes modalFormularioFadeIn {
+    from { 
+        transform: translateY(-30px); 
+        opacity: 0; 
+    }
+    
+    to   { 
+        transform: translateY(0);
+        opacity: 1; 
+    }
+}
+
+.btn-cerrar-modal-fomulario {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    z-index: 10;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 0;
+    transition: background-color 0.3s;
+}
+
+/*------------------PRIMERA COLUMNA------------------*/    
+.col-1 {
+    display: none;
+/*    display: flex;
+    align-items: center;
+    justify-items: center;
+    flex-direction: column;
+    width: 50%;
+*/
+    /*background-color: var(--color-principal);*/
+    /*backdrop-filter: blur(3px);*/
+    /*backdrop-filter: blur(30px);*/
+
+/*    border-radius: 0px 0% 0% 0px;
+    transition: border-radius 0.3s ease;
+*/
+}
+
+
+/*------------------SEGUNDA COLUMNA------------------*/
+.col-2 {
+    width: 100%;
+    position: relative;
+    box-sizing: border-box; 
+} 
+
+.btn-box {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -15px;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+.btn {
+    z-index: 50;
+    padding: 4px 30px;
+    box-sizing: border-box;
+    background-color: var(--color-btn);
+    cursor: pointer;
+    font-size: var(--font-size-texto-normal);
+    font-family: var(--body-font);
+    font-weight: var(--font-weight-600);
+    display: inline-block;
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-1 {
+    background: var(--color-btn-activo); /*#21264D*/
+    color: var(--color-texto-btn-activo);
+    border-radius: 20px 0 0 20px;
+    border-block: solid 2px var(--color-principal);
+    border-left: solid 2px var(--color-principal);
+    border-right: none;
+}
+
+.btn-2 {
+    color: var(--color-texto-btn);
+    border-radius: 0 0px 0px 0;
+    border-block: solid 2px var(--color-principal);
+    border-inline: solid 2px var(--color-principal);
+}
+
+.btn-3 {
+    color: var(--color-texto-btn);
+    border-radius: 0 20px 20px 0;
+    border-block: solid 2px var(--color-principal);
+    border-left: none;
+    border-right: solid 2px var(--color-principal);
+}
+
+.btn:hover {
+    background-color: var(--color-btn-activo);
+    color: var(--color-texto-btn-activo);
+}
+
+
+/*============Forma de FORMULARIOS===========*/
+/*1 solo formulario */
+.col-2 .form-0 {
+    width: 100%;
+    padding-block: 20px;
+    padding-inline: 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+/*varios formulario en un modal*/
+.col-2 .form-1, .col-2 .form-2, .col-2 .form-3 {
+    width: 100%;
+    display: none;
+    padding-block: 20px;
+    padding-inline: 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.col-2 .form-activo {
+    display: flex;
+    animation: formularioActivoFadeIn 0.3s ease-out;
+}
+
+@keyframes formularioActivoFadeIn {
+    from { 
+        transform: translateY(-30px); 
+        opacity: 0; 
+    }
+    
+    to   { 
+        transform: translateY(0);
+        opacity: 1; 
+    }
+}
+
+
+/*formulario de editar*/
+#contenido-modal-formulario-editar {
+    width: 100%;
+}
+
+.form-editar-contenido {
+    width: 100%;
+    display: flex;
+    padding-inline: 20px;
+    padding-block: 20px;
+    box-sizing: border-box;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+
+.form-title {
+    width: 100%;
+    /* margin-block: 10px; */
+    text-align: center;
+    color: var(--color-titulo-formulario);
+    font-size: var(--font-size-titulos);
+    font-family: var(--title-font);
+    letter-spacing: 0px;
+}
+
+
+.form-inputs {
+    width: 100%;
+    flex-direction: row;
+}
+
+
+.scroll {
+    overflow-y: auto;
+    max-height: calc(100vh - 280px);
+    padding: 10px;
+}
+
+.scroll::-webkit-scrollbar {
+    width: 8px; /* Ancho de la scrollbar */
+}
+
+.scroll::-webkit-scrollbar-track {
+    background-color: var(--color-fondo-scroll-formulario); /* Color de fondo de la pista */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    background-color: var(--color-pulgar-scroll-formulario); /* Color del pulgar */
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+.scroll-editar {
+    overflow-y: auto;
+    max-height: calc(100vh - 200px);
+    padding: 10px;
+}
+
+.scroll-editar::-webkit-scrollbar {
+    width: 8px; /* Ancho de la scrollbar */
+    height: 8px;
+}
+
+.scroll-editar::-webkit-scrollbar-track {
+    background-color: var(--color-fondo-scroll-formulario); /* Color de fondo de la pista */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.scroll-editar::-webkit-scrollbar-thumb {
+    background-color: var(--color-pulgar-scroll-formulario); /* Color del pulgar */
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+
+.input-box {
+    position: relative;
+
+    display: flex;
+    gap: 20px;
+}
+
+/*----------Se utiliza en los formularios de edicion*/
+.input-box-editar {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.input-box-editar .nombre-input {
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-input-field);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    margin-bottom: -6px;
+}
+
+.input-box-editar .icon {
+    position: absolute;
+    top: 58%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: var(--color-icono-input-field);
+    font-weight: var(--font-weight-100);
+    font-size: 22px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.input-box-editar input.error {
+    border-color: #B42318;
+}
+/*-----------------------------------------------------*/
+
+
+
+
+/* ========== CAJAS DE DETALLES */
+.form-editar-contenido .contenedor-detalles-formulario {
+    /* position: relative; para el boton de mostrar las cajas */
+    padding-top: 0px;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+
+.titulo-caja-detalle {
+    font-size: var(--font-size-subtitulos);
+    color: var(--color-titulo-formulario);
+    font-family: var(--subtitle-font);
+}
+
+.contenedor-detalles-formulario .caja-detalle-formulario {
+    min-width: 0; /*importante en grid */
+    max-width: 300px;
+    border-radius: 10px;
+    padding: 10px;
+    border: solid 1px var(--color-borde-input-field);
+
+
+    transition: border-color 0.3s ease;
+}
+
+/*Si la utlmia caja queda sola, ocupa las 3 columnas*/
+.contenedor-detalles-formulario .caja-detalle-formulario.ultimo {
+    grid-column: 1 / -1 !important;
+}
+
+
+.contenedor-detalles-formulario .nombre-detalle {
+    color: var(--color-texto-input-field);
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    margin-bottom: 4px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.contenedor-detalles-formulario .info-detalle {
+    color: var(--color-texto-input-field);
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-400);
+
+    /*evitar que el texto agrande .caja-detalle*/
+    white-space: normal;
+    overflow-wrap: anywhere; /* mejor que break-word en muchos casos */
+    word-break: break-word;
+}
+
+/*PENDIENTE PARA SEPARACION*/
+.caja-detalle-formulario .info-detalle.fecha {
+    border-bottom: solid 1px var(--color-borde-input-field);
+    margin-bottom: 2px;
+}
+
+.contenedor-botones-modal-justificante {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contenedor-botones-modal-justificante .btn-justificante {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 100px;
+    min-height: 30px;
+    padding: 0px 10px;
+
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    text-decoration: none;
+    border-radius: 10px;
+    cursor: pointer;
+
+    white-space: nowrap;     /* Mantiene el texto en una sola línea */
+    overflow: visible;       /* Asegura que no se recorte */
+
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contenedor-botones-modal-justificante .btn-justificante:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/*cuendo el boton este desactivado*/
+.contenedor-botones-modal-justificante .btn-justificante:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.contenedor-botones-modal-justificante .btn-ver-justificante {
+    background-color: #6D28D9;
+    color: #fff;
+}
+
+@media (max-width: 1118px) {
+    .form-editar-contenido .contenedor-detalles-formulario { 
+        grid-template-columns: 1fr;
+    }
+
+    .titulo-caja-detalle {
+        font-size: var(--font-size-cel-subtitulos);
+    }
+
+    .contenedor-detalles-formulario .nombre-detalle {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .contenedor-detalles-formulario .info-detalle {
+        font-size: var(--font-size-cel-subtexto);
+    }
+}
+
+
+
+
+/* ========== BLOQUES DE ASIGNACION DE PERSONAL A ESTUDIANTES */
+.contenedor-buscador-asignaciones {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    margin-bottom: -6px;
+}
+
+.input-buscar-asignaciones {
+    width: 350px;
+    min-height: 40px;
+    padding: 0px 10px;
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-input-buscar-tablas);
+    font-weight: var(--font-weight-400);
+    font-family: var(--body-font);
+    
+    background-color: transparent;
+    border-radius: 10px;
+    border: solid 1px var(--color-borde-input-field);
+    outline: none;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.input-buscar-asignaciones:focus {
+    border-color: var(--color-hover-borde-input-buscar-tablas);
+    box-shadow: 0 0 0 4px rgba(27, 57, 106, 0.10);
+}
+
+.bloque-asignaciones-formulario {
+    width: auto;
+    margin-top: 10px;
+    padding: 10px;
+    border: solid 1px var(--color-borde-input-field);
+
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(27, 57, 106, 0.05);
+}
+
+.encabezado-bloque-asignaciones {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--color-borde-input-field);
+}
+
+.titulo-bloque-asignaciones {
+    margin: 0;
+    font-size: var(--font-size-subtitulos);
+    font-family: var(--subtitle-font);
+    font-weight: var(--font-weight-600);
+
+    color: var(--color-titulo-formulario);
+}
+
+.listado-asignaciones {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.listado-asignaciones {
+    overflow-y: auto;
+    max-height: 300px;
+}
+
+.listado-asignaciones::-webkit-scrollbar {
+    width: 4px; /* Ancho de la scrollbar */
+    height: 4px;
+}
+
+.listado-asignaciones::-webkit-scrollbar-track {
+    background-color: var(--color-fondo-scroll-formulario); /* Color de fondo de la pista */
+    transition: background-color 0.3s ease;
+    border-radius: 10px;
+}
+
+.listado-asignaciones::-webkit-scrollbar-thumb {
+    background-color: var(--color-pulgar-scroll-formulario); /* Color del pulgar */
+    transition: background-color 0.3s ease;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+/* fila unica*/
+.asignacion-fila {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 12px;
+
+    background-color: var(--color-input-field);
+    border: solid 1px var(--color-borde-input-field);
+
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+    transition: border-color 0.3s;
+}
+
+/* Bloque izquierdo:  Estado + Rol + Datos */
+.asignacion-info {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    flex: 1;
+    min-width: 0; /* Evita que el texto rompa el flex */
+}
+
+.asignacion-badge {
+    font-size: var(--font-size-mini-texto);
+    font-weight: var(--font-weight-700);
+    padding: 4px 6px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.asignacion-badge.activa {
+    border: solid 1px  rgba(0, 150, 136, 0.4); /*#009688*/
+    background: rgba(0, 150, 136, 0.1);
+    color: #1F7A4D;
+}
+
+.asignacion-badge.inactiva {
+    border: solid 1px rgba(180, 35, 24, 0.4); /*#B42318*/
+    background-color: rgba(180, 35, 24, 0.1);
+    color: #B42318;
+}
+
+.asignacion-rol {
+    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-subtexto);
+
+    color: var(--color-texto-input-field);
+
+    white-space: nowrap;
+}
+
+.asignacion-datos {
+    font-size: var(--font-size-subtexto);
+    color: var(--color-texto-secundario, #64748b);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Bloque derecho: Botones */
+.asignacion-acciones {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0; /* Los botones nunca se encogen */
+}
+
+.btn-asignacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 30px;
+    min-height: 30px;
+    font-size: var(--font-size-subtexto);
+    border: 2px solid var(--color-borde-btn, #cbd5e1);
+    background: var(--color-fondo-btn, #ffffff);
+    border-radius: 50px;
+    cursor: pointer;
+    color: #475569;
+    background-color: transparent;
+    transition: all 0.3s;
+}
+
+.btn-asignacion:active {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/*cuendo el boton este desactivado*/
+.btn-asignacion:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.btn-desactivar {
+    border-color: #B42318; 
+    color: #B42318; 
+}
+
+.btn-desactivar:hover {
+    background-color: #B42318;
+    color: #fff; 
+}
+
+.btn-reactivar {
+    border-color: #0F766E; 
+    color: #0F766E; 
+}
+
+.btn-reactivar:hover {
+    background-color: #0F766E;
+    color: #ffff;
+}
+
+.btn-eliminar { 
+    border-color: #B42318; 
+    color: #B42318; 
+}
+
+.btn-eliminar:hover { 
+    background-color: #B42318;
+    color: #fff;
+}
+
+/* Estado vacío */
+.asignacion-vacio {
+    text-align: center;
+    color: #64748b;
+    font-size: var(--font-size-subtexto);
+    padding: 10px;
+    margin: 0;
+}
+
+@media (max-width: 1118px) {
+    .input-buscar-asignaciones {
+        width: 100%;
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .titulo-bloque-asignaciones {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .asignacion-badge {
+        font-size: var(--font-size-cel-mini-texto);
+    }
+
+    .asignacion-rol {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .asignacion-datos {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    /* Estado vacío */
+    .asignacion-vacio {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+}
+/* ====================================================================*/
+
+
+
+
+.input-field {
+    width: 100%;
+    height: 50px;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    background-color: var(--color-input-field);
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-input-field);
+    font-weight: var(--font-weight-400);
+    font-family: var(--body-font);
+    border: solid 1px var(--color-borde-input-field);
+    transition: color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    outline: none; /* Elimina el contorno azul predeterminado del navegador*/
+    /*backdrop-filter: blur(20px);*/
+}
+
+.input-field:focus {
+    border-color: var(--color-borde-input-field-focus);
+    box-shadow: 0 0 0 4px rgba(27, 57, 106, 0.10);
+}
+
+/*cuando un input este desactivado*/
+.input-field:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+/*cuando un input tenga denegar su seleccion, es decir su cursor sale 🚫*/
+.input-field[readonly] {
+    background: #f4f7fb;
+    color: #5f6f86;
+    cursor: not-allowed;
+}
+
+.type-file {
+    border: 2px dashed var(--color-input-field-type-file);
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+textarea.input-field {
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-input-field);
+    font-weight: var(--font-weight-400);
+    font-family: var(--body-font);
+    resize: vertical;
+}
+
+select.input-field {
+    cursor: pointer;
+}
+
+.option-input-field-select {
+    background-color: var(--color-option-input-field-select);
+    color: var(--color-texto-option-input-field-select);
+    cursor: pointer;
+}
+
+
+.input-box input.error {
+    border-color: #B42318;
+}
+
+.input-box .icon {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    color: var(--color-icono-input-field);
+    font-weight: var(--font-weight-100);
+    font-size: 22px;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.ri-lock-2-line {
+    border: solid 2px var(--color-borde-icono-input-field);
+    border-radius: 50%;
+    width: 34px;
+    padding: 4px;
+    margin-right: -6px;
+    cursor: pointer;
+    transition: border-color 10.3s ease;
+}
+
+.ri-lock-2-line.active {
+    color: var(--color-icono-activado-input-field); /* Cambia el color del ícono cuando está activo */
+    background-color: var(--color-fondo-icono-activado-input-field) ; /* Cambia el color del borde del ícono cuando está activo */
+    cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
+}
+
+
+.switch-estado{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    user-select: none;
+    border: none;
+}
+
+.switch-estado input {
+    display: none;
+}
+
+
+.slider-switch-estado {
+    position: relative;
+    width: 46px;
+    height: 26px;
+    background-color: var(--color-fondo-slider-switch-estado);
+    border-radius: 50px;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slider-switch-estado::before {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    left: 4px;
+    top: 3px;
+    background-color: var(--color-circulo-slider-switch-estado);
+    border-radius: 50%;
+    box-shadow: 0 2px 6px rgba(27, 57, 106, 0.8);
+    transition: transform 0.3s ease;
+}
+
+.switch-estado input:checked + .slider-switch-estado {
+    background-color: var(--color-cirluclo-activado-slider-switch-estado);
+}
+
+.switch-estado input:checked + .slider-switch-estado::before {
+    transform: translateX(18px);
+}
+
+.switch-estado:hover .slider-switch-estado {
+    box-shadow: 0 0 0 4px rgba(27, 57, 106, 0.10);
+}
+
+.texto-switch-estado {
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-input-field);
+    font-weight: var(--font-weight-400);
+    font-family: var(--body-font);
+}
+
+
+.checkbox-terminos-condiciones {
+    font-size: var(--font-size-subtexto);
+    color: var(--color-texto-general);
+    margin-block: 10px;
+    cursor: pointer;
+}
+
+.checkbox-terminos-condiciones input {
+    cursor: pointer;
+}
+
+
+/*------------> Eelementos seleccionables*/
+.contenedor-elementos-extra-form {
+    padding: 10px;
+    border: solid 1px var(--color-borde-contenedor-elementos-extra-form);
+    border-radius: 15px;
+    margin-block: 10px;
+    box-shadow: 0px 4px 0px var(--color-box-shadow-contenedor-elementos-extra-form);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contenedor-elementos-extra-form:hover {
+    transform: translateY(-5px); /* Levantar ligeramente al pasar el ratón */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.subtitulo-elementos-extra-form {
+    font-size: var(--font-size-subtitulos);
+    font-family: var(--subtitle-font);
+    font-weight: var(--font-weight-800);
+    color: var(--color-subtitulo-elementos-extra-form);
+    margin-bottom: 10px;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+.sin-elementos-extra-form {
+    color: var(--color-texto-elementos-chebox);
+    font-size: var(--font-size-texto-normal);
+    text-align: center;
+}
+
+.elementos-checkbox {
+    margin-block: 6px;
+    padding: 8px;
+    gap: 10px;
+    border-radius: 10px;
+    background-color: var(--color-elementos-checkbox);
+    
+    user-select: none;
+    cursor: pointer;
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.elementos-checkbox:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.elementos-checkbox:hover {
+    background-color: var(--color-hover-elementos-checkbox);
+}
+
+
+.elementos-checkbox input{
+    display: none;
+}
+
+.elementos-checkbox .circulo-checkbox { 
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-borde-circulo-checkbox);
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: 0.2s ease;
+}
+
+.elementos-checkbox input:checked + .circulo-checkbox::after {
+    content: "";
+    width: 14px;
+    height: 14px;
+    background-color: var(--color-activo-circulo-checkbox);
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-51%, -51%);
+}
+
+.elementos-checkbox .texto-checkbox {
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-400);
+    color: var(--color-texto-elementos-chebox);
+}
+
+
+/*------------> Demas elementos */
+.form-inputs .informacion-extra-formulario p {
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-500);
+    color: var(--color-texto-informaciom-extra-formulario);
+    transition: color 0.3s ease;
+    text-align: justify;
+    margin-bottom: 10px;
+}
+
+.form-inputs .informacion-extra-formulario ul {
+    margin-left: 10px;
+    list-style-position: inside; /*significa que las viñetas estarán dentro el elemento de la lista*/
+}
+
+.form-inputs .informacion-extra-formulario li {
+    text-align: justify;
+    line-height: 1.5;
+    word-wrap: break-word; /*La lista no se desborda*/
+    overflow-wrap: break-word; /*con la de arriba, si una frase es muy larga, se parte correctamente y no empuja el contenedor.*/
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-400);
+    color: var(--color-texto-informaciom-extra-formulario);
+}
+
+.form-inputs .informacion-extra-formulario i {
+    font-size: 17px;
+    font-weight: var(--font-weight-900);
+}
+
+.form-inputs .informacion-extra-formulario span {
+    margin-left: 20px;
+}
+
+
+.forgot-pass {
+    display: flex;
+    justify-content: right;
+    gap: 5px;
+}
+
+.forgot-pass a {
+    color: var(--color-forgot-pass);
+    text-decoration: none;
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-500);
+    margin-bottom: 10px;
+    transition: color 0.3s ease;
+}
+
+.forgot-pass a:hover {
+    text-decoration: underline;
+    color: var(--color-forgot-pass-hover);
+}
+
+.botones-formulario {
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    gap: 60px;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.botones-formulario button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 100px;
+    min-height: 40px;
+    padding: 0px 10px;
+
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: transparent;
+    border: solid 2px transparent;
+    cursor: pointer;
+
+    white-space: nowrap;     /* Mantiene el texto en una sola línea */
+    overflow: visible;       /* Asegura que no se recorte */
+
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botones-formulario button:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/*cuendo el boton este desactivado*/
+.botones-formulario button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.botones-formulario .btn-editar-form {
+    border-color: #D97706;
+    background-color: #D97706;
+    color: #fff;
+}
+
+/* .botones-formulario .btn-editar-form:hover {
+    background-color: #D97706;
+    color: #fff;
+} */
+
+.botones-formulario .btn-guardar-enviar {
+    border-color: #1F7A4D;
+    background-color: #1F7A4D;
+    color: #fff;
+}
+
+/* .botones-formulario .btn-guardar-enviar:hover {
+    background-color: #1F7A4D;
+    color: #fff;
+} */
+
+.botones-formulario .btn-cancelar-borrar {
+    border-color: #B42318;
+    background-color: #B42318;
+    color: #fff;
+}
+
+/* .btn-cancelar-borrar:hover {
+    background: #B42318;
+    color: #fff;
+} */
+
+
+
+/*----Carga al precionar el boton----*/
+.spinner {
+    display: none;
+    border: 6px solid rgba(0, 0, 0, 0.6);
+    border-top: 6px solid #ffffff; /* Cambia este color según tu diseño */
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.texto-spinner {
+    display: none;
+    margin-left: 4px;
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    color: var(--color-texto-spinner);
+}
+/*--------------------------------*/
+
+
+.social-login {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.social-login i {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    height: 40px;
+    width: 40px;
+    color: var(--color-principal);
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    transition: .2s;
+}
+
+.social-login i:hover {
+    transform: scale(0.9);
+}
+
+.image-movil {
+    display: none;
+}
+
+
+@media (max-width: 1118px) {
+    .btn-abrir-modal-formulario {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .contenedor-formularios {
+        padding: 10px;
+    }
+
+    .formulario-container {
+        min-width: 90%;
+        max-width: 90%;
+        height: auto;
+        max-height: calc(100vh - 40px);
+    }
+
+
+    .col-1 {
+        display: none;
+    }
+
+    .col-2 {
+        width: 100%;
+    }
+
+    .image-movil {
+        width: 80%;
+        margin-top: 30x;
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centra horizontalmente los contenidos */
+    }
+
+    .image-movil .form-imagen-movil {
+        width: 120px;
+        border-radius: 10px;
+        background: transparent;
+        /* clip-path para recortar la imagen, ejemplo con un circulo */
+        clip-path: circle(100%); /*Forma a la imagen, circular*/
+        /*z-index: 1;  Ajusta el apilamiento para superponer la imagen sobre otros elementos si es necesario */
+    }
+
+    .btn {
+        font-size: var(--font-size-cel-texto-normal);
+        padding: 4px 15px;
+    }
+
+    .form-inputs {
+        padding-inline: 2px;
+    }
+
+    .scroll {
+        max-height: 400px;
+    }
+
+    .scroll-editar {
+        max-height: 540px;
+    }
+
+
+
+    /*============Forma de los formularios===========*/
+    .col-2 .form-1, .col-2 .form-2, .col-2 .form-3 {
+        padding-inline: 10px;
+        padding-block: 20px;
+    }
+
+    .form-editar-contenido {
+        padding-block: 15px;
+        padding-inline: 10px;
+    }
+
+    .form-title {
+        font-size: var(--font-size-cel-titulos);
+    }
+
+    /*Del formulario en modal para editar*/
+    .input-box-editar .nombre-input {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .input-field {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    textarea.input-field {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+
+    .texto-switch-estado {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .elementos-checkbox .circulo-checkbox { 
+        min-width: 20px;
+        min-height: 20px;
+        max-height: 20px;
+        max-width: 20px;
+    }
+
+    .sin-elementos-extra-form {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+
+    .checkbox-terminos-condiciones {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+
+    .subtitulo-elementos-extra-form {
+        font-size: var(--font-size-cel-subtitulos);
+    }
+
+    .elementos-checkbox .texto-checkbox{
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+
+    .form-inputs .informacion-extra-formulario p {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .form-inputs .informacion-extra-formulario li {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .form-inputs .informacion-extra-formulario {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .forgot-pass a {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .botones-formulario {
+        gap: 60px;
+    }
+
+    .botones-formulario button {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .texto-spinner {
+        font-size: var(--font-size-cel-subtexto);
+    }
+    
+}
+/*==========================================================*/
+
+
+/*======================MODAL DE AYUDA======================*/
+.modal-ayuda {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-contenido {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    max-width: 800px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.modal-contenido h2 {
+    text-align: center;
+}
+
+.descrip {
+    margin-bottom: 5px;
+}
+
+.modal-contenido video {
+    width: 100%; 
+    height: auto; 
+    border-radius: 10px;
+}
+
+.cerrar-ayuda, .cerrar-registro {
+    color: #000;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    margin-top: -25px;
+    margin-right: -15px;
+    cursor: pointer;
+}
+
+.cerrar:hover, .cerrar:focus {
+    color:#F44336 ;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1118px) {
+    .modal-contenido {
+        width: 95%;
+        margin:70% auto;
+    }
+}
+/*==========================================================*/

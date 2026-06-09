@@ -1,0 +1,197 @@
+.modal-cerrar-sesion {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: var(--color-fondo-modal-cierre-sesion);
+    backdrop-filter: blur(1px);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-cerrar-sesion.active {
+    display: flex;
+}
+
+.contenedor-modal-cerrar {
+    background-color: var(--color-modal-content-cierre-sesion);
+    border: solid 2px var(--color-borde-contenedor-modal-cerrar);
+    padding: 20px;
+    width: 25%;
+    border-radius: 20px; 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: var(--body-font);
+
+    position: relative;
+    animation: modalShowCerrarSesion 0.3s ease;
+    transition: background-color 0.3s ease;
+}
+
+@keyframes modalShowCerrarSesion {
+    from{
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.btn-cerrar-modal-cierre-sesion {
+    position: absolute;
+    top: 6px;
+    right: 6px;
+    width: 28px;
+    height: 28px;
+    z-index: 10;
+    background-color: #F44336;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    font-weight: bold;
+    line-height: 0;
+    transition: background-color 0.3s;
+}
+
+.contenedor-modal-cerrar h2 {
+    font-size: var(--font-size-titulos);
+    font-family: var(--subtitle-font);
+    color: var(--color-titulo-modal-cierre-sesion);
+    padding: 10px;
+    border-bottom: solid 2px #BDBDBD;
+    margin-bottom: 13px;
+    margin-top: -20px;
+    transition: color 0.3s ease;
+}
+
+.contenedor-modal-cerrar p {
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-texto-modal-cierre-sesion);
+    text-align: justify;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.botones-modal-cerrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.botones-modal-cerrar button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 140px;
+    min-height: 40px;
+    padding: 0px 10px;
+    gap: 4px;
+
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    text-decoration: none;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+
+    white-space: nowrap;     /* Mantiene el texto en una sola línea */
+    overflow: visible;       /* Asegura que no se recorte */
+
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.botones-modal-cerrar button:active {
+    transform: scale(0.98); 
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/*cuendo el boton este desactivado*/
+.botones-modal-cerrar button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.btn-cancelar-modal {
+    background-color: #374151;
+    color: #fff;
+}
+
+.btn-confirmar-cierre {
+    border-color: #B42318;
+    background-color: #B42318;
+    color: #fff;
+}
+
+
+/*----Carga al precionar el boton----*/
+.spinner-boton-cerrar-sesion {
+    /* display: none; */
+    border: 4px solid rgba(0, 0, 0, 0.6);
+    border-top: 4px solid #ffffff; /* Cambia este color según tu diseño */
+    border-radius: 50%;
+    width: 22px;
+    height: 22px;
+    animation: spin-boton-cerrar-sesion 0.7s linear infinite;
+}
+
+@keyframes spin-boton-cerrar-sesion {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.texto-spinner-boton-cerrar-sesion {
+    /* display: none; */
+    font-size: var(--font-size-subtexto);
+    font-weight: var(--font-weight-600);
+    font-family: var(--body-font);
+    color: var(--color-texto-spinner);
+}
+/*--------------------------------*/
+
+@media (max-width: 1118px) {
+    .modal-cerrar-sesion {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .contenedor-modal-cerrar {
+        width: 80%;
+    }
+
+    .contenedor-modal-cerrar h2 {
+        font-size: var(--font-size-cel-titulos);
+    }
+
+    .contenedor-modal-cerrar p {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    .botones-modal-cerrar button {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+    .texto-spinner-boton-cerrar-sesion {
+        font-size: var(--font-size-cel-subtexto);
+    }
+
+}

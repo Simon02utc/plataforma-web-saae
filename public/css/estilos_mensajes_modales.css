@@ -1,0 +1,159 @@
+.modal-mensaje {
+    display: none; 
+    position: fixed; 
+    z-index: 1000; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: var(--color-fondo-modal-mensaje);
+    backdrop-filter: blur(1px);
+
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content-mensaje {
+    background-color: var(--color-modal-content-mensaje);
+    padding: 20px;
+    width: 25%;
+    border-radius: 14px; 
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+    text-align: center;
+    font-family: var(--body-font);
+
+    position: relative;
+    animation: modalShow 0.3s ease; /*ANIMACION DE APARICION*/
+    transition: background-color 0.3s ease;
+}
+
+@keyframes modalShow{
+    from{
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
+    }
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.titulo-modal {
+    font-size: var(--font-size-subtitulos);
+    font-family: var(--subtitle-font);
+    color: var(--color-titulo-modal);
+    padding: 10px;
+    border-bottom: solid 2px #BDBDBD;
+    margin-bottom: 13px;
+    margin-top: -20px;
+    transition: color 0.3s ease;
+}
+
+.mens-ico {
+    font-size: 20px;
+}
+
+.btn-cerrar-modal {
+    position: absolute;
+    cursor: pointer;
+    color: #B3B6B7;
+    float: right;
+    font-size: 35px;
+    font-weight: bold;
+    top: -4px;
+    right: 10px;
+}
+
+#mensaje-modal p {
+    font-weight: var(--font-weight-500);
+    font-size: var(--font-size-texto-normal); 
+    padding: 6px;
+    border-radius: 4px;
+    border-left: solid 6px transparent;
+    width: 100%;
+}
+
+#mensaje-modal .error {
+    border-color: #B42318;
+    background-color: rgba(180, 35, 24, 0.2);
+    color: #B42318;
+    margin: 0;/* Remove default margin */
+}
+
+#mensaje-modal .listado-error-422 {
+    list-style-position: inside;
+    list-style: disc;
+    list-style-position: inside; /*significa que las viñetas estarán dentro el elemento de la lista*/
+    padding: 10px;
+}
+
+#mensaje-modal .listado-error-422 li {
+    text-align: justify;
+    line-height: 1.5;
+    word-wrap: break-word; /*La lista no se desborda*/
+    overflow-wrap: break-word; /*con la de arriba, si una frase es muy larga, se parte correctamente y no empuja el contenedor.*/
+    font-size: var(--font-size-texto-normal);
+    color: var(--color-listado-error-422);
+    font-weight: var(--font-weight-500);
+}
+
+#mensaje-modal .ext {
+    font-size: var(--font-size-subtexto);
+    color: rgba(51, 51, 51, 1.0);
+    text-align: left;
+    margin-top: 10px;
+    font-weight: 500;
+}
+
+#mensaje-modal .exito {
+    border-color: #1F7A4D;
+    background-color: rgba(31, 122, 77, 0.2);
+    color: #1F7A4D;
+    margin: 0; 
+}
+
+#mensaje-modal .advertencia {
+    border-color: #D97706;
+    background-color: rgba(217, 119, 6, 0.2);
+    color: #D97706;
+    margin: 0px; 
+}
+
+#mensaje-modal .suspend {
+    color: #fff;
+    background: rgba(127, 140, 141, 1.0);
+    margin: 0; 
+}
+
+#mensaje-modal .img-sancion {
+    width: 100px;
+}
+
+@media (max-width: 1118px) {
+    .modal-mensaje {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content-mensaje {
+        width: 80%; /*350px*/
+    }
+
+    .titulo-modal {
+        font-size: var(--font-size-cel-subtitulos);
+    }
+
+    #mensaje-modal p{
+        font-size: var(--font-size-cel-texto-normal); 
+    }
+
+    #mensaje-modal .listado-error-422 li {
+        font-size: var(--font-size-cel-texto-normal);
+    }
+
+    #mensaje-modal .ext {
+        font-size: var(--font-size-cel-subtexto);
+
+    }
+}
