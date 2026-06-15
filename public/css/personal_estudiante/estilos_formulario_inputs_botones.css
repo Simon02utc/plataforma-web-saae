@@ -1029,7 +1029,7 @@ select.input-field {
     padding: 0px 10px;
 
     font-size: var(--font-size-texto-normal);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     text-decoration: none;
     border-radius: 10px;

@@ -8,6 +8,12 @@
     src: url('/fonts/Barlow_Condensed/BarlowCondensed-ExtraBold.ttf') format('truetype');
 }
 
+@font-face {
+    font-family: 'Barlow Condensed Light';
+    src: url('/fonts/Barlow_Condensed/BarlowCondensed-Medium.ttf') format('truetype');
+    
+}
+
 
 html {
     scroll-behavior: smooth; /*Movimiento suave al scroll*/
@@ -23,7 +29,7 @@ html {
 
 
     /*==========Tipo de letra==========*/
-    --body-font: "Roboto", sans-serif;
+    --body-font: "Barlow Condensed Light", sans-serif;
 
     --title-font: "Barlow Condensed Extra Bold", sans-serif;
 
@@ -49,16 +55,16 @@ html {
 
     /*--------COMPUTADORAS--------*/
         /*Barra de navegacion publica*/
-        --font-size-texto-paginas-barra-navegacion: 16px;
-        --font-size-texto-paginas-menu-submenu-desplegable: 16px;
+        --font-size-texto-paginas-barra-navegacion: 17px;
+        --font-size-texto-paginas-menu-submenu-desplegable: 17px;
         /*---------------------------*/
 
 
         /*Barra de navegacion lateral privada*/
         --font-size-texto-titulo-barra-lateral-navegacion: 20px;
 
-        --font-size-texto-paginas-barra-lateral-navegacion: 14px;
-        --font-size-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 14px;
+        --font-size-texto-paginas-barra-lateral-navegacion: 16px;
+        --font-size-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 16px;
         /*-----------------------------------*/
 
 
@@ -69,14 +75,14 @@ html {
         --font-size-mini-titulos: 18px;
         --font-size-mini-subtitulos: 16px;
 
-        --font-size-texto-normal: 16px;
-        --font-size-subtexto: 14px; 
-        --font-size-mini-texto: 12px;
+        --font-size-texto-normal: 17px;
+        --font-size-subtexto: 15px; 
+        --font-size-mini-texto: 13px;
         
-        --font-size-titulos-pie-pagina: 13px;
-        --font-size-texto-enlaces-pie-pagina: 13px;
-        --font-size-texto-pie-pagina: 13px;
-        --font-size-texto-pie-pagina-2: 14px;
+        --font-size-titulos-pie-pagina: 14px;
+        --font-size-texto-enlaces-pie-pagina: 14px;
+        --font-size-texto-pie-pagina: 14px;
+        --font-size-texto-pie-pagina-2: 15px;
 
 
         --icono-boton-scroll-pagina: 26px;

@@ -20,7 +20,7 @@
 
 .contenedor-botones-accion-tabla button {
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     text-decoration: none;
     border-radius: 10px;
@@ -138,6 +138,7 @@
     background-color: var(--color-fondo-select-buscar-tabla);
     
     font-size: var(--font-size-subtexto);
+    font-family: var(--body-font);
     color: var(--color-texto-select-buscar-tabla);
     font-weight: var(--font-weight-400);
     outline: none;
@@ -271,12 +272,7 @@
     border-radius: 10px;
 
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
-    font-family: var(--body-font);
-    cursor: pointer;
-
-    font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     cursor: pointer;
 
@@ -366,7 +362,7 @@
 }
 
 .tabla-contenido thead tr th {
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     color: var(--color-texto-th-tabla);
     background-color: var(--color-fondo-th-tabla);
     font-size: var(--font-size-subtexto);

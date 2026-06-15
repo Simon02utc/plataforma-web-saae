@@ -224,7 +224,7 @@ main.min-main{
     background-color: var(--color-boton-barra);
     font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
     color: var(--color-texto-boton-barra);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     cursor: pointer;
     text-decoration: none;
 
@@ -236,7 +236,7 @@ main.min-main{
     border: solid 2px var(--color-borde-boton-regresar);
     font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
     color: var(--color-texto-boton-regresar);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     transition: color 0.3s ease, border-color 0.3s ease;
 }
 
@@ -255,7 +255,7 @@ main.min-main{
     text-decoration: none;
     border-radius: 10px;
     font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     color: var(--color-texto-menu);
     transition: color 0.3s ease, background-color 0.3s ease;
 }
@@ -375,7 +375,7 @@ main.min-main{
     text-decoration: none;
     border-radius: 10px;
     font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     color: var(--color-texto-menu);
     transition: color 0.3s ease, background-color 0.3s ease;
 }
@@ -708,10 +708,14 @@ main.min-main{
     white-space: nowrap; /* No permitir que el texto se divida en varias líneas */
     position: absolute;
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-400);
+    font-weight: var(--font-weight-500);
     bottom: 0;
     color: var(--color-texto-menu);
     transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.scrollText {
+    animation: scrollText 8.5s linear infinite;
 }
 
 /* Animación para el desplazamiento del texto */
@@ -722,10 +726,6 @@ main.min-main{
     100% {
         transform: translateX(-100%); /* Termina fuera del contenedor a la izquierda */
     }
-}
-
-.scrollText {
-    animation: scrollText 8.5s linear infinite;
 }
 
 
@@ -767,7 +767,7 @@ main.min-main{
 
 .barra-lateral .parte-inferior-barra .usuario .content-sesion .btn-cerrar span {
     font-size: var(--font-size-texto-paginas-barra-lateral-navegacion);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     color: var(--color-texto-btn-cerrar);
 }

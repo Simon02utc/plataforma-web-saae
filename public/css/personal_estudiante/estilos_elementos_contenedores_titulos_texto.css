@@ -186,9 +186,10 @@ box-shadow: 0px 0px 0px 5px rgba(67, 0, 27, 0.8);
 }
 
 
-.contenedores-informacion .btn-ver-plantilla, .btn-descargar-plantilla {
+.contenedores-informacion .btn-ver-plantilla, .contenedores-informacion .btn-descargar-plantilla {
     font-size: var(--font-size-texto-normal);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
+    letter-spacing: 1px;
     font-family: var(--body-font);
     text-decoration: none !important;
 
@@ -210,7 +211,7 @@ box-shadow: 0px 0px 0px 5px rgba(67, 0, 27, 0.8);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.contenedores-informacion .btn-ver-plantilla:active, .btn-descargar-plantilla:active {
+.contenedores-informacion .btn-descargar-plantilla:active {
     transform: scale(0.98); 
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra más sutil al hacer clic */
 }
@@ -221,6 +222,19 @@ box-shadow: 0px 0px 0px 5px rgba(67, 0, 27, 0.8);
     background-color: #1D4ED8;
     color: #fff;
 }
+
+.contenedores-informacion .btn-ver-plantilla.deshabilitado {
+    /*cuendo el boton este desactivado*/
+    opacity: 0.65;
+    cursor: not-allowed;
+
+}
+
+/*cuendo el boton este desactivado*/
+/* button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+} */
 
 .contenedores-informacion .btn-ver-plantilla i {
     margin-right: 4px;

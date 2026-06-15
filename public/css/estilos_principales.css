@@ -639,7 +639,7 @@ a {
     padding: 0px 10px;
 
     font-size: var(--font-size-texto-normal);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     text-decoration: none;
     border-radius: 10px;
     border: solid 1px #fff;
@@ -758,7 +758,6 @@ a {
 .footer-brand-name {
     font-family: var(--title-font);
     font-size: var(--font-size-titulos);
-    font-weight: var(--font-weight-700);
     color: #fff;
     line-height: 1;
 }
@@ -805,9 +804,10 @@ a {
 
 .footer-links h4 {
     font-size: var(--font-size-titulos-pie-pagina);
-    font-weight: var(--font-weight-700);
+    font-weight: var(--font-weight-500);
+    letter-spacing: 1px;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255, 255, 255, 0.8);
     margin-bottom: 10px;
     padding-bottom: 10px;
     border-bottom: 1px solid rgba(255,255,255,.08);
@@ -885,7 +885,7 @@ a {
 .footer-bottom {
     margin-top: 40px;
     padding-top: 24px;
-    border-top: 1px solid rgba(255,255,255,.08);
+    border-top: 1px solid rgba(255, 255, 255, .08);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -894,7 +894,12 @@ a {
 
 .footer-bottom-copy {
     font-size: var(--font-size-texto-pie-pagina-2);
+    font-weight: var(--font-weight-500);
     color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-bottom-copy span {
+    font-weight: var(--font-weight-500);
 }
 
 

@@ -58,7 +58,7 @@
                 <ul>
                     <li><a href="https://cenidet.tecnm.mx/" target="_blank">Sitio principal TecNM</a></li>
                 </ul>
-                <p style="margin-top:.7rem;">Tel: 123 456 7890</p>
+                <p style="margin-top:.7rem;">Telefono: 123 456 7890</p>
                 <p>Correo: <a class="email-vet" href="mailto:---@gmail.com">---@gmail.com</a></p>
         
                 <!-- Redes sociales — visible solo en móvil/tablet -->
@@ -76,7 +76,7 @@
         <!-- Copyright integrado -->
         <div class="footer-bottom">
             <p class="footer-bottom-copy">
-                &copy; 2026 <strong>TecNM / CENIDET</strong> — Todos los derechos reservados.
+                &copy; 2026 <span>TecNM / CENIDET</span> — Todos los derechos reservados.
             </p>
         </div>
     

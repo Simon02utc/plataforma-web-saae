@@ -124,8 +124,8 @@
     padding: 0px 10px;
     gap: 4px;
 
-    font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-size: var(--font-size-texto-normal);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     text-decoration: none;
     border-radius: 10px;
@@ -194,7 +194,7 @@
 
     /* reutiliza los estilos base de tus botones de modal */
     .botones-modal-confirmacion button {
-        font-size: var(--font-size-cel-subtexto);
+        font-size: var(--font-size-cel-texto-normal);
     }
 
 }
