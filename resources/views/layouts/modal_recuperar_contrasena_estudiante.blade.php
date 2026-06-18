@@ -1,6 +1,9 @@
 <div id="modal-recuperar-contrasena-estudiante" class="modal-recuperar-contrasena">
     <div class="contenedor-modal-recuperar-contrasena">
-        <span class="btn-cerrar-modal-recuperar-contrasena">&times;</span>
+
+        <div class="botones-superiores-modal-recuperar-contrasena">
+            <span class="btn-cerrar-modal-recuperar-contrasena"><i class="fa-solid fa-xmark"></i></span>
+        </div>
 
         <h1 class="titulo-modal-recuperar-contrasena">
             <span>Recuperar contraseña</span>

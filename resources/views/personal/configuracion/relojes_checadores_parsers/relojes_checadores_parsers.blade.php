@@ -88,7 +88,10 @@
         <div class="modal-formulario" id="modal-formulario-registrar-reloje-checador">
 
             <div class="formulario-container" id="formulario-container">
-                <span class="btn-cerrar-modal-fomulario">&times;</span>
+
+                <div class="botones-superiores-modal-formulario">
+                    <span class="btn-cerrar-modal-fomulario" id="btn-cerrar-modal-fomulario"><i class="fa-solid fa-xmark"></i></span>
+                </div>
 
                 <div class="col col-1">
                 </div>
@@ -235,7 +238,10 @@
         <div class="modal-formulario" id="modal-formulario-registrar-parser">
 
             <div class="formulario-container" id="formulario-container">
-                <span class="btn-cerrar-modal-fomulario">&times;</span>
+
+                <div class="botones-superiores-modal-formulario">
+                    <span class="btn-cerrar-modal-fomulario" id="btn-cerrar-modal-fomulario"><i class="fa-solid fa-xmark"></i></span>
+                </div>
 
                 <div class="col col-1">
                 </div>

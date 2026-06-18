@@ -1,7 +1,9 @@
 <div class="modal-cerrar-sesion" id="modalCerrarSesion">
     <div class="contenedor-modal-cerrar">
 
-        <span type="button" class="btn-cerrar-modal-cierre-sesion" id="btnCancelarCerrar">&times;</span>
+        <div class="botones-modal-cierre-sesion">
+            <span type="button" class="btn-cerrar-modal-cierre-sesion" id="btnCancelarCerrar"><i class="fa-solid fa-xmark"></i></span>
+        </div>
 
         <h2>Cerrar sesión</h2>
         <p>¿Estás seguro de que deseas cerrar tu sesión?</p>

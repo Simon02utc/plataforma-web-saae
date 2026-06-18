@@ -48,26 +48,28 @@
     }
 }
 
-.btn-cerrar-modal-fomulario {
+.botones-superiores-modal-formulario {
     position: absolute;
     top: 6px;
     right: 6px;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     z-index: 10;
     background-color: #F44336;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 0;
-    transition: background-color 0.3s;
+    border-radius: 50%;
 }
+
+.btn-cerrar-modal-fomulario {
+    color: #fff;
+    font-size: 17px;
+
+    border: none;
+    cursor: pointer;
+}
+
 
 /*------------------PRIMERA COLUMNA------------------*/    
 .col-1 {
@@ -394,7 +396,7 @@
     padding: 0px 10px;
 
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     text-decoration: none;
     border-radius: 10px;
@@ -1034,7 +1036,7 @@ select.input-field {
     text-decoration: none;
     border-radius: 10px;
     background-color: transparent;
-    border: solid 2px transparent;
+    border: none;
     cursor: pointer;
 
     white-space: nowrap;     /* Mantiene el texto en una sola línea */

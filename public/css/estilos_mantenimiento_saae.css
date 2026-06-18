@@ -1,0 +1,214 @@
+:root {
+    --mt-bg: #fff;
+    --mt-color-title: rgba(200, 91, 58, 1.0);
+    --mt-color-text: rgba(200, 91, 58, 0.8);
+    --mt-title-size: 2rem;
+    --mt-text-size: 1.125rem;
+    --mt-icon-size: 26px;
+    --mt-content: 500px;
+    --mt-gap: 1.5rem;
+    --mt-transition: .3s;
+}
+
+@keyframes mainteIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.mainte {
+    position: fixed;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding-right: 2rem;
+    padding-left: 2rem;
+    z-index: 1000 !important;
+    background-color: var(--mt-bg);
+}
+
+.img-logo-1 {
+    width: 140px;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.img-logo-2 {
+    width: 140px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+}
+
+.mainte a {
+    color: rgba(20, 83, 102, 1.0);
+}
+
+.mainte .i {
+    stroke: currentColor;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    fill: none;
+    stroke-width: 2;
+    width: var(--mt-icon-size, 26px);
+    height: var(--mt-icon-size, 26px);
+    display: block;
+}
+
+.mainte-content {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 600px;
+    max-width: 800px;
+    gap: var(--mt-gap, 1.5rem);
+    padding: 10px;
+    position: relative;
+    z-index: 1;
+    background-color: #fff;
+    border: solid 2px rgba(27, 57, 106, 1.0);
+    border-radius: 20px;
+}
+
+.mantenimiento-gif {
+    width: 120px;
+    border-radius: 50%;
+    position: absolute;
+    right: -60px;
+    top: -60px;
+    
+}
+
+.mainte-content *:not(:where(svg, svg *)) {
+    margin: 0;
+    opacity: 0;
+    transform: translateY(var(--mt-aty, -2rem));
+    animation: mainteIn 1s ease forwards;
+}
+
+.mainte-title {
+    font-weight: 500;
+    color: var(--color-principal);
+    font-size: var(--font-size-titulo-pagina);
+    font-family: var(--title-font);
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 0px rgba(15, 61, 74, 0.5);
+}
+
+.mainte-text {
+    font-family: var(--body-font);
+    font-weight: var(--font-weight-500);
+    color: var(--color-texto-general);
+    font-size: var(--mt-text-size, 1.125rem);
+    animation-delay: 1s;
+    line-height: 1.5;
+    --mt-aty: 0;
+}
+
+.mainte-social {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    --mt-aty: 2rem;
+}
+
+.mainte-social > *:nth-child(odd) {
+    animation-delay: 0.3s;
+}
+
+.mainte-social-item {
+    transition: color var(--mt-transition, 0.3s);
+}
+
+.mainte-social-item:hover {
+    color: rgba(200, 91, 58, 1.0);
+}
+
+
+
+/*---Mareas---*/
+@keyframes wave {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.wave {
+    --wave-size: 380rem;
+    --wave-color: rgba(27, 57, 106, 1.0);
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    min-height: 100vh;
+    inset: 0;
+    pointer-events: none;
+}
+
+.wave-item, .wave-item::after, .wave-item::before {
+    content: "";
+    position: absolute;
+    opacity: var(--wave-opacity);
+    width: var(--wave-size);
+    height: var(--wave-size);
+    background: var(--wave-color);
+    transform-origin: 48% 50%;
+    border-radius: 46%;
+    animation: wave var(--wave-duration, 15s) infinite linear;
+    pointer-events: none;
+}
+
+.wave-item {
+    top: 75%;
+    left: 50%;
+    margin-left: calc((var(--wave-size) / 2) * -1);
+}
+
+.wave-item::after {
+    --wave-duration: 28s;
+    --wave-opacity: .5;
+}
+
+.wave-item::before {
+    --wave-duration: 20s;
+    --wave-opacity: .1;
+}
+
+@media (max-width: 950px) {
+    .mainte-content {
+        width: 600px;
+        max-width: 800px;
+
+        justify-items: center !important;
+        align-content: center !important; 
+    }
+
+    .mantenimiento-gif {
+        width: 130px;
+        border-radius: 50%;
+        position: absolute;
+        top: -140px;
+        right: 110px;
+    }
+
+    .mainte-title {
+        font-size: 24px;
+    }
+
+    .mainte-text {
+        font-size: 16px;
+    }
+
+    .img-suleta {
+        width: 140px;
+    }
+
+    .img-logo {
+        width: 100px;
+    }
+}

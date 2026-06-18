@@ -31,8 +31,8 @@ function modalConfirmarAccion({
 
         // Mostrar u ocultar campo de observaciones
         if (conObservaciones) {
-            inputObs.placeholder          = placeholderObservaciones;
-            inputObs.value                = '';
+            inputObs.placeholder = placeholderObservaciones;
+            inputObs.value = '';
             campoObservaciones.style.display = 'block';
         } else {
             campoObservaciones.style.display = 'none';
@@ -58,7 +58,7 @@ function modalConfirmarAccion({
 
         nuevoConfirm.addEventListener('click', () => {
             if (conObservaciones && observacionesRequeridas && !inputObs.value.trim()) {
-                // Marcar el campo si está vacío y es requerido
+                // Marcar el campo si esta vacio y es requerido
                 inputObs.classList.add('error');
                 inputObs.focus();
                 return;

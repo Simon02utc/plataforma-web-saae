@@ -29,6 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/estilos_login.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos_mensajes_modales.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos_mensajes_toast.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos_pantalla_reposo.css') }}">
 
 
     <!--CONTENEDOR QUE INDICA QUE LAS PAGINAS TENDRAN O UTILIZARAN CSS PARA ELLA SOLA-->
@@ -46,6 +47,9 @@
     
 <!--PANTALLA CARGA-->
 @include('layouts.pantalla_carga')
+
+<!--PANTALLAS EXTRAS-->
+@include('layouts.pantalla_reposo')
 
 <div class="wrapper">
 
@@ -83,6 +87,7 @@
 <!--JS principales-->
 <script src="{{ asset('js/funcion_boton_subir.js') }}"></script>
 <script src="{{ asset('js/funcion_pantalla_carga.js') }}"></script>
+<script src="{{ asset('js/funcion_pantalla_reposo.js') }}"></script>
 <script src="{{ asset('js/funcion_barra_navegacion_principal.js') }}"></script>
 <script src="{{ asset('js/funcion_mostrar_mensaje_modal.js') }}"></script>
 <script src="{{ asset('js/funcion_mostrar_mensaje_toast.js') }}"></script>

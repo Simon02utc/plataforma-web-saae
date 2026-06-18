@@ -1,7 +1,9 @@
 <div class="modal-confirmacion" id="modalConfirmacion">
     <div class="contenedor-modal-confirmacion">
-
-        <span class="btn-cerrar-modal-confirmacion" id="btnCerrarModalConfirmacion">&times;</span>
+        
+        <div class="botones-superiores-modal-confirmacion">
+            <span class="btn-cerrar-modal-confirmacion" id="btnCerrarModalConfirmacion"><i class="fa-solid fa-xmark"></i></span>
+        </div>
 
         <h2 id="modalConfirmacionTitulo">Confirmar acción</h2>
         <div class="mensaje" id="modalConfirmacionMensaje"></div>

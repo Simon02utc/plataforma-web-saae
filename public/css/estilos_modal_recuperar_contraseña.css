@@ -24,45 +24,44 @@
     border: solid 2px var(--color-borde-contenedor-modal-recuperar-contrasena);
 
     position: relative;
-    animation: modalContraFadeIn 1.0s; /*ANIMACION DE APARICION*/
+    animation: modalShowRescuperarContrasena 0.3s; /*ANIMACION DE APARICION*/
     transition: background-color 0.3s ease;
 }
 
-
-/* Animación suave de entrada */
-@keyframes modalContraFadeIn {
-    from { 
-        transform: translateY(-30px); 
-        opacity: 0; 
+@keyframes modalShowRescuperarContrasena {
+    from{
+        opacity: 0;
+        transform: translateY(20px) scale(.95);
     }
-    
-    to   { 
-        transform: translateY(0);
-        opacity: 1; 
+
+    to{
+        opacity: 1;
+        transform: translateY(0) scale(1);
     }
 }
 
 
-.btn-cerrar-modal-recuperar-contrasena {
+.botones-superiores-modal-recuperar-contrasena {
     position: absolute;
     top: 6px;
     right: 6px;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
+    z-index: 10;
     background-color: #F44336;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 0;
-    transition: background-color 0.3s;
+    border-radius: 50%;
 }
 
+.btn-cerrar-modal-recuperar-contrasena {
+    color: #fff;
+    font-size: 17px;
+
+    border: none;
+    cursor: pointer;
+}
 
 .titulo-modal-recuperar-contrasena {
     text-align: center;

@@ -26,6 +26,7 @@
     <link rel="stylesheet" href="{{ asset('css/personal_estudiante/estilos_principales_personal.css') }}">
     <link rel="stylesheet" href="{{ asset('css/personal_estudiante/estilos_elementos_contenedores_titulos_texto.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos_pantalla_carga.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/estilos_pantalla_reposo.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos_mantenimiento_saae.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos_modal_cerrar_sesion.css') }}">
     <link rel="stylesheet" href="{{ asset('css/estilos_mensajes_modales.css') }}">
@@ -48,6 +49,9 @@
     
 <!--PANTALLA CARGA-->
 @include('layouts.pantalla_carga')
+
+<!--PANTALLAS EXTRAS-->
+@include('layouts.pantalla_reposo')
 
 <!--BARRA LATERAL DE NAVEGACION PRINCIPAL-->
 @include('layouts.estudiante.barra_navegacion_lateral')
@@ -97,6 +101,7 @@
 <script src="{{ asset('js/funcion_lectura_contenido.js') }}"></script>
 <script src="{{ asset('js/funcion_boton_subir.js') }}"></script>
 <script src="{{ asset('js/funcion_pantalla_carga.js') }}"></script>
+<script src="{{ asset('js/funcion_pantalla_reposo.js') }}"></script>
 <script src="{{ asset('js/personal/funcion_acordeon_texto.js') }}"></script>
 <script src="{{ asset('js/funcion_mostrar_mensaje_modal.js') }}"></script>
 <script src="{{ asset('js/funcion_mostrar_mensaje_toast.js') }}"></script>

@@ -41,24 +41,27 @@
     }
 }
 
-.btn-cerrar-modal-detalles {
+
+.botones-superiores-modal-detalles {
     position: absolute;
     top: 6px;
     right: 6px;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
+    z-index: 10;
     background-color: #F44336;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 0;
-    transition: background-color 0.3s;
+    border-radius: 50%;
+}
+
+.btn-cerrar-modal-detalles {
+    color: #fff;
+    font-size: 17px;
+
+    border: none;
+    cursor: pointer;
 }
 
 .contenedor-modal-detalles .titulo-modal-detalles {
@@ -142,20 +145,6 @@
     white-space: normal;
     overflow-wrap: anywhere; /* mejor que break-word en muchos casos */
     word-break: break-word;
-}
-
-.contenedor-modal-detalles .info-detalle .estado-resultado-ok {
-    border: solid 1px #009688;
-    background: rgba(0, 150, 136, 0.1);
-    border-radius: 100px;
-    padding: 4px;
-}
-
-.contenedor-modal-detalles .info-detalle .estado-resultado-error {
-    border: solid 1px #B42318;
-    background-color: rgba(180, 35, 24, 0.1);
-    border-radius: 100px;
-    padding: 4px;
 }
 
 

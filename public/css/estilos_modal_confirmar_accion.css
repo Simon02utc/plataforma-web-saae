@@ -32,7 +32,6 @@
     transition: background-color 0.3s ease;
 }
 
-
 @keyframes modalShowConfirmacionAccion {
     from{
         opacity: 0;
@@ -45,25 +44,26 @@
     }
 }
 
-.btn-cerrar-modal-confirmacion {
+.botones-superiores-modal-confirmacion {
     position: absolute;
     top: 6px;
     right: 6px;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
     z-index: 10;
     background-color: #F44336;
-    color: #fff;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 32px;
-    font-weight: bold;
-    line-height: 0;
-    transition: background-color 0.3s;
+    border-radius: 50%;
+}
+
+.btn-cerrar-modal-confirmacion {
+    color: #fff;
+    font-size: 17px;
+
+    border: none;
+    cursor: pointer;
 }
 
 .contenedor-modal-confirmacion h2 {
@@ -119,12 +119,12 @@
     justify-content: center;
     align-items: center;
 
-    width: 140px;
+    width: 120px;
     min-height: 40px;
     padding: 0px 10px;
     gap: 4px;
 
-    font-size: var(--font-size-texto-normal);
+    font-size: var(--font-size-subtexto);
     font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     text-decoration: none;

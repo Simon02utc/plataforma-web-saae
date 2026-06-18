@@ -586,14 +586,23 @@ function initTablaAdministradores() {
 
     //ELIMIANR UN ADMINISTRADOR
     async function eliminarAdministrador(id, button) {
-        const ok = confirm(
-            `¿Seguro que quieres eliminar el administrador #${id}?\n\n` +
-            `1. Si el personal tiene registros de eventos o acciones en la plataforma, no podra eliminarse, ya que se utilizan para auditoría.\n` +
-            `2. Se recomienda el desactivar la cuenta del administrador.\n` +
-            `3. Si en verdad deseas eliminarlo, primero elimina sus vinculos o asignaciones que se le han echo.\n` +
-            `4. Esta acción eliminará el registro del administrador.\n` +
-            `5. Esta acción no se puede deshacer.`
-        );
+
+        // modal de confirmacion
+        const ok = await modalConfirmarAccion({
+            titulo: 'Eliminar administrador',
+            mensaje: `
+                <p>¿Seguro que quieres eliminar el administrador #${id}?</p>
+                <ul>
+                    <li>Si el administrador tiene registros de eventos o acciones en la plataforma, no podra eliminarse, ya que se utilizan para auditoría.</li>
+                    <li>Se recomienda el desactivar la cuenta del personal.</li>
+                    <li>Si en verdad deseas eliminarlo, primero elimina sus vinculos o asignaciones que se le han echo.</li>
+                    <li>Esta acción no se puede deshacer. Por ello, verifica por ultima vez al administrador.</li>
+                </ul>
+            `,
+            txtConfirmar: 'Sí, eliminar',
+            tipo: 'eliminar-desactivar'
+        });
+
         if (!ok) return;
 
         try {
