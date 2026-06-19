@@ -261,7 +261,7 @@ function initTablaEstudiantes() {
 
             if (esCorreoInstitucional && !cuentaActiva) {
                 accionCorreoInstitucionalHtml = `
-                    <button type="button" class="btn-asignar-elementos-item btn-reenviar-activacion-estudiante" data-id="${it.id}">
+                    <button type="button" class="btn-asignar-elementos-item btn-reenviar-activacion-estudiante" data-id="${it.id}" title="Reenviar enlace de activación de cuenta">
                         <i class="fa-solid fa-paper-plane"></i>
                         <span class="spinner-tabla"></span>
                     </button>
@@ -274,7 +274,7 @@ function initTablaEstudiantes() {
                 `;
             } else if (!correo && numeroControlFormal && !cuentaActiva) {
                 accionCorreoInstitucionalHtml = `
-                    <button type="button" class="btn-asignar-elementos-item btn-generar-correo-institucional-estudiante" data-id="${it.id}">
+                    <button type="button" class="btn-asignar-elementos-item btn-generar-correo-institucional-estudiante" data-id="${it.id}" title="Generar correo insitucional y envio de enlace">
                         <i class="fa-solid fa-at"></i>
                         <span class="spinner-tabla"></span>
                     </button>
@@ -319,17 +319,17 @@ function initTablaEstudiantes() {
                     </td>
                     <td>
                         <div class="botones-tabla">
-                            <button type="button" class="btn-ver-detalles-item btn-gestionar-asignacion-estudiante" data-id="${it.id}">
+                            <button type="button" class="btn-ver-detalles-item btn-gestionar-asignacion-estudiante" data-id="${it.id}" title="Asignar estudiante con personal">
                                 <i class="fa-solid fa-user-group"></i>
                             </button>
-                            <button type="button" class="btn-editar-item btn-editar-estudiante" data-id="${it.id}">
+                            <button type="button" class="btn-editar-item btn-editar-estudiante" data-id="${it.id}" title="Editar datos del estudiante">
                                 <i class="fa-solid fa-pen-to-square"></i>
                             </button>
                         </div>
                     </td>
                     <td>
                         <div class="botones-tabla">
-                            <button type="button" class="btn-eliminar-item btn-eliminar-estudiante" data-id="${it.id}">
+                            <button type="button" class="btn-eliminar-item btn-eliminar-estudiante" data-id="${it.id}" title="Eliminar estudiante">
                                 <i class="fa-solid fa-trash"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
@@ -687,7 +687,7 @@ function initTablaEstudiantes() {
                             <span class="asignacion-datos"> | ${escapeHtml(a.nombre_personal || '—')} | ${escapeHtml(a.email_personal || '—')}</span>
                         </div>
                         <div class="asignacion-acciones">
-                            <button type="button" class="btn-asignacion btn-desactivar-asignacion-estudiante btn-desactivar" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-desactivar-asignacion-estudiante btn-desactivar" title="Desactivar asignación con el personal" data-id="${a.id}">
                                 <i class="fa-solid fa-ban"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
@@ -705,11 +705,11 @@ function initTablaEstudiantes() {
                             <span class="asignacion-datos"> | ${escapeHtml(a.nombre_personal || '—')} | ${escapeHtml(a.email_personal || '—')}</span>
                         </div>
                         <div class="asignacion-acciones">
-                            <button type="button" class="btn-asignacion btn-reactivar-asignacion-estudiante btn-reactivar" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-reactivar-asignacion-estudiante btn-reactivar" title="Reactivar asignación con el personal" data-id="${a.id}">
                                 <i class="fa-solid fa-rotate-left"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
-                            <button type="button" class="btn-asignacion btn-eliminar-definitivo-asignacion-estudiante btn-eliminar" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-eliminar-definitivo-asignacion-estudiante btn-eliminar" title="Eliminar asignación con el personal" data-id="${a.id}">
                                 <i class="fa-solid fa-trash"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
@@ -745,12 +745,12 @@ function initTablaEstudiantes() {
                             <div class="input-box-editar">
                                 <div class="input-box">
                                     <select class="input-field" name="personal_id" required>
-                                        <option value="">-- Selecciona un personal --</option>
+                                        <option class="option-input-field-select" value="">-- Selecciona un personal --</option>
                                         ${opcionesPersonal}
                                     </select>
 
                                     <select class="input-field" name="role_id" required>
-                                        <option value="">-- Selecciona su rol --</option>
+                                        <option class="option-input-field-select" value="">-- Selecciona su rol --</option>
                                         ${opcionesRoles}
                                     </select>
                                 </div>
@@ -830,8 +830,9 @@ function initTablaEstudiantes() {
                         mensaje: `
                             <p>¿Seguro que quieres desactivar la asignación del estudiante con el personal?</p>
                             <ul>
-                                <li>Si el estudiante no esta asignado con ningun personal, no se podra dar seguimiento, gestionar y análizar su asistencia escolar, ademas las alertas de asistencia.</li>
-                                <li>Si el estudiante no esta asignado con ningun personal, no se podran gestionar sus justificantes.</li>
+                                <li>Si el estudiante no esta asignado con ningun personal, no se podra dar un correcto seguimiento en la gestión de su asistencia, justificantes y alertas.</li>
+                                <li>Esta acción podria causar problemas si no se verifica correctamente.</li>
+                                <li>Una vez desactivada la asignación, podras volver a reactivarla.</li>
                             </ul>
                         `,
                         txtConfirmar: 'Si, desactivar',
@@ -909,7 +910,8 @@ function initTablaEstudiantes() {
                         mensaje: `
                             <p>¿Eliminar definitivamente esta asignación?</p>
                             <ul>
-                                <li>El seguimiento de su asistencia, alertas y justifiantes ya no estaran disponibles para dicho personal.</li>
+                                <li>El seguimiento de su asistencia, justifiantes y alertas, ya no estaran disponibles para dicho personal.</li>
+                                <li>Elimina esta asignación cuando el estudiante ya no requiera un seguimiento en la gestión de su asistencia.</li>
                                 <li>Esta acción no se puede deshacer.</li>
                             </ul>
                         `,

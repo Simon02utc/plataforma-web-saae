@@ -246,17 +246,17 @@ function initTablaPersonal() {
                 </td>
                 <td>
                     <div class="botones-tabla">
-                        <button type="button" class="btn-ver-detalles-item btn-ver-estudiantes-asignados-personal" data-id="${it.id}">
+                        <button type="button" class="btn-ver-detalles-item btn-ver-estudiantes-asignados-personal" title="Asignar estudiantes al personal" data-id="${it.id}">
                             <i class="fa-solid fa-user-group"></i>
                         </button>
-                        <button type="button" class="btn-editar-item btn-editar-personal" data-id="${it.id}">
+                        <button type="button" class="btn-editar-item btn-editar-personal" title="Editar personal" data-id="${it.id}">
                             <i class="fa-solid fa-pen-to-square"></i>
                         </button>
                     </div>
                 </td>
                 <td>
                     <div class="botones-tabla">
-                    <button type="button" class="btn-eliminar-item btn-eliminar-personal" data-id="${it.id}">
+                    <button type="button" class="btn-eliminar-item btn-eliminar-personal" title="Eliminar personal" data-id="${it.id}">
                         <i class="fa-solid fa-trash"></i>
                         <span class="spinner-tabla"></span>
                     </button>
@@ -634,7 +634,7 @@ function initTablaPersonal() {
                             <span class="asignacion-datos"> | ${escapeHtml(a.numero_control || '—')} | ${escapeHtml(a.nombre_estudiante || '—')}</span>
                         </div>
                         <div class="asignacion-acciones">
-                            <button type="button" class="btn-asignacion btn-desactivar-asignacion-personal btn-desactivar" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-desactivar-asignacion-personal btn-desactivar" title="Desactivar asignación con el estudiante" data-id="${a.id}">
                                 <i class="fa-solid fa-ban"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
@@ -653,12 +653,12 @@ function initTablaPersonal() {
                             <span class="asignacion-datos"> | ${escapeHtml(a.numero_control || '—')} | ${escapeHtml(a.nombre_estudiante || '—')}</span>
                         </div>
                         <div class="asignacion-acciones">
-                            <button type="button" class="btn-asignacion btn-reactivar-asignacion-personal btn-reactivar" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-reactivar-asignacion-personal btn-reactivar" title="Reactivar asignación con el estudiante" data-id="${a.id}">
                                 <i class="fa-solid fa-rotate-left"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
 
-                            <button type="button" class="btn-asignacion btn-eliminar-definitivo-asignacion-personal btn-eliminar" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-eliminar-definitivo-asignacion-personal btn-eliminar" title="Eliminar asignación con el estudiante" data-id="${a.id}">
                                 <i class="fa-solid fa-trash"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
@@ -728,7 +728,22 @@ function initTablaPersonal() {
 
             document.querySelectorAll('.btn-desactivar-asignacion-personal').forEach((btn) => {
                 btn.addEventListener('click', async () => {
-                    const ok = confirm('¿Desactivar esta asignación?');
+
+                     // modal de confirmacion
+                    const ok = await modalConfirmarAccion({
+                        titulo: 'Desactivar esta asignación',
+                        mensaje: `
+                            <p>¿Seguro que quieres desactivar la asignación con el estudiante?</p>
+                            <ul>
+                                <li>Si el estudiante no esta asignado con ningun personal, no se podra dar un correcto seguimiento en la gestión de su asistencia, justificantes y alertas.</li>
+                                <li>Esta acción podria causar problemas si no se verifica correctamente.</li>
+                                <li>Una vez desactivada la asignación, podras volver a reactivarla.</li>
+                            </ul>
+                        `,
+                        txtConfirmar: 'Si, desactivar',
+                        tipo: 'eliminar-desactivar'
+                    });
+
                     if (!ok) return;
 
                     setLoadingTabla(btn, true);
@@ -753,8 +768,22 @@ function initTablaPersonal() {
 
             document.querySelectorAll('.btn-reactivar-asignacion-personal').forEach((btn) => {
                 btn.addEventListener('click', async () => {
-                    const ok = confirm('¿Reactivar esta asignación?');
+
+                    // modal de confirmacion
+                    const ok = await modalConfirmarAccion({
+                        titulo: 'Reactivar esta asignación',
+                        mensaje: `
+                            <p>¿Quieres reactivar esta asignacion con el estudiante?</p>
+                            <ul>
+                                <li>El seguimiento de su asistencia, justifiantes y alertas, le estaran nuevamente disponibles.</li>
+                            </ul>
+                        `,
+                        txtConfirmar: 'Si, reactivar',
+                        tipo: 'aceptar-enviar'
+                    });
+
                     if (!ok) return;
+
 
                     setLoadingTabla(btn, true);
 
@@ -778,7 +807,22 @@ function initTablaPersonal() {
 
             document.querySelectorAll('.btn-eliminar-definitivo-asignacion-personal').forEach((btn) => {
                 btn.addEventListener('click', async () => {
-                    const ok = confirm('¿Eliminar definitivamente esta asignación?');
+                    
+                    // modal de confirmacion
+                    const ok = await modalConfirmarAccion({
+                        titulo: 'Eliminar esta asignación',
+                        mensaje: `
+                            <p>¿Eliminar definitivamente esta asignación?</p>
+                            <ul>
+                                <li>El seguimiento de su asistencia, justifiantes y alertas, ya no estaran disponibles para dicho personal.</li>
+                                <li>Elimina esta asignación cuando el estudiante ya no requiera un seguimiento en la gestión de su asistencia.</li>
+                                <li>Esta acción no se puede deshacer.</li>
+                            </ul>
+                        `,
+                        txtConfirmar: 'Si, eliminar',
+                        tipo: 'eliminar-desactivar'
+                    });
+
                     if (!ok) return;
 
                     setLoadingTabla(btn, true);

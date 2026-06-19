@@ -46,7 +46,6 @@ body.loaded .loader-wrapper {
     font-family: var(--subtitle-font);
     font-size: var(--font-size-subtitulos);
     color: rgba(214, 219, 223, 1.0);
-    font-weight: var(--font-weight-700);
     animation: blink-p 1.8s ease infinite;
 }
 

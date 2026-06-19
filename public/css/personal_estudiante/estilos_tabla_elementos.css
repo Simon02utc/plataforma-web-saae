@@ -398,7 +398,6 @@
 }
 
 .tabla-contenido tr:hover td {
-    cursor: pointer;
     background-color: var(--color-hover-td-tabla);
 }
 
@@ -1006,7 +1005,7 @@
     display: none;
     margin-left: 2px;
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     color: var(--color-texto-spinner);
 }

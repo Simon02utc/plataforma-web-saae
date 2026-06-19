@@ -97,8 +97,8 @@ html {
         /*Barra de navegacion lateral privada*/
         --font-size-cel-texto-titulo-barra-lateral-navegacion: 17px;
 
-        --font-size-cel-texto-paginas-barra-lateral-navegacion: 14px;
-        --font-size-cel-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 14px;
+        --font-size-cel-texto-paginas-barra-lateral-navegacion: 15px;
+        --font-size-cel-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 15px;
         /*-----------------------------------*/
 
         --font-size-cel-titulo-presentacion-plataforma: 35px;
@@ -106,11 +106,11 @@ html {
         --font-size-cel-titulos: 20px;
         --font-size-cel-subtitulos: 18px;
         --font-size-cel-mini-titulos: 16px;
-        --font-size-cel-mini-subtitulos: 12px;
+        --font-size-cel-mini-subtitulos: 13px;
 
-        --font-size-cel-texto-normal: 14px;
-        --font-size-cel-subtexto: 12px; 
-        --font-size-cel-mini-texto: 10px;
+        --font-size-cel-texto-normal: 15px;
+        --font-size-cel-subtexto: 13px; 
+        --font-size-cel-mini-texto: 11px;
 
         --font-size-cel-titulos-pie-pagina: 14px;
         --font-size-cel-texto-enlaces-pie-pagina: 13px;
@@ -413,7 +413,7 @@ html {
 
         --color-borde-select-buscar-tabla: rgba(27, 57, 106, 0.14);
         --color-fondo-select-buscar-tabla: rgba(255, 255, 255, 1.0);
-        --color-fondo-select-principal: rgba(27, 57, 106, 0.2);
+        --color-fondo-select-principal: rgba(27, 57, 106, 0.08);
         --color-texto-select-buscar-tabla: rgba(51, 51, 51, 1.0);
         --color-borde-select-buscar-tabla-hover: rgba(27, 57, 106, 0.4);
         --color-borde-select-buscar-tabla-focus: var(--color-principal);

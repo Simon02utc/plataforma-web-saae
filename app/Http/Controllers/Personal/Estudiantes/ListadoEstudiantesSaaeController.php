@@ -252,7 +252,7 @@ class ListadoEstudiantesSaaeController extends Controller
 
         if (!$personalValido) {
             return response()->json([
-                'message' => 'El personal seleccionado no tiene asignado ese rol en el sistema.'
+                'message' => 'El personal seleccionado no tiene asignado ese rol.'
             ], 422);
         }
 

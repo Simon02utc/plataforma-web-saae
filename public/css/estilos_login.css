@@ -375,7 +375,7 @@ select .select_sexo:focus {
     border: solid 2px transparent;
 
     font-size: var(--font-size-texto-normal);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
 
     transition: border-color 0.3s ease-out , color 0.3s ease-out, background-color 0.3s ease-out, gap 0.3s ease-out, transform 0.2s ease-out, box-shadow 0.2s ease-out;
@@ -444,7 +444,7 @@ select .select_sexo:focus {
     display: none;
     margin-left: 2px;
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     color: var(--color-texto-spinner);
 }

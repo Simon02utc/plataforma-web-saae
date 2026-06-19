@@ -425,6 +425,7 @@
 }
 
 @media (max-width: 1118px) {
+
     .form-editar-contenido .contenedor-detalles-formulario { 
         grid-template-columns: 1fr;
     }
@@ -559,7 +560,7 @@
 
 .asignacion-badge {
     font-size: var(--font-size-mini-texto);
-    font-weight: var(--font-weight-700);
+    font-weight: var(--font-weight-500);
     padding: 4px 6px;
     border-radius: 50px;
     text-transform: uppercase;
@@ -568,14 +569,14 @@
 }
 
 .asignacion-badge.activa {
-    border: solid 1px  rgba(0, 150, 136, 0.4); /*#009688*/
-    background: rgba(0, 150, 136, 0.1);
+    /*border: solid 1px  rgba(0, 150, 136, 0.4); /*#009688*/
+    background: rgba(0, 150, 136, 0.2);
     color: #1F7A4D;
 }
 
 .asignacion-badge.inactiva {
-    border: solid 1px rgba(180, 35, 24, 0.4); /*#B42318*/
-    background-color: rgba(180, 35, 24, 0.1);
+    /*border: solid 1px rgba(180, 35, 24, 0.4); /*#B42318*/
+    background-color: rgba(180, 35, 24, 0.2);
     color: #B42318;
 }
 
@@ -1115,7 +1116,7 @@ select.input-field {
     display: none;
     margin-left: 4px;
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     color: var(--color-texto-spinner);
 }
@@ -1214,6 +1215,11 @@ select.input-field {
 
 
     /*============Forma de los formularios===========*/
+    .col-2 .form-0 {
+        padding-block: 15px;
+        padding-inline: 10px;
+    }
+
     .col-2 .form-1, .col-2 .form-2, .col-2 .form-3 {
         padding-inline: 10px;
         padding-block: 20px;
