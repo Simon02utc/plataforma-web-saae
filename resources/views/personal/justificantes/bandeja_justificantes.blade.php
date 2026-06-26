@@ -92,7 +92,7 @@
                         <div class="contenedor-tabla">
                             <table class="tabla-contenido" id="tabla-justificantes-personal"
                                 data-url-tabla-justificantes="{{ route('grup_personal.grup_justificantes.name_tabla_justificantes') }}"
-                                data-url-ver-justificante="{{ route('grup_personal.grup_justificantes.name_ver_justificante', ['id' => '__ID__']) }}"
+                                data-url-ver-detalles-justificante="{{ route('grup_personal.grup_justificantes.name_ver_justificante', ['id' => '__ID__']) }}"
                                 data-url-aprobar-justificante="{{ route('grup_personal.grup_justificantes.name_aprobar_justificante', ['id' => '__ID__']) }}"
                                 data-url-rechazar-justificante="{{ route('grup_personal.grup_justificantes.name_rechazar_justificante', ['id' => '__ID__']) }}">
                                 <thead>

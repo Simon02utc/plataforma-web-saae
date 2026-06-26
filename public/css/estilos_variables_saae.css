@@ -53,69 +53,70 @@ html {
 
     /*===========Tamaños de letra============*/
 
-    /*--------COMPUTADORAS--------*/
-        /*Barra de navegacion publica*/
-        --font-size-texto-paginas-barra-navegacion: 17px;
-        --font-size-texto-paginas-menu-submenu-desplegable: 17px;
-        /*---------------------------*/
+        /*--------COMPUTADORAS--------*/
+            /*Barra de navegacion publica*/
+            --font-size-texto-paginas-barra-navegacion: 17px;
+            --font-size-texto-paginas-menu-submenu-desplegable: 17px;
+            /*---------------------------*/
 
 
-        /*Barra de navegacion lateral privada*/
-        --font-size-texto-titulo-barra-lateral-navegacion: 20px;
+            /*Barra de navegacion lateral privada*/
+            --font-size-texto-titulo-barra-lateral-navegacion: 20px;
 
-        --font-size-texto-paginas-barra-lateral-navegacion: 16px;
-        --font-size-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 16px;
-        /*-----------------------------------*/
-
-
-        --font-size-titulo-presentacion-plataforma: 50px;
-        --font-size-titulo-pagina: 28px;
-        --font-size-titulos: 24px;
-        --font-size-subtitulos: 20px;
-        --font-size-mini-titulos: 18px;
-        --font-size-mini-subtitulos: 16px;
-
-        --font-size-texto-normal: 17px;
-        --font-size-subtexto: 15px; 
-        --font-size-mini-texto: 13px;
-        
-        --font-size-titulos-pie-pagina: 14px;
-        --font-size-texto-enlaces-pie-pagina: 14px;
-        --font-size-texto-pie-pagina: 14px;
-        --font-size-texto-pie-pagina-2: 15px;
+            --font-size-texto-paginas-barra-lateral-navegacion: 16px;
+            --font-size-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 16px;
+            /*-----------------------------------*/
 
 
-        --icono-boton-scroll-pagina: 26px;
+            --font-size-titulo-presentacion-plataforma: 50px;
+            --font-size-titulo-pagina: 30px;
+            --font-size-titulos: 24px;
+            --font-size-subtitulos: 20px;
+            --font-size-mini-titulos: 18px;
+            --font-size-mini-subtitulos: 16px;
+
+            --font-size-texto-normal: 17px;
+            --font-size-subtexto: 16px; 
+            --font-size-mini-texto: 14px;
+            
+            --font-size-titulos-pie-pagina: 14px;
+            --font-size-texto-enlaces-pie-pagina: 14px;
+            --font-size-texto-pie-pagina: 14px;
+            --font-size-texto-pie-pagina-2: 15px;
 
 
-    /*--------CELULARES--------*/
-        /*Barra de navegacion publica*/
-        --font-size-cel-texto-paginas-barra-navegacion: 15px;
-        --font-size-cel-texto-paginas-menu-submenu-desplegable: 15px;
-        /*---------------------------*/
+            --icono-boton-scroll-pagina: 26px;
 
-        /*Barra de navegacion lateral privada*/
-        --font-size-cel-texto-titulo-barra-lateral-navegacion: 17px;
 
-        --font-size-cel-texto-paginas-barra-lateral-navegacion: 15px;
-        --font-size-cel-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 15px;
-        /*-----------------------------------*/
+        /*--------CELULARES--------*/
+            /*Barra de navegacion publica*/
+            --font-size-cel-texto-paginas-barra-navegacion: 15px;
+            --font-size-cel-texto-paginas-menu-submenu-desplegable: 15px;
+            /*---------------------------*/
 
-        --font-size-cel-titulo-presentacion-plataforma: 35px;
-        --font-size-cel-titulo-pagina: 26px;
-        --font-size-cel-titulos: 20px;
-        --font-size-cel-subtitulos: 18px;
-        --font-size-cel-mini-titulos: 16px;
-        --font-size-cel-mini-subtitulos: 13px;
+            /*Barra de navegacion lateral privada*/
+            --font-size-cel-texto-titulo-barra-lateral-navegacion: 17px;
 
-        --font-size-cel-texto-normal: 15px;
-        --font-size-cel-subtexto: 13px; 
-        --font-size-cel-mini-texto: 11px;
+            --font-size-cel-texto-paginas-barra-lateral-navegacion: 15px;
+            --font-size-cel-texto-paginas-menu-submenu-desplegable-barra-lateral-navegacion: 15px;
+            /*-----------------------------------*/
 
-        --font-size-cel-titulos-pie-pagina: 14px;
-        --font-size-cel-texto-enlaces-pie-pagina: 13px;
-        --font-size-cel-texto-pie-pagina: 13px;
-        --font-size-cel-texto-pie-pagina-2: 12px;
+            --font-size-cel-titulo-presentacion-plataforma: 35px;
+            --font-size-cel-titulo-pagina: 26px;
+            --font-size-cel-titulos: 20px;
+            --font-size-cel-subtitulos: 18px;
+            --font-size-cel-mini-titulos: 16px;
+            --font-size-cel-mini-subtitulos: 13px;
+
+            --font-size-cel-texto-normal: 15px;
+            --font-size-cel-subtexto: 14px; 
+            --font-size-cel-mini-texto: 12px;
+
+            --font-size-cel-titulos-pie-pagina: 14px;
+            --font-size-cel-texto-enlaces-pie-pagina: 13px;
+            --font-size-cel-texto-pie-pagina: 13px;
+            --font-size-cel-texto-pie-pagina-2: 12px;
+
     /*==========================================================*/
 
 

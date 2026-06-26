@@ -15,8 +15,8 @@
 
             <button type="button" class="btn-confirmar-cierre" id="btnConfirmarLogout">
                 <span>Sí, cerrar sesión</span>
-                <!-- <span class="spinner-boton-cerrar-sesion"></span>
-                <span class="texto-spinner-boton-cerrar-sesion">Espera</span> -->
+                <span class="spinner-boton-cerrar-sesion"></span>
+                <span class="texto-spinner-boton-cerrar-sesion">Espera</span>
             </button>
         </div>
 

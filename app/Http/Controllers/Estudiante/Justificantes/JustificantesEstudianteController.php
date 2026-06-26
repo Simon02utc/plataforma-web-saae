@@ -151,34 +151,34 @@ class JustificantesEstudianteController extends Controller
         $estudianteId = auth('estudiante')->id();
 
         $data = $request->validate(
-        [
-            'motivo' => ['required', 'string', 'max:150'],
-            'descripcion' => ['nullable', 'string', 'max:2000'],
-            'asistencias_ids' => ['required', 'array', 'min:1'],
-            'asistencias_ids.*' => ['required', 'integer', 'exists:asistencia_diaria,id'],
-            'archivo' => [
-                'required',
-                'file',
-                'mimes:pdf,jpg,jpeg,png',
-                'mimetypes:application/pdf,image/jpeg,image/png',
-                'max:6144'
+            [
+                'motivo' => ['required', 'string', 'max:150'],
+                'descripcion' => ['nullable', 'string', 'max:2000'],
+                'asistencias_ids' => ['required', 'array', 'min:1'],
+                'asistencias_ids.*' => ['required', 'integer', 'exists:asistencia_diaria,id'],
+                'archivo' => [
+                    'required',
+                    'file',
+                    'mimes:pdf,jpg,jpeg,png',
+                    'mimetypes:application/pdf,image/jpeg,image/png',
+                    'max:6144'
+                ],
             ],
-        ],
-        [
-            'motivo.required' => 'Escribe el motivo de tu justificante.',
+            [
+                'motivo.required' => 'Escribe el motivo de tu justificante.',
 
-            'asistencias_ids.required' => 'Selecciona al menos una falta a justificar.',
-            'asistencias_ids.array' => 'Las faltas seleccionadas no son válidas.',
-            'asistencias_ids.min' => 'Selecciona al menos una falta.',
+                'asistencias_ids.required' => 'Selecciona al menos una falta a justificar.',
+                'asistencias_ids.array' => 'Las faltas seleccionadas no son válidas.',
+                'asistencias_ids.min' => 'Selecciona al menos una falta.',
 
-            'archivo.required' => 'Debes adjuntar un archivo para validar tu justificante.',
-            'archivo.file' => 'El archivo enviado no es válido.',
-            'archivo.mimes' => 'Solo se permiten archivos PDF, JPG, JPEG o PNG.',
-            'archivo.max' => 'El tamaño máximo permitido es de 6 MB.',
+                'archivo.required' => 'Debes adjuntar un archivo para validar tu justificante.',
+                'archivo.file' => 'El archivo enviado no es válido.',
+                'archivo.mimes' => 'Solo se permiten archivos PDF, JPG, JPEG o PNG.',
+                'archivo.max' => 'El tamaño máximo permitido es de 6 MB.',
 
-            'descripcion.max' => 'La descripción no puede superar los 2000 caracteres.',
-        ]
-    );
+                'descripcion.max' => 'La descripción no puede superar los 2000 caracteres.',
+            ]
+        );
 
         return DB::transaction(function () use ($request, $data, $estudianteId) {
 
@@ -226,9 +226,13 @@ class JustificantesEstudianteController extends Controller
             $archivoNombre = null;
 
             if ($request->hasFile('archivo')) {
+
                 $archivo = $request->file('archivo');
-                $archivoNombre = $archivo->getClientOriginalName();
-                $archivoRuta = $archivo->store('justificantes_estudiantes', 'public');
+
+                $ext = $archivo->getClientOriginalExtension();
+                $archivoNombre = now()->format('Ymd_His').'_'.bin2hex(random_bytes(8)).'.'.$ext;
+
+                $archivoRuta = $archivo->storeAs('justificantes_estudiantes', $archivoNombre, 'local');
             }
 
             $justificante = JustificanteEstudiante::create([
@@ -259,7 +263,7 @@ class JustificantesEstudianteController extends Controller
     }
 
 
-    public function ver_justificante(int $id)
+    public function ver_detalles_justificante(int $id)
     {
         $estudianteId = auth('estudiante')->id();
 
@@ -269,24 +273,82 @@ class JustificantesEstudianteController extends Controller
             ->findOrFail($id);
 
         return response()->json([
-            'id' => $justificante->id,
-            'folio' => $justificante->folio,
-            'estado_justificante' => $justificante->estado,
-            'motivo' => $justificante->motivo,
-            'descripcion' => $justificante->descripcion,
-            'comentario_revision' => $justificante->comentario_revision,
-            'archivo_nombre' => $justificante->archivo_nombre,
-            'archivo_url' => $justificante->archivo_ruta
-                ? Storage::disk('public')->url($justificante->archivo_ruta)
-                : null,
-            'periodo' => $justificante->periodo?->nombre,
-            'fechas' => $justificante->detalles->map(function ($d) {
-                return [
-                    'fecha' => optional($d->fecha)->format('Y-m-d'),
-                    'estatus_asistencia' => $this->resolverEstatusAsistenciaTexto($d->asistencia),
-                ];
-            })->values(),
+            'data' => [
+                'id' => $justificante->id,
+                'folio' => $justificante->folio,
+                'estado_justificante' => $justificante->estado,
+                'motivo' => $justificante->motivo,
+                'descripcion' => $justificante->descripcion,
+                'comentario_revision' => $justificante->comentario_revision,
+                'archivo_nombre' => $justificante->archivo_nombre,
+
+                'archivo_url' => $justificante->archivo_ruta
+                    ? route('grup_estudiante.grup_justificantes.name_ver_archivo_justificante', $justificante->id)
+                    : null,
+
+                'archivo_descarga_url' => $justificante->archivo_ruta
+                    ? route('grup_estudiante.grup_justificantes.name_descargar_archivo_justificante', $justificante->id)
+                    : null,
+
+                'periodo' => $justificante->periodo?->nombre,
+                'fechas' => $justificante->detalles->map(function ($d) {
+                    return [
+                        'fecha' => optional($d->fecha)->format('Y-m-d'),
+                        'estatus_asistencia' => $this->resolverEstatusAsistenciaTexto($d->asistencia),
+                    ];
+                })->values(),
+            ]
         ]);
+    }
+
+
+    public function ver_archivo_justificante(int $id)
+    {
+        $estudianteId = auth('estudiante')->id();
+
+        $justificante = JustificanteEstudiante::where('estudiante_id', $estudianteId)
+            ->findOrFail($id);
+
+        if (empty($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'No hay un archivo asociado.'
+            ], 404);
+        }
+
+        if (!Storage::exists($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'El archivo ya no existe.'
+            ], 404);
+        }
+
+        $rutaCompleta = Storage::path($justificante->archivo_ruta);
+
+        return response()->file($rutaCompleta);
+    }
+
+
+    public function descargar_archivo_justificante(int $id)
+    {
+        $estudianteId = auth('estudiante')->id();
+
+        $justificante = JustificanteEstudiante::where('estudiante_id', $estudianteId)
+            ->findOrFail($id);
+
+        if (empty($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'No hay un archivo asociado para descargar.'
+            ], 404);
+        }
+
+        if (!Storage::exists($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'El archivo ya no existe para descargar.'
+            ], 404);
+        }
+
+        $downloadName = $justificante->archivo_nombre;
+
+        return Storage::download($justificante->archivo_ruta, $downloadName);
     }
 
 

@@ -281,7 +281,7 @@ function estadoJustificante(estado_justificante) {
 }
 
 
-
+//======TABLA DE JUSTIFICANTES DEL ESTUDIANTE======
 function initTablaJustificantesEstudiante() {
     const tabla = document.getElementById('tabla-justificantes-estudiante');
     const btnRefrescar = document.getElementById('btn-refrescar-tabla-justificantes');
@@ -300,11 +300,11 @@ function initTablaJustificantesEstudiante() {
 
     const tbody = tabla.querySelector('tbody');
 
-    const cfg = {
+    const cfgTabla = {
         urlTabla: tabla.dataset.urlTablaJustificantes,
         urlFaltas: tabla.dataset.urlFaltasDisponibles,
         urlGuardar: tabla.dataset.urlGuardarJustificante,
-        urlVer: tabla.dataset.urlVerJustificante,
+        urlVerDetalles: tabla.dataset.urlVerDetallesJustificante,
     };
 
     let aborter = null;
@@ -335,7 +335,7 @@ function initTablaJustificantesEstudiante() {
                 <td class="td-descripcion">${escapeHtml(it.comentario_revision || '—')}</td>
                 <td>
                     <div class="botones-tabla">
-                        <button type="button" class="btn-ver-detalles-item btn-ver-justificante" data-id="${it.id}">
+                        <button type="button" class="btn-ver-detalles-item btn-ver-detalles-justificante" data-id="${it.id}">
                             <i class="fa-regular fa-eye"></i>
                         </button>
                     </div>
@@ -376,6 +376,8 @@ function initTablaJustificantesEstudiante() {
         document.getElementById('resumen-justificantes-cancelados').textContent = cancelados;
     }
 
+
+    // TABLA DE JUSTIFICANTES
     async function cargarTabla(page = 1) {
         tbody.innerHTML = `<tr><td colspan="8" class="td-estado-tabla">Cargando contenido…</td></tr>`;
 
@@ -383,7 +385,7 @@ function initTablaJustificantesEstudiante() {
         aborter = new AbortController();
 
         try {
-            const url = new URL(cfg.urlTabla, window.location.origin);
+            const url = new URL(cfgTabla.urlTabla, window.location.origin);
 
             const buscar = inputBuscar?.value.trim() || '';
             const estado = filtroEstado?.value || '';
@@ -411,75 +413,175 @@ function initTablaJustificantesEstudiante() {
         }
     }
 
-    tabla.addEventListener('click', async (ev) => {
-        const btnVer = ev.target.closest('.btn-ver-justificante');
-        if (!btnVer) return;
 
-        const url = buildUrl(cfg.urlVer, btnVer.dataset.id);
-        const r = await fetchJson(url);
-        if (!r.ok) return;
+    //VER DETALLES DEL JUSTIFICANTE
+    async function verDetalle(id) {
+        try {
 
-        const d = r.data || {};
+            const r = await fetchJson(buildUrl(cfgTabla.urlVerDetalles, id));
+            if (!r.ok) return;
 
-        displayModalDetalles(`
-            <h3 class="titulo-modal-detalles">Detalle del justificante #${escapeHtml(d.id || '')}</h3>
+            const d = r.data?.data;
+            if (!d) {
+                displayMensajeToast('<p class="error">No se pudo obtener los detalles del justificantes.</p>')
+                return;
+            }
 
-            <div class="scroll-contenido-modal-detalles">
+            displayModalDetalles(`
+                <h3 class="titulo-modal-detalles">Detalle del justificante #${escapeHtml(d.id || '')}</h3>
 
-                <div class="contenedor-detalles">
-                    <div class="caja-detalle">
-                        <p class="nombre-detalle">Folio:</p>
-                        <p class="info-detalle">${escapeHtml(d.folio || '—')}</p>
+                <div class="scroll-contenido-modal-detalles">
 
-                        <div class="contenedor-botones-modal-justificante">
-                            ${d.archivo_url
-                                ? `<a class="btn-justificante btn-ver-justificante" href="${escapeHtml(d.archivo_url)}" draggable="false"           ondragstart="return false;" target="_blank">
-                                    <i class="fa-solid fa-file"></i> Ver archivo
-                                    </a>`
-                                : 'Sin archivo'}
+                    <div class="contenedor-detalles">
+                        <div class="caja-detalle">
+                            <p class="nombre-detalle">Folio:</p>
+                            <p class="info-detalle">${escapeHtml(d.folio || '—')}</p>
+
+                            <div class="contenedor-botones-modal-justificante">
+                                ${d.archivo_url
+                                    ? `<button type="button" class="btn-justificante ver-archivo" id="btn-ver-archivo-justificante" data-url="${escapeHtml(d.archivo_url)}">
+                                            <span class="texto-btn">Ver archivo</span>
+                                            <i class="fa-solid fa-file"></i>
+                                            <span class="spinner"></span>
+                                            <span class="texto-spinner">Mostrando</span>
+                                        </button>`
+                                    : '<i class="fa-solid fa-file-circle-xmark"></i> Sin archivo | '}
+
+                                ${d.archivo_descarga_url
+                                    ? `<button type="button" class="btn-justificante descargar-archivo"  id="btn-descargar-archivo-justificante" data-url="${escapeHtml(d.archivo_descarga_url)}">
+                                            <i class="fa-solid fa-file-arrow-down"></i>
+                                            <span class="texto-btn">Descargar archivo</span>
+                                            <span class="spinner"></span>
+                                            <span class="texto-spinner">Descargando</span>
+                                        </button>`
+                                    : '<i class="fa-solid fa-file-circle-xmark"></i> Sin archivo'}
+                            </div>
+
                         </div>
-                    </div>
 
-                    <div class="caja-detalle">
-                        <p class="nombre-detalle">Estado:</p>
-                        <p class="info-detalle">${estadoJustificante(d.estado_justificante)}</p>
-                    </div>
+                        <div class="caja-detalle">
+                            <p class="nombre-detalle">Estado:</p>
+                            <p class="info-detalle">${estadoJustificante(d.estado_justificante)}</p>
+                        </div>
 
-                    <div class="caja-detalle">
-                        <p class="nombre-detalle">Periodo:</p>
-                        <p class="info-detalle">${escapeHtml(d.periodo || '—')}</p>
-                    </div>
+                        <div class="caja-detalle">
+                            <p class="nombre-detalle">Periodo:</p>
+                            <p class="info-detalle">${escapeHtml(d.periodo || '—')}</p>
+                        </div>
 
-                    <div class="caja-detalle">
-                        <p class="nombre-detalle">Fechas:</p>
-                        <p class="info-detalle">
-                            ${(d.fechas || []).map(f => `${fmtSoloFecha(f.fecha)} - ${estadoAsistencia(f.estatus_asistencia)}`).join('<br>') || '—'}
-                        </p>
-                    </div>
+                        <div class="caja-detalle">
+                            <p class="nombre-detalle">Fechas:</p>
+                            <p class="info-detalle">
+                                ${(d.fechas || []).map(f => `${fmtSoloFecha(f.fecha)} - ${estadoAsistencia(f.estatus_asistencia)}`).join('<br>') || '—'}
+                            </p>
+                        </div>
 
-                    <div class="caja-detalle">
-                        <p class="nombre-detalle">Motivo:</p>
-                        <p class="info-detalle">${escapeHtml(d.motivo || '—')}</p>
-                    </div>
+                        <div class="caja-detalle">
+                            <p class="nombre-detalle">Motivo:</p>
+                            <p class="info-detalle">${escapeHtml(d.motivo || '—')}</p>
+                        </div>
 
-                    <div class="caja-detalle">
-                        <p class="nombre-detalle">Descripción:</p>
-                        <p class="info-detalle">${escapeHtml(d.descripcion || 'Sin descripción.')}</p>
-                    </div>
+                        <div class="caja-detalle">
+                            <p class="nombre-detalle">Descripción:</p>
+                            <p class="info-detalle">${escapeHtml(d.descripcion || 'Sin descripción.')}</p>
+                        </div>
 
-                    <div class="caja-detalle">
-                        <p class="nombre-detalle">Comentario revisión:</p>
-                        <p class="info-detalle">${escapeHtml(d.comentario_revision || 'Sin comentario.')}</p>
-                    </div>
+                        <div class="caja-detalle">
+                            <p class="nombre-detalle">Comentario revisión:</p>
+                            <p class="info-detalle">${escapeHtml(d.comentario_revision || 'Sin comentario.')}</p>
+                        </div>
 
+                    </div>
                 </div>
-            </div>
-        `);
-    });
+            `);
+
+        } catch (err) {
+            console.error(err);
+            displayMensajeToast('<p class="error">Error de conexión al ver los detalles.</p>');
+        }
+
+    };
 
 
+    // VER ARCHIVO DEL JUSTIFICANTE
+    async function VerArchivoJustificante(url) {
+
+        try {
+
+            const res = await fetch(url, {
+                credentials: 'same-origin',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (!res.ok) {
+
+                const error = await res.json();
+
+                displayMensajeToast(
+                    `<p class="error">${escapeHtml(error.message)}</p>`
+                );
+
+                return;
+            }
+
+            window.open(url, '_blank');
+
+        } catch (err) {
+
+            console.error(err);
+
+            displayMensajeToast(
+                '<p class="error">Error al abrir el archivo.</p>'
+            );
+        }
+    }
+
+
+    // DESCARGAR ARCHIVO DEL JUSTIFICANTE
+    async function DescargarArchivoJustificante(url) {
+
+        try {
+
+            const res = await fetch(url, {
+                credentials: 'same-origin',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (!res.ok) {
+
+                const error = await res.json();
+
+                displayMensajeToast(
+                    `<p class="error">${escapeHtml(error.message)}</p>`
+                );
+
+                return;
+            }
+
+            window.location.href = url;
+
+            displayMensajeToast(`<p class="exito">Archivo descargado con éxito.</p>`);
+
+        } catch (err) {
+
+            console.error(err);
+
+            displayMensajeToast(
+                '<p class="error">Error al descargar el archivo.</p>'
+            );
+        }
+    }
+
+
+    // FORMULARIO PARA ENVIAR JUSTIFICANTES
     btnNuevoJustificante?.addEventListener('click', async () => {
-        const r = await fetchJson(cfg.urlFaltas);
+        const r = await fetchJson(cfgTabla.urlFaltas);
         if (!r.ok) return;
 
         const faltas = r.data?.data || [];
@@ -553,6 +655,7 @@ function initTablaJustificantesEstudiante() {
             </form>
         `);
 
+
         const form = document.getElementById('form-enviar-justificante');
 
         form?.addEventListener('submit', async (e) => {
@@ -571,7 +674,7 @@ function initTablaJustificantesEstudiante() {
             setLoadingFormulario(btnEnviar, true);
 
             try {
-                const response = await fetch(cfg.urlGuardar, {
+                const response = await fetch(cfgTabla.urlGuardar, {
                     method: 'POST',
                     body: formData,
                     headers: {
@@ -620,6 +723,40 @@ function initTablaJustificantesEstudiante() {
     });
 
 
+    //==================LISTENER PARA LA TABLA==================
+    tabla.addEventListener('click', async (ev) => {
+        
+        const btnVerDetalle = ev.target.closest('.btn-ver-detalles-justificante');
+        if (btnVerDetalle) {
+            verDetalle(btnVerDetalle.dataset.id);
+            return;
+        }
+
+    });
+
+
+    document.addEventListener('click', async (ev) => {
+
+        const btnDescargarArchivoJustificante = ev.target.closest('#btn-descargar-archivo-justificante');
+        if (!btnDescargarArchivoJustificante) return;
+
+        setLoadingFormulario(btnDescargarArchivoJustificante, true);
+        await DescargarArchivoJustificante(btnDescargarArchivoJustificante.dataset.url);
+        setLoadingFormulario(btnDescargarArchivoJustificante, false);
+    });
+
+
+    document.addEventListener('click', async (ev) => {
+
+        const btnVerArchivoJustificante = ev.target.closest('#btn-ver-archivo-justificante');
+        if (!btnVerArchivoJustificante) return;
+
+        setLoadingFormulario(btnVerArchivoJustificante, true);
+        await VerArchivoJustificante(btnVerArchivoJustificante.dataset.url);
+        setLoadingFormulario(btnVerArchivoJustificante, false);
+    });
+
+
     btnRefrescar?.addEventListener('click', async () => {
         setLoadingTabla(btnRefrescar, true);
         await cargarTabla(state.currentPage);
@@ -662,6 +799,8 @@ function initTablaJustificantesEstudiante() {
         if (state.currentPage >= state.lastPage) return;
         await cargarTabla(state.currentPage + 1);
     });
+
+    //==========================================================
 
     cargarTabla(1);
 }

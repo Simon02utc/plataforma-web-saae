@@ -1,8 +1,8 @@
-function setLoadingFormulario(button, isLoading) {
+function setLoadingCerrarSesion(button, isLoading) {
     const iconoBoton = button.querySelector('i');
-    const textoBoton = button.querySelector('span:not(.spinner):not(.texto-spinner)');
-    const spinner = button.querySelector('.spinner');
-    const textoSpinner = button.querySelector('.texto-spinner');
+    const textoBoton = button.querySelector('span:not(.spinner-boton-cerrar-sesion):not(.texto-spinner-boton-cerrar-sesion)');
+    const spinner = button.querySelector('.spinner-boton-cerrar-sesion');
+    const textoSpinner = button.querySelector('.texto-spinner-boton-cerrar-sesion');
 
     button.disabled = isLoading;
 
@@ -54,14 +54,14 @@ document.addEventListener('DOMContentLoaded', () => {
     /*=========== CONFIRMAR LOGOUT ===========*/
     btnConfirmar.addEventListener('click', async () => {
 
-        // setLoadingFormulario(btnConfirmar, true);
+        setLoadingCerrarSesion(btnConfirmar, true);
 
         //mostrar spinner manualmente
-        btnConfirmar.disabled = true;
-        btnConfirmar.innerHTML = `
-            <span class="spinner-boton-cerrar-sesion"></span>
-            <span>Espera</span>
-        `;
+        // btnConfirmar.disabled = true;
+        // btnConfirmar.innerHTML = `
+        //     <span class="spinner-boton-cerrar-sesion"></span>
+        //     <span>Espera</span>
+        // `;
         
         const csrfMeta =
             document.querySelector('meta[name="csrf-token"]');
@@ -97,10 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!response.ok){
                 cerrarModalCierreSesion();
 
-                btnConfirmar.disabled = false;
-                btnConfirmar.innerHTML = `<span>Sí, cerrar sesión</span>
-                <span class="spinner-boton-cerrar-sesion"></span>
-                <span class="texto-spinner-boton-cerrar-sesion">Espera</span>`;
+                // btnConfirmar.disabled = false;
+                // btnConfirmar.innerHTML = `<span>Sí, cerrar sesión</span>
+                // <span class="spinner-boton-cerrar-sesion"></span>
+                // <span class="texto-spinner-boton-cerrar-sesion">Espera</span>`;
+
+                setLoadingCerrarSesion(btnConfirmar, false);
 
                 displayModal(`<p class="error">Error al cerrar sesión (${response.status}).</p>`);
                 return;
@@ -122,12 +124,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
             displayMensajeToast(`<p class="error">Error de conexión. Intenta de nuevo.</p>`);
 
-            // setLoadingFormulario(btnConfirmar, false);
+            setLoadingCerrarSesion(btnConfirmar, false);
 
-            btnConfirmar.disabled = false;
-            btnConfirmar.innerHTML = `<span>Sí, cerrar sesión</span>
-                <span class="spinner-boton-cerrar-sesion"></span>
-                <span class="texto-spinner-boton-cerrar-sesion">Espera</span>`;
+            // btnConfirmar.disabled = false;
+            // btnConfirmar.innerHTML = `<span>Sí, cerrar sesión</span>
+            //     <span class="spinner-boton-cerrar-sesion"></span>
+            //     <span class="texto-spinner-boton-cerrar-sesion">Espera</span>`;
         }
 
     });

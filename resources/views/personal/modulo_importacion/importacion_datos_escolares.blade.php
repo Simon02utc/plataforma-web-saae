@@ -278,7 +278,7 @@
                     </p>
 
                     <div class="caja-botones-archivos-plantilla">
-                        <a class="btn-ver-plantilla deshabilitado" >
+                        <a class="btn-ver-plantilla" href="{{ route('grup_personal.name_ver_plantilla_datos_escolares') }}">
                             <i class="fa-solid fa-eye"></i> Plantilla
                         </a>
 

@@ -277,8 +277,12 @@ use App\Http\Controllers\Personal\Estudiantes\GenerarCorreoInstitucionalEstudian
 
                     Route::post('/guardar_enviar_justificante', [JustificantesEstudianteController::class, 'guardar_enviar_justificante'])->name('name_guardar_enviar_justificante');
 
-                    Route::get('/ver_justificante/{id}', [JustificantesEstudianteController::class, 'ver_justificante'])
-                    ->name('name_ver_justificante');
+                    Route::get('/ver_detalles_justificante/{id}', [JustificantesEstudianteController::class, 'ver_detalles_justificante'])
+                    ->name('name_ver_detalles_justificante');
+
+                    Route::get('descargar_archivo_justificante/{id}', [JustificantesEstudianteController::class, 'descargar_archivo_justificante'])->name('name_descargar_archivo_justificante');
+
+                    Route::get('ver_archivo_justificante/{id}', [JustificantesEstudianteController::class, 'ver_archivo_justificante'])->name('name_ver_archivo_justificante');
             });
 
 
@@ -457,6 +461,10 @@ use App\Http\Controllers\Personal\Estudiantes\GenerarCorreoInstitucionalEstudian
                     Route::get('/tabla_justificantes', [JustificantesPersonalController::class, 'tabla_justificantes'])->name('name_tabla_justificantes');
 
                     Route::get('/ver_justificante/{id}', [JustificantesPersonalController::class, 'ver_justificante'])->name('name_ver_justificante');
+
+                    Route::get('ver_archivo_justificante/{id}', [JustificantesPersonalController::class, 'ver_archivo_justificante'])->name('name_ver_archivo_justificante');
+
+                    Route::get('descargar_archivo_justificante/{id}', [JustificantesPersonalController::class, 'descargar_archivo_justificante'])->name('name_descargar_archivo_justificante');
 
                     Route::post('/aprobar_justificante/{id}', [JustificantesPersonalController::class, 'aprobar_justificante'])->name('name_aprobar_justificante');
 

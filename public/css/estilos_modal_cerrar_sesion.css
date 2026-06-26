@@ -142,7 +142,7 @@
 
 /*----Carga al precionar el boton----*/
 .spinner-boton-cerrar-sesion {
-    /* display: none; */
+    display: none;
     border: 4px solid rgba(0, 0, 0, 0.6);
     border-top: 4px solid #ffffff; /* Cambia este color según tu diseño */
     border-radius: 50%;
@@ -161,9 +161,9 @@
 }
 
 .texto-spinner-boton-cerrar-sesion {
-    /* display: none; */
+    display: none;
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-600);
+    font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     color: var(--color-texto-spinner);
 }

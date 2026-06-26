@@ -687,7 +687,7 @@ function initTablaEstudiantes() {
                             <span class="asignacion-datos"> | ${escapeHtml(a.nombre_personal || '—')} | ${escapeHtml(a.email_personal || '—')}</span>
                         </div>
                         <div class="asignacion-acciones">
-                            <button type="button" class="btn-asignacion btn-desactivar-asignacion-estudiante btn-desactivar" title="Desactivar asignación con el personal" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-desactivar" id="btn-desactivar-asignacion-estudiante" title="Desactivar asignación con el personal" data-id="${a.id}">
                                 <i class="fa-solid fa-ban"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
@@ -705,11 +705,11 @@ function initTablaEstudiantes() {
                             <span class="asignacion-datos"> | ${escapeHtml(a.nombre_personal || '—')} | ${escapeHtml(a.email_personal || '—')}</span>
                         </div>
                         <div class="asignacion-acciones">
-                            <button type="button" class="btn-asignacion btn-reactivar-asignacion-estudiante btn-reactivar" title="Reactivar asignación con el personal" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-reactivar" id="btn-reactivar-asignacion-estudiante" title="Reactivar asignación con el personal" data-id="${a.id}">
                                 <i class="fa-solid fa-rotate-left"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
-                            <button type="button" class="btn-asignacion btn-eliminar-definitivo-asignacion-estudiante btn-eliminar" title="Eliminar asignación con el personal" data-id="${a.id}">
+                            <button type="button" class="btn-asignacion btn-eliminar" id="btn-eliminar-definitivo-asignacion-estudiante" title="Eliminar asignación con el personal" data-id="${a.id}">
                                 <i class="fa-solid fa-trash"></i>
                                 <span class="spinner-tabla"></span>
                             </button>
@@ -821,7 +821,7 @@ function initTablaEstudiantes() {
                 }
             });
 
-            document.querySelectorAll('.btn-desactivar-asignacion-estudiante').forEach((btn) => {
+            document.querySelectorAll('#btn-desactivar-asignacion-estudiante').forEach((btn) => {
                 btn.addEventListener('click', async () => {
 
                     // modal de confirmacion
@@ -862,7 +862,8 @@ function initTablaEstudiantes() {
                 });
             });
 
-            document.querySelectorAll('.btn-reactivar-asignacion-estudiante').forEach((btn) => {
+
+            document.querySelectorAll('#btn-reactivar-asignacion-estudiante').forEach((btn) => {
                 btn.addEventListener('click', async () => {
 
                     // modal de confirmacion
@@ -901,7 +902,7 @@ function initTablaEstudiantes() {
                 });
             });
 
-            document.querySelectorAll('.btn-eliminar-definitivo-asignacion-estudiante').forEach((btn) => {
+            document.querySelectorAll('#btn-eliminar-definitivo-asignacion-estudiante').forEach((btn) => {
                 btn.addEventListener('click', async () => {
 
                     // modal de confirmacion

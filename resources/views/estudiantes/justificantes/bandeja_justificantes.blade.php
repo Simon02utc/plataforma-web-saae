@@ -96,7 +96,7 @@
                                 data-url-tabla-justificantes="{{ route('grup_estudiante.grup_justificantes.name_tabla_justificantes') }}"
                                 data-url-faltas-disponibles="{{ route('grup_estudiante.grup_justificantes.name_faltas_disponibles_justificante') }}"
                                 data-url-guardar-justificante="{{ route('grup_estudiante.grup_justificantes.name_guardar_enviar_justificante') }}"
-                                data-url-ver-justificante="{{ route('grup_estudiante.grup_justificantes.name_ver_justificante', ['id' => '__ID__']) }}">
+                                data-url-ver-detalles-justificante="{{ route('grup_estudiante.grup_justificantes.name_ver_detalles_justificante', ['id' => '__ID__']) }}">
                                 <thead>
                                     <tr>
                                         <th class="th-primero">ID</th>

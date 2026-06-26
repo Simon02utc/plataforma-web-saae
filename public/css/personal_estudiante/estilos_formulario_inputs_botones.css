@@ -319,7 +319,7 @@
 
 
 
-/* ========== CAJAS DE DETALLES */
+/* ==================== CAJAS DE DETALLES */
 .form-editar-contenido .contenedor-detalles-formulario {
     /* position: relative; para el boton de mostrar las cajas */
     padding-top: 0px;
@@ -383,6 +383,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 6px;
     width: 100%;
 }
 
@@ -391,7 +392,7 @@
     justify-content: center;
     align-items: center;
 
-    min-width: 100px;
+    /* min-width: 100px; */
     min-height: 30px;
     padding: 0px 10px;
 
@@ -399,6 +400,7 @@
     font-weight: var(--font-weight-500);
     font-family: var(--body-font);
     text-decoration: none;
+    border: none;
     border-radius: 10px;
     cursor: pointer;
 
@@ -406,6 +408,18 @@
     overflow: visible;       /* Asegura que no se recorte */
 
     transition: color 0.3s ease, background-color 0.3s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.contenedor-botones-modal-justificante .btn-justificante .texto-btn {
+    max-width: 0;
+    opacity: 0;
+
+    transition: max-width 0.6s ease, opacity 0.6s ease;
+}
+
+.contenedor-botones-modal-justificante .btn-justificante:hover .texto-btn {
+    max-width: 200px;
+    opacity: 1;
 }
 
 .contenedor-botones-modal-justificante .btn-justificante:active {
@@ -419,8 +433,13 @@
     cursor: not-allowed;
 }
 
-.contenedor-botones-modal-justificante .btn-ver-justificante {
+.contenedor-botones-modal-justificante .ver-archivo {
     background-color: #6D28D9;
+    color: #fff;
+}
+
+.contenedor-botones-modal-justificante .descargar-archivo {
+    background-color: #0F766E;
     color: #fff;
 }
 
@@ -441,12 +460,16 @@
     .contenedor-detalles-formulario .info-detalle {
         font-size: var(--font-size-cel-subtexto);
     }
+
+    .contenedor-botones-modal-justificante .btn-justificante {
+        font-size: var(--font-size-cel-subtexto);
+    }
 }
+/*====================*/
 
 
 
-
-/* ========== BLOQUES DE ASIGNACION DE PERSONAL A ESTUDIANTES */
+/* =================== BLOQUES DE ASIGNACION DE PERSONAL A ESTUDIANTES */
 .contenedor-buscador-asignaciones {
     width: 100%;
     display: flex;
@@ -699,7 +722,7 @@
     }
 
 }
-/* ====================================================================*/
+/*====================*/
 
 
 
@@ -1017,7 +1040,6 @@ select.input-field {
     align-content: center;
     justify-content: center;
     gap: 60px;
-    align-items: center;
     margin-top: 10px;
     width: 100%;
 }
@@ -1095,11 +1117,11 @@ select.input-field {
 /*----Carga al precionar el boton----*/
 .spinner {
     display: none;
-    border: 6px solid rgba(0, 0, 0, 0.6);
-    border-top: 6px solid #ffffff; /* Cambia este color según tu diseño */
+    border: 4px solid rgba(0, 0, 0, 0.6);
+    border-top: 4px solid #ffffff; /* Cambia este color según tu diseño */
     border-radius: 50%;
-    width: 28px;
-    height: 28px;
+    width: 22px;
+    height: 22px;
     animation: spin 0.8s linear infinite;
 }
 
@@ -1116,7 +1138,7 @@ select.input-field {
     display: none;
     margin-left: 4px;
     font-size: var(--font-size-subtexto);
-    font-weight: var(--font-weight-500);
+    font-weight: var(--font-weight-400);
     font-family: var(--body-font);
     color: var(--color-texto-spinner);
 }

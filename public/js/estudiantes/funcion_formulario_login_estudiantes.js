@@ -2,11 +2,11 @@ function clearForm(formId) {
     document.getElementById(formId).reset();
 }
 
-function setLoadingFormulario(button, isLoading) {
+function setLoadingFormularioLoginEstudiante(button, isLoading) {
     const iconoBoton = button.querySelector('i');
-    const textoBoton = button.querySelector('span:not(.spinner):not(.texto-spinner)');
-    const spinner = button.querySelector('.spinner');
-    const textoSpinner = button.querySelector('.texto-spinner');
+    const textoBoton = button.querySelector('span:not(.spinner-login):not(.texto-spinner-login)');
+    const spinner = button.querySelector('.spinner-login');
+    const textoSpinner = button.querySelector('.texto-spinner-login');
 
     button.disabled = isLoading;
 
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData(form);
         const button = form.querySelector('.acceder-enviar');
-        setLoadingFormulario(button, true);//---Activa el spinner
+        setLoadingFormularioLoginEstudiante(button, true);//---Activa el spinner
 
         const csrfMeta = document.querySelector('meta[name="csrf-token"]');
         const csrf = csrfMeta ? csrfMeta.getAttribute('content') : null;
@@ -104,7 +104,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error(error);
             displayMensajeToast(`<p class="error">Error de conexión al iniciar sesión. <span class="ext">Revisa tu servidor o recarga la página.</span></p>`);
         } finally {
-            setLoadingFormulario(button, false);
+            setLoadingFormularioLoginEstudiante(button, false);
         }
     });
 });

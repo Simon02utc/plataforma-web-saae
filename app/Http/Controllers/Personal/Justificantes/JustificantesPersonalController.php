@@ -146,32 +146,108 @@ class JustificantesPersonalController extends Controller
             ?: trim(($justificante->estudiante?->nombre ?? '') . ' ' . ($justificante->estudiante?->apellidos ?? ''));
 
         return response()->json([
-            'id' => $justificante->id,
-            'folio' => $justificante->folio,
-            'estado_justificante' => $justificante->estado,
-            'motivo' => $justificante->motivo,
-            'descripcion' => $justificante->descripcion,
-            'comentario_revision' => $justificante->comentario_revision,
-            'revisado_en' => optional($justificante->revisado_en)->format('Y-m-d H:i:s'),
-            'archivo_nombre' => $justificante->archivo_nombre,
-            'archivo_url' => $justificante->archivo_ruta
-                ? Storage::disk('public')->url($justificante->archivo_ruta)
-                : null,
-            'periodo' => $justificante->periodo?->nombre,
-            'estudiante' => [
-                'id' => $justificante->estudiante?->id,
-                'numero_control' => $justificante->estudiante?->numero_control,
-                'nombre_completo' => $nombre ?: '—',
-                'email' => $justificante->estudiante?->email,
-            ],
-            'fechas' => $justificante->detalles->map(function ($d) {
-                return [
-                    'fecha' => optional($d->fecha)->format('Y-m-d'),
-                    'estatus_asistencia' => $this->resolverEstatusAsistenciaTexto($d->asistencia),
-                    'asistencia_diaria_id' => $d->asistencia_diaria_id,
-                ];
-            })->values(),
+            'data' => [
+                'id' => $justificante->id,
+                'folio' => $justificante->folio,
+                'estado_justificante' => $justificante->estado,
+                'motivo' => $justificante->motivo,
+                'descripcion' => $justificante->descripcion,
+                'comentario_revision' => $justificante->comentario_revision,
+                'revisado_en' => optional($justificante->revisado_en)->format('Y-m-d H:i:s'),
+                'archivo_nombre' => $justificante->archivo_nombre,
+
+                'archivo_url' => $justificante->archivo_ruta
+                        ? route('grup_personal.grup_justificantes.name_ver_archivo_justificante', $justificante->id)
+                        : null,
+
+                'archivo_descarga_url' => $justificante->archivo_ruta
+                        ? route('grup_personal.grup_justificantes.name_descargar_archivo_justificante', $justificante->id)
+                        : null,
+
+                'periodo' => $justificante->periodo?->nombre,
+                'estudiante' => [
+                    'id' => $justificante->estudiante?->id,
+                    'numero_control' => $justificante->estudiante?->numero_control,
+                    'nombre_completo' => $nombre ?: '—',
+                    'email' => $justificante->estudiante?->email,
+                ],
+                'fechas' => $justificante->detalles->map(function ($d) {
+                    return [
+                        'fecha' => optional($d->fecha)->format('Y-m-d'),
+                        'estatus_asistencia' => $this->resolverEstatusAsistenciaTexto($d->asistencia),
+                        'asistencia_diaria_id' => $d->asistencia_diaria_id,
+                    ];
+                })->values(),
+            ]
         ]);
+    }
+
+
+    public function ver_archivo_justificante(int $id)
+    {
+        $personal = auth('personal')->user();
+        $personalId = $personal->id;
+        $esAdmin = $personal->esAdmin();
+
+        $justificante = JustificanteEstudiante::query()
+            ->with(['estudiante', 'periodo', 'detalles.asistencia', 'revisor'])
+            ->findOrFail($id);
+
+        $this->validarAccesoPersonal(
+            $personalId,
+            $justificante->estudiante_id,
+            $esAdmin
+        );
+
+        if (empty($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'No hay un archivo asociado.'
+            ], 404);
+        }
+
+        if (!Storage::exists($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'El archivo ya no existe.'
+            ], 404);
+        }
+
+        $rutaCompleta = Storage::path($justificante->archivo_ruta);
+
+        return response()->file($rutaCompleta);
+    }
+
+
+    public function descargar_archivo_justificante(int $id)
+    {
+        $personal = auth('personal')->user();
+        $personalId = $personal->id;
+        $esAdmin = $personal->esAdmin();
+
+        $justificante = JustificanteEstudiante::query()
+            ->with(['estudiante', 'periodo', 'detalles.asistencia', 'revisor'])
+            ->findOrFail($id);
+
+        $this->validarAccesoPersonal(
+            $personalId,
+            $justificante->estudiante_id,
+            $esAdmin
+        );
+
+        if (empty($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'No hay un archivo asociado para descargar.'
+            ], 404);
+        }
+
+        if (!Storage::exists($justificante->archivo_ruta)) {
+            return response()->json([
+                'message' => 'El archivo ya no existe para descargar.'
+            ], 404);
+        }
+
+        $downloadName = $justificante->archivo_nombre;
+
+        return Storage::download($justificante->archivo_ruta, $downloadName);
     }
 
 

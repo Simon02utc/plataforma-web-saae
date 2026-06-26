@@ -1136,6 +1136,7 @@
     }
 
     .contenedor-botones-accion-tabla button {
+        font-size: var(--font-size-cel-subtexto);
         width: 100%;
         justify-content: center;
     }

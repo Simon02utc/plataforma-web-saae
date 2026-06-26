@@ -312,9 +312,9 @@ function initTablaJustificantesPersonal() {
 
     const tbody = tabla.querySelector('tbody');
 
-    const cfg = {
+    const cfgTabla = {
         urlTabla: tabla.dataset.urlTablaJustificantes,
-        urlVer: tabla.dataset.urlVerJustificante,
+        urlVerDetalles: tabla.dataset.urlVerDetallesJustificante,
         urlAprobar: tabla.dataset.urlAprobarJustificante,
         urlRechazar: tabla.dataset.urlRechazarJustificante,
     };
@@ -348,8 +348,9 @@ function initTablaJustificantesPersonal() {
                 <td class="td-estado">${estadoJustificante(it.estado_justificante)}</td>
                 <td>
                     <div class="botones-tabla">
-                        <button type="button" class="btn-ver-detalles-item btn-ver-justificante" data-id="${it.id}">
+                        <button type="button" class="btn-ver-detalles-item btn-ver-detalles-justificante" data-id="${it.id}">
                             <i class="fa-solid fa-magnifying-glass"></i>
+                            <span class="spinner-tabla"></span>
                         </button>
                     </div>
                 </td>
@@ -401,7 +402,7 @@ function initTablaJustificantesPersonal() {
         aborter = new AbortController();
 
         try {
-            const url = new URL(cfg.urlTabla, window.location.origin);
+            const url = new URL(cfgTabla.urlTabla, window.location.origin);
 
             const buscar = inputBuscar?.value.trim() || '';
             const estado = filtroEstado?.value || '';
@@ -430,192 +431,331 @@ function initTablaJustificantesPersonal() {
     }
 
 
-    tabla.addEventListener('click', async (ev) => {
-        const btnVer = ev.target.closest('.btn-ver-justificante');
-        if (!btnVer) return;
+    async function verDetalle(id) {
+        try {
 
-        const url = buildUrl(cfg.urlVer, btnVer.dataset.id);
-        const r = await fetchJson(url);
-        if (!r.ok) return;
+            const r = await fetchJson(buildUrl(cfgTabla.urlVerDetalles, id));
+            if (!r.ok) return;
 
-        const d = r.data || {};
-
-        const puedeRevisar = d.estado_justificante === 'PENDIENTE';
-        const puedeVer = ['APROBADO', 'RECHAZADO', 'CANCELADO'].includes(d.estado_justificante);
-
-        const inputRevision = puedeRevisar ? `
-            <div class="input-box-editar">
-                <label class="nombre-input">Comentario de revisión:</label>
-                <textarea class="input-field" id="comentario-revision-justificante" maxlength="2000"
-                    placeholder="Escribe un comentario de revisión"></textarea>
-            </div>
-        ` : '';
-
-        const botonesRevision = puedeRevisar ? `
-            <div class="botones-formulario">
-                <button type="button" class="btn-cancelar-borrar" id="btn-rechazar-justificante" data-id="${d.id}">
-                    <span>Rechazar</span>
-                    <span class="spinner"></span>
-                    <span class="texto-spinner">Espera</span>
-                </button>
-
-                <button type="button" class="btn-guardar-enviar" id="btn-aprobar-justificante" data-id="${d.id}">
-                    <span>Aprobar</span>
-                    <span class="spinner"></span>
-                    <span class="texto-spinner">Espera</span>
-                </button>
-            </div>
-        ` : '';
-
-        const cajasDetalle = puedeVer ? `
-            <p class="titulo-caja-detalle">Extras:</p>
-            <div class="contenedor-detalles-formulario">
-                <div class="caja-detalle-formulario ultimo">
-                    <p class="nombre-detalle">Comentario de revisión:</p>
-                    <p class="info-detalle">${escapeHtml(d.comentario_revision || 'Sin comentario.')}</p>
-                </div>
-            </div>
-        ` : '';
-
-        displayModalFormularioEditar(`
-            <div class="form-editar-contenido">
-
-                <div class="form-title">
-                    <span>Detalles del justificante</span>
-                </div>
-
-                <div class="form-inputs">
-                    <div class="scroll-editar">
-
-                        <p class="titulo-caja-detalle">Datos del alumno:</p>
-                        <div class="contenedor-detalles-formulario">
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Estudiante:</p>
-                                <p class="info-detalle">${escapeHtml(d.estudiante?.nombre_completo || '—')} - ${escapeHtml(d.estudiante?.numero_control || '—')}</p>
-                            </div>
-
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Correo:</p>
-                                <p class="info-detalle">${escapeHtml(d.estudiante?.email || '—')}</p>
-                            </div>
-                        </div>
-
-                        <p class="titulo-caja-detalle">Datos del justificante:</p>
-                        <div class="contenedor-detalles-formulario">
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Folio:</p>
-                                <p class="info-detalle">${escapeHtml(d.folio || '—')}</p>
-                                <div class="contenedor-botones-modal-justificante">
-                                    ${d.archivo_url
-                                        ? `<a class="btn-justificante btn-ver-justificante" href="${escapeHtml(d.archivo_url)}" draggable="false"           ondragstart="return false;" target="_blank">
-                                            <i class="fa-solid fa-file"></i> Ver archivo
-                                            </a>`
-                                        : 'Sin archivo'}
-                                </div>
-                            </div>
-
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Estado:</p>
-                                <p class="info-detalle">${estadoJustificante(d.estado_justificante)}</p>
-                            </div>
-
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Motivo:</p>
-                                <p class="info-detalle">${escapeHtml(d.motivo || '—')}</p>
-                            </div>
-
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Descripción:</p>
-                                <p class="info-detalle">${escapeHtml(d.descripcion || 'Sin descripción.')}</p>
-                            </div>
-                        </div>
-                        
-                        <p class="titulo-caja-detalle">Referencia:</p>
-                        <div class="contenedor-detalles-formulario">
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Periodo:</p>
-                                <p class="info-detalle">${escapeHtml(d.periodo || '—')}</p>
-                            </div>
-
-                            <div class="caja-detalle-formulario">
-                                <p class="nombre-detalle">Fecha(s):</p>
-                                <p class="info-detalle">
-                                    ${(d.fechas || []).map(f => `${fmtSoloFecha(f.fecha)} - ${estadoAsistencia(f.estatus_asistencia)}`).join('<br>') || '—'}
-                                </p>
-                            </div>
-                        </div>
-
-                        ${cajasDetalle}
-                    
-                        ${inputRevision}
-
-                    </div>
-
-                    ${botonesRevision}
-                </div>
-            </div>
-        `);
-
-        document.getElementById('btn-aprobar-justificante')?.addEventListener('click', async (e) => {
-            const btn = e.currentTarget;
-            const comentario = document.getElementById('comentario-revision-justificante')?.value || '';
-
-            setLoadingFormulario(btn, true);
-
-            try {
-                const resp = await fetchJson(buildUrl(cfg.urlAprobar, btn.dataset.id), {
-                    method: 'POST',
-                    body: { comentario_revision: comentario }
-                });
-
-                if (!resp.ok) return;
-
-                displayMensajeToast(`<p class="exito">${escapeHtml(resp.data?.message || 'Justificante aprobado correctamente.')}</p>`);
-                cerrarModalFormularioEditar();
-                await cargarTabla(state.currentPage);
-
-            } catch (error) {
-                console.error(error);
-                displayMensajeToast('<p class="error">Error de conexión al aprobar justificante.</p>');
-            } finally {
-                if (document.body.contains(btn)) {
-                    setLoadingFormulario(btn, false);
-                }
-            }
-        });
-
-        document.getElementById('btn-rechazar-justificante')?.addEventListener('click', async (e) => {
-            const btn = e.currentTarget;
-            const comentario = document.getElementById('comentario-revision-justificante')?.value || '';
-
-            if (!comentario.trim()) {
-                displayMensajeToast('<p class="advertencia">El comentario es obligatorio para rechazar.</p>');
+            const d = r.data?.data;
+            if (!d) {
+                displayMensajeToast('<p class="error">No se pudo obtener los detalles del justificantes.</p>')
                 return;
             }
 
-            setLoadingFormulario(btn, true);
 
-            try {
-                const resp = await fetchJson(buildUrl(cfg.urlRechazar, btn.dataset.id), {
-                    method: 'POST',
-                    body: { comentario_revision: comentario }
+            const puedeRevisar = d.estado_justificante === 'PENDIENTE';
+            const puedeVer = ['APROBADO', 'RECHAZADO', 'CANCELADO'].includes(d.estado_justificante);
+
+            const inputRevision = puedeRevisar ? `
+                <div class="input-box-editar">
+                    <label class="nombre-input">Comentario de revisión:</label>
+                    <textarea class="input-field" id="comentario-revision-justificante" maxlength="2000"
+                        placeholder="Escribe un comentario de revisión"></textarea>
+                </div>
+            ` : '';
+
+            const botonesRevision = puedeRevisar ? `
+                <div class="botones-formulario">
+                    <button type="button" class="btn-cancelar-borrar" id="btn-rechazar-justificante" data-id="${d.id}">
+                        <span>Rechazar</span>
+                        <span class="spinner"></span>
+                        <span class="texto-spinner">Espera</span>
+                    </button>
+
+                    <button type="button" class="btn-guardar-enviar" id="btn-aprobar-justificante" data-id="${d.id}">
+                        <span>Aprobar</span>
+                        <span class="spinner"></span>
+                        <span class="texto-spinner">Espera</span>
+                    </button>
+                </div>
+            ` : '';
+
+            const cajasDetalle = puedeVer ? `
+                <p class="titulo-caja-detalle">Extras:</p>
+                <div class="contenedor-detalles-formulario">
+                    <div class="caja-detalle-formulario ultimo">
+                        <p class="nombre-detalle">Comentario de revisión:</p>
+                        <p class="info-detalle">${escapeHtml(d.comentario_revision || 'Sin comentario.')}</p>
+                    </div>
+                </div>
+            ` : '';
+
+            displayModalFormularioEditar(`
+                <div class="form-editar-contenido">
+
+                    <div class="form-title">
+                        <span>Detalles del justificante</span>
+                    </div>
+
+                    <div class="form-inputs">
+                        <div class="scroll-editar">
+
+                            <p class="titulo-caja-detalle">Datos del alumno:</p>
+                            <div class="contenedor-detalles-formulario">
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Nombre y No. control:</p>
+                                    <p class="info-detalle">${escapeHtml(d.estudiante?.nombre_completo || '—')} - ${escapeHtml(d.estudiante?.numero_control || '—')}</p>
+                                </div>
+
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Correo:</p>
+                                    <p class="info-detalle">${escapeHtml(d.estudiante?.email || '—')}</p>
+                                </div>
+                            </div>
+
+                            <p class="titulo-caja-detalle">Datos del justificante:</p>
+                            <div class="contenedor-detalles-formulario">
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Folio:</p>
+                                    <p class="info-detalle">${escapeHtml(d.folio || '—')}</p>
+
+                                    <div class="contenedor-botones-modal-justificante">
+                                        ${d.archivo_url
+                                            ? `<button type="button" class="btn-justificante ver-archivo" id="btn-ver-archivo-justificante" data-url="${escapeHtml(d.archivo_url)}">
+                                                    <span class="texto-btn">Ver archivo</span>
+                                                    <i class="fa-solid fa-file"></i> 
+                                                    <span class="spinner"></span>
+                                                    <span class="texto-spinner">Mostrando</span>
+                                                </button>`
+                                            : '<i class="fa-solid fa-file-circle-xmark"></i> Sin archivo | '}
+
+                                        ${d.archivo_descarga_url
+                                            ? `<button type="button" class="btn-justificante descargar-archivo" id="btn-descargar-archivo-justificante" data-url="${escapeHtml(d.archivo_descarga_url)}">
+                                                    <i class="fa-solid fa-file-arrow-down"></i>
+                                                    <span class="texto-btn">Descargar archivo</span>
+                                                    <span class="spinner"></span>
+                                                    <span class="texto-spinner">Descargando</span>
+                                                </button>`
+                                            : '<i class="fa-solid fa-file-circle-xmark"></i> Sin archivo'}
+                                    </div>
+
+                                </div>
+
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Estado:</p>
+                                    <p class="info-detalle">${estadoJustificante(d.estado_justificante)}</p>
+                                </div>
+
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Motivo:</p>
+                                    <p class="info-detalle">${escapeHtml(d.motivo || '—')}</p>
+                                </div>
+
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Descripción:</p>
+                                    <p class="info-detalle">${escapeHtml(d.descripcion || 'Sin descripción.')}</p>
+                                </div>
+                            </div>
+                            
+                            <p class="titulo-caja-detalle">Referencia:</p>
+                            <div class="contenedor-detalles-formulario">
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Periodo:</p>
+                                    <p class="info-detalle">${escapeHtml(d.periodo || '—')}</p>
+                                </div>
+
+                                <div class="caja-detalle-formulario">
+                                    <p class="nombre-detalle">Fecha(s):</p>
+                                    <p class="info-detalle">
+                                        ${(d.fechas || []).map(f => `${fmtSoloFecha(f.fecha)} - ${estadoAsistencia(f.estatus_asistencia)}`).join('<br>') || '—'}
+                                    </p>
+                                </div>
+                            </div>
+
+                            ${cajasDetalle}
+                        
+                            ${inputRevision}
+
+                        </div>
+
+                        ${botonesRevision}
+                    </div>
+                </div>
+            `);
+
+            document.querySelectorAll('#btn-aprobar-justificante').forEach((btn) => {
+                btn.addEventListener('click', async () => {
+
+                    const comentario = document.getElementById('comentario-revision-justificante')?.value || '';
+
+                    setLoadingFormulario(btn, true);
+
+                    try {
+                        const resp = await fetchJson(buildUrl(cfgTabla.urlAprobar, btn.dataset.id), {
+                            method: 'POST',
+                            body: { comentario_revision: comentario }
+                        });
+
+                        if (!resp.ok) return;
+
+                        displayMensajeToast(`<p class="exito">${escapeHtml(resp.data?.message || 'Justificante aprobado correctamente.')}</p>`);
+                        cerrarModalFormularioEditar();
+                        await cargarTabla(state.currentPage);
+
+                    } catch (error) {
+                        console.error(error);
+                        displayMensajeToast('<p class="error">Error de conexión al aprobar justificante.</p>');
+                    } finally {
+                        if (document.body.contains(btn)) {
+                            setLoadingFormulario(btn, false);
+                        }
+                    }
+
                 });
+            });
 
-                if (!resp.ok) return;
 
-                displayMensajeToast(`<p class="exito">${escapeHtml(resp.data?.message || 'Justificante rechazado correctamente.')}</p>`);
-                cerrarModalFormularioEditar();
-                await cargarTabla(state.currentPage);
+            document.querySelectorAll('#btn-rechazar-justificante').forEach((btn) => {
+                btn.addEventListener('click', async () => {
 
-            } catch (error) {
-                console.error(error);
-                displayMensajeToast('<p class="error">Error de conexión al rechazar justificante.</p>');
-            } finally {
-                if (document.body.contains(btn)) {
-                    setLoadingFormulario(btn, false);
+                    const comentario = document.getElementById('comentario-revision-justificante')?.value || '';
+
+                    if (!comentario.trim()) {
+                        displayMensajeToast('<p class="advertencia">El comentario es obligatorio para rechazar.</p>');
+                        return;
+                    }
+
+                    setLoadingFormulario(btn, true);
+
+                    try {
+                        const resp = await fetchJson(buildUrl(cfgTabla.urlRechazar, btn.dataset.id), {
+                            method: 'POST',
+                            body: { comentario_revision: comentario }
+                        });
+
+                        if (!resp.ok) return;
+
+                        displayMensajeToast(`<p class="exito">${escapeHtml(resp.data?.message || 'Justificante rechazado correctamente.')}</p>`);
+                        cerrarModalFormularioEditar();
+                        await cargarTabla(state.currentPage);
+
+                    } catch (error) {
+                        console.error(error);
+                        displayMensajeToast('<p class="error">Error de conexión al rechazar justificante.</p>');
+                    } finally {
+                        if (document.body.contains(btn)) {
+                            setLoadingFormulario(btn, false);
+                        }
+                    }
+
+                });
+            });
+
+
+        } catch (err) {
+            console.error(err);
+            displayMensajeToast('<p class="error">Error de conexión al ver los detalles.</p>');
+        }
+
+    };
+
+
+    // VER ARCHIVO DEL JUSTIFICANTE
+    async function VerArchivoJustificante(url) {
+
+        try {
+
+            const res = await fetch(url, {
+                credentials: 'same-origin',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
                 }
+            });
+
+            if (!res.ok) {
+
+                const error = await res.json();
+
+                displayMensajeToast(
+                    `<p class="error">${escapeHtml(error.message)}</p>`
+                );
+
+                return;
             }
-        });
+
+            window.open(url, '_blank');
+
+        } catch (err) {
+
+            console.error(err);
+
+            displayMensajeToast(
+                '<p class="error">Error al abrir el archivo.</p>'
+            );
+        }
+    }
+
+
+    // DESCARGAR ARCHIVO DEL JUSTIFICANTE
+    async function DescargarArchivoJustificante(url) {
+
+        try {
+
+            const res = await fetch(url, {
+                credentials: 'same-origin',
+                headers: {
+                    'X-Requested-With': 'XMLHttpRequest',
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (!res.ok) {
+
+                const error = await res.json();
+
+                displayMensajeToast(
+                    `<p class="error">${escapeHtml(error.message)}</p>`
+                );
+
+                return;
+            }
+
+            window.location.href = url;
+
+            displayMensajeToast(`<p class="exito">Archivo descargado con éxito.</p>`);
+
+        } catch (err) {
+
+            console.error(err);
+
+            displayMensajeToast(
+                '<p class="error">Error al descargar el archivo.</p>'
+            );
+        }
+    }
+
+
+    //==================LISTENERS PARA LA TABLA==================
+    tabla.addEventListener('click', (ev) => {
+
+        const btnVerDetalle = ev.target.closest('.btn-ver-detalles-justificante');
+        if (btnVerDetalle) {
+            verDetalle(btnVerDetalle.dataset.id);
+            return;
+        }
+
+    });
+
+
+    document.addEventListener('click', async (ev) => {
+        const btnVerArchivoJustificante = ev.target.closest('#btn-ver-archivo-justificante');
+        if (!btnVerArchivoJustificante) return;
+        
+        setLoadingFormulario(btnVerArchivoJustificante, true);
+        await VerArchivoJustificante(btnVerArchivoJustificante.dataset.url);
+        setLoadingFormulario(btnVerArchivoJustificante, false);
+    });
+
+
+    document.addEventListener('click', async (ev) => {
+        const btnDescargarArchivoJustificante = ev.target.closest('#btn-descargar-archivo-justificante');
+        if (!btnDescargarArchivoJustificante) return;
+        
+        setLoadingFormulario(btnDescargarArchivoJustificante, true);
+        await DescargarArchivoJustificante(btnDescargarArchivoJustificante.dataset.url);
+        setLoadingFormulario(btnDescargarArchivoJustificante, false);
     });
 
 
@@ -661,6 +801,7 @@ function initTablaJustificantesPersonal() {
         if (state.currentPage >= state.lastPage) return;
         await cargarTabla(state.currentPage + 1);
     });
+
 
     cargarTabla(1);
 }

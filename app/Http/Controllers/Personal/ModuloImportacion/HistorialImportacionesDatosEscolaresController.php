@@ -74,14 +74,14 @@ class HistorialImportacionesDatosEscolaresController extends Controller
 
         if (empty($imp->archivo_ruta)) {
             return response()->json([
-                    'message' => 'Esta importación no tiene archivo asociado.'
-                ], 404);
+                'message' => 'Esta importación no tiene archivo asociado.'
+            ], 404);
         }
 
         if (!Storage::exists($imp->archivo_ruta)) {
             return response()->json([
-                    'message' => 'El archivo ya no existe en el servidor.'
-                ], 404);
+                'message' => 'El archivo ya no existe en el servidor.'
+            ], 404);
         }
 
         //con el nombre sugerido para descarga (usar el mismo archivo_nombre)

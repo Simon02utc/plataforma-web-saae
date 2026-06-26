@@ -783,7 +783,7 @@ button.loading i {
 
     /*botones de accion para los filtros*//*botones de accion para los filtros*/
     .dashboard-filtro-botones button {
-        font-size: var(--font-size-cel-texto-normal);
+        font-size: var(--font-size-cel-subtexto);
     }
 
     /*sin datos en el periodo */
@@ -872,6 +872,7 @@ button.loading i {
         width: 100%;
         justify-content: stretch;
         gap: 10px;
+        margin: 10px 0px;
     }
 
     .dashboard-filtro-botones button {

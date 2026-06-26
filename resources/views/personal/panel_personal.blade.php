@@ -148,13 +148,13 @@
                         <button type="button" class="btn-limpiar-filtros-dashboard" id="btn-limpiar-filtros-dashboard">
                             <span>Limpiar</span>
                             <span class="spinner-dashboard-botones"></span>
-                            <span class="texto-spinner-dashboard-botones">Espera</span>
+                            <span class="texto-spinner-dashboard-botones">Limpiando</span>
                         </button>
 
                         <button type="submit" class="btn-aplicar-filtros-dashboard" id="btn-aplicar-filtros-dashboard">
                             <span>Aplicar</span>
                             <span class="spinner-dashboard-botones"></span>
-                            <span class="texto-spinner-dashboard-botones">Espera</span>
+                            <span class="texto-spinner-dashboard-botones">Aplicando</span>
                         </button>
                     </div>
 

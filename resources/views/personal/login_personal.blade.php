@@ -83,8 +83,8 @@
                                 <button type="submit" class="input-submit acceder-enviar">
                                     <span>Acceder</span>
                                     <i class="ri-arrow-right-long-line flecha"></i>
-                                    <span class="spinner"></span>
-                                    <span class="texto-spinner">Espera</span>
+                                    <span class="spinner-login"></span>
+                                    <span class="texto-spinner-login">Espera</span>
                                 </button>
                             </div>
 

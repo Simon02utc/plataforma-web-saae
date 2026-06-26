@@ -183,7 +183,7 @@ function initTablaHistorialImportaciones() {
         urlDescargarArchivoImportacionDatosEscolaresSimple: tabla.dataset.urlTablaDescargarArchivoImportacionDatosEscolaresSimple,
         limitePorDefecto: 10,
         limiteMaximo: 50,
-};
+    };
 
     let aborter = null;
 
