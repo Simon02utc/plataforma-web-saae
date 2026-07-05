@@ -42,7 +42,6 @@ return Application::configure(basePath: dirname(__DIR__))
             }
 
             // Para cualquier otro guard/ruta protegida
-            //return '/login'; // o '/', o la ruta que tú¿u quieras
             return route('grup_personal.name_login_estudiante');
         });
 
