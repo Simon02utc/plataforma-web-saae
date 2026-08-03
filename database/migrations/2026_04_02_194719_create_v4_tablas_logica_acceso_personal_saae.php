@@ -66,9 +66,9 @@ return new class extends Migration
                 ->constrained('roles_personal_saae')
                 ->cascadeOnDelete(); //borra automáticamente todos los registros dependientes (hijos) en una tabla secundaria cuando se elimina el registro principal (padre) relacionado.
 
-            $table->timestamps();
-
             $table->primary(['personal_id', 'role_id']);
+
+            $table->timestamps();
         });
 
 
@@ -114,6 +114,7 @@ return new class extends Migration
      */
     public function down(): void
     {
+        Schema::dropIfExists('intentos_recuperacion_contrasena_personal');
         Schema::dropIfExists('personal_con_rol_saae');
         Schema::dropIfExists('personal_saae');
         Schema::dropIfExists('rol_con_permiso_saae');

@@ -128,7 +128,7 @@ return new class extends Migration
 
             $table->foreignId('periodo_id')
                 ->constrained('periodos')
-                ->restrictOnDelete();;//significa: no puedes borrar el registro padre si hay hijos relacionados*/
+                ->restrictOnDelete();//significa: no puedes borrar el registro padre si hay hijos relacionados*/
 
             $table->string('archivo_nombre', 255);
             $table->string('archivo_ruta', 500)->nullable();
